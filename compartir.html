@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Pokemon</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    <link rel="icon" type="image/x-icon" href="img/pokeball-logo.png">
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src='js/main2.js'></script>
+</head>
+
+<body>
+    <div class="main">
+    <div class="col_izq_comp">
+        <div class="imagen"> <a href="index.html"><img src='img/International_Pokémon_logo.svg.png'></a></div>
+        <p><a href="contacto.html">CONTACTO</a></p>
+    </div>
+    <div class="col_der_comp">
+        <h2><big><b>COMPARTIR</b></big></h2>
+        <input class="email_emisor" placeholder="E-mail" type="text"><br>
+        <input class="email_receptor" placeholder="E-mail" type="text"><br>        
+        <textarea class="comentario" name="comentario" placeholder="Comentario"></textarea>
+        <input type="submit" onclick="validar()" value="Enviar" class="enviar" >
+        <input type="submit" onclick="cancelar()" value="Cancelar" class="cancel">
+        <input type="submit" id="re" onclick="reestablecer()" value="Restablecer valores">
+    </div>
+    </div>
+    
+    <div class="main2">
+        <div class="col_comp">
+            <div class="imagen"><a href="index.html"><img src='img/International_Pokémon_logo.svg.png'></a></div>
+            <h2><big><b>COMPARTIR</b></big></h2>
+            <input class="email_emisor_res" placeholder="E-mail" type="text"><br>
+            <input class="email_receptor_res" placeholder="E-mail" type="text"><br>
+            <textarea class="comentario_res" name="comentario" placeholder="Comentario"></textarea>
+            <input type="submit" onclick="validar()" value="Enviar" id="enviar">
+            <input type="submit" onclick="cancelar()" value="Cancelar" id="cancel">
+            <input type="submit" id="re" onclick="reestablecer()" value="Restablecer valores">
+            
+        </div>
+    </div>
+</body>
+<!-- <footer>
+    Pokemon
+</footer> -->
+
+</html>

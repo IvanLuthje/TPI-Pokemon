@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Pokemon</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    <script src='js/main.js'></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbOlqUZRniaWbnJnwxD81hGUPYnBELCyA&callback=console.debug&libraries=maps,marker&v=beta"></script>
+</head>
+
+<body>
+    <div class="main">
+    <div class="col_izq">
+        <div class="imagen"> <a href="index.html"><img src='img/International_Pokémon_logo.svg.png'></a></div>
+        <a href="compartir.html">COMPARTIR</a></br>        
+    </div>
+    <div class="col_der">
+
+        <h2><big><b>CONTACTO</b></big></h2>
+
+            <div id="googleMap">
+                <gmp-map center="-34.922883333333,-57.956316666667" zoom="15" map-id="map">
+                    <gmp-advanced-marker position="-34.922883333333,-57.956316666667" title="Mi localizacion"></gmp-advanced-marker>          
+                </gmp-map>
+            </div>
+    </div>
+    </div>
+   
+    <div class="main2">
+        <div class="col">
+            <div class="imagen"><a href="index.html"><img src='img/International_Pokémon_logo.svg.png'></a></div>
+            <div class="col2">
+                <nav id="navegador">
+                    <a href="javascript:void(0);" class="icon" onclick="navegador()">&#9776;</a>
+                    <a href="compartir.html">Compartir</a>
+                </nav>
+            </div>
+            <h2><big><b>CONTACTO</b></big></h2>
+            <div id="googleMap">
+                <gmp-map center="-34.922883333333,-57.956316666667" zoom="15" map-id="map_responsive">
+                    <gmp-advanced-marker position="-34.922883333333,-57.956316666667" title="Mi localizacion"></gmp-advanced-marker>          
+                </gmp-map>
+            </div>
+        </div>    
+    </div>
+</body>
+<footer>
+    Pokemon
+</footer>
+
+</html>
