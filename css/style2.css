@@ -192,6 +192,58 @@ body {
     background: linear-gradient(to right, #f8bbd0, #ab47bc);
 }
 
+.bug {
+    background: linear-gradient(to right, #92a510, #3e721d);
+}
+
+.dark {
+    background: linear-gradient(to right, #525252, #000000);
+    color: white;
+}
+
+.dragon {
+    background: linear-gradient(to right, #5c2e91, #b896f5);
+}
+
+.fighting {
+    background: linear-gradient(to right, #c22e28, #8b0000);
+    color: white;
+}
+
+.ghost {
+    background: linear-gradient(to right, #705898, #333367);
+    color: white;
+}
+
+.ground {
+    background: linear-gradient(to right, #a1871f, #705848);
+}
+
+.ice {
+    background: linear-gradient(to right, #4fc3f7, #00bcd4);
+}
+
+.psychic {
+    background: linear-gradient(to right, #e91e63, #ff6f61);
+}
+
+.rock {
+    background: linear-gradient(to right, #b69e31, #8b5a2b);
+}
+
+.dragon {
+    background: linear-gradient(to right, #7038F8, #705898);
+    color: white;
+}
+
+.fighting {
+    background: linear-gradient(to right, #C03028, #A52A2A);
+}
+
+.psychic {
+    background: linear-gradient(to right, #F85888, #FF69B4);
+}
+
 .custom-list li a:hover {
     opacity: 0.8; /* Transparencia al pasar por encima */
 }
@@ -201,32 +253,13 @@ body {
     display: flex;
     flex-flow: row wrap;
 
-    margin: 0 0 20px 0;
+    margin: 20px 0 20px 0;
     padding: 0 15px 15px 15px;
     background-color: #FFFFFF;
     height: 100%;
     order: 2; /* El main se coloca después del aside */
     flex: 1 100%; /* El main también ocupa todo el ancho del contenedor */
     justify-content: center;
-}
-
-.category {
-    margin-bottom: 20px;
-}
-
-.category h2 {
-    border-bottom: 2px solid #444;
-    padding-bottom: 10px;
-    font-size: 20px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.category .tiny_image {
-    width: 50px;
-    height: 50px;
-    padding: 0px;
 }
 
 .pokemons {
@@ -251,6 +284,9 @@ body {
     box-sizing: border-box;
     gap: 5px;
     position: relative; /* Para asegurar que el zoom se aplique correctamente */
+
+    flex: 1 1 170px; /* Ajusta las cards para que todas tengan el mismo tamaño mínimo */
+    max-width: 170px; /* Define el ancho máximo de las cards */
 }
 
 .pokemon img {
@@ -281,7 +317,6 @@ body {
     flex-flow: row wrap;
     justify-content: center;
     margin-top: auto;
-    gap: 10px;
 }
 
 .types p {
@@ -290,6 +325,7 @@ body {
     font-size: 16px;
     border-radius: 5px;
     text-align: center;
+    margin: 2px 5px;
 }
 
 /* Estilo para el footer */
@@ -301,7 +337,7 @@ body {
 
     order: 4; /* El footer se coloca al final */
     margin-top: auto; /* Con esto hago que el footer siempre se mantenga abajo */
-    /* Tener en cuanta que para que esto sea posible, se tiene que modificar el body */
+    /* Tener en cuenta que para que esto sea posible, se tiene que modificar el body */
     /* y el wrapper (ver los cambios agregados al body y wrapper) */
 }
 
@@ -323,7 +359,9 @@ body {
     }
 
     .pokemon {
-        width: 40%;
+        /* width: 40%; */
+        flex: 1 1 200px;
+        max-width: 200px;
     }
 
     .aside {
@@ -371,9 +409,11 @@ body {
     }
 
     .pokemon {
-        width: 25%;
+        /*width: 40%; /* 25% */
         overflow: hidden; /* Oculta cualquier contenido que se desborde durante el zoom */
         transition: transform 0.3s ease-in-out; /* Transición suave para el zoom */
+        flex: 1 1 220px; /* Ajusta las cards para que todas tengan el mismo tamaño mínimo */
+        max-width: 220px; /* Define el ancho máximo de las cards */
     }
 
     .pokemon:hover {
@@ -396,14 +436,9 @@ body {
     }
 
     .pokemon {
-        width: 25%;
-    }
-
-    .category h2 {
-        border-bottom: 2px solid #444;
-        padding-bottom: 10px;
-        width: 95%; /* En caso que se quiera que la línea del borde tenga un largo menor */
-        font-size: 22px;
+        /*width: 25%; /* 25% */
+        flex: 1 1 340px;
+        max-width: 340px;
     }
 
 }

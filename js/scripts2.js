@@ -2,6 +2,12 @@ $(document).ready(function () {
     const $searchButton = $('.search-button');
     const $searchInput = $('.search-input');
     const $pokemonContainer = $('.pokemons');
+    const $fireButton = $('.fire');
+    const $waterButton = $('.water');
+    const $grassButton = $('.grass');
+    const $electricButton = $('.electric');
+    const $normalButton = $('.normal');
+
 
     $searchButton.on('click', function () {
         const searchTerm = $searchInput.val().trim().toLowerCase();
@@ -24,6 +30,26 @@ $(document).ready(function () {
             // Buscar por ID (es un número)
             searchById(searchTerm);
         }
+    });
+
+    $fireButton.on('click', function () {
+        searchByType('fire');
+    });
+
+    $waterButton.on('click', function () {
+        searchByType('water');
+    });
+
+    $grassButton.on('click', function () {
+        searchByType('grass');
+    });
+
+    $electricButton.on('click', function () {
+        searchByType('electric');
+    });
+
+    $normalButton.on('click', function () {
+        searchByType('normal');
     });
 
     function isValidType(type) {
@@ -61,46 +87,43 @@ $(document).ready(function () {
         $.ajax({
             url: `https://pokeapi.co/api/v2/type/${type}`,
             method: 'GET',
-            success: function (typeData) {
-                typeData.pokemon.forEach(function (pokemonEntry) {
-                    $.ajax({
+            success: function(typeData) {
+                // Borra todas las cards de Pokémon que hay actualmente en el contenedor
+                $('.pokemons').empty();
+    
+                // Crea un array de promesas para obtener detalles de cada Pokémon
+                const pokemonDetailsPromises = typeData.pokemon.map(pokemonEntry => {
+                    return $.ajax({
                         url: pokemonEntry.pokemon.url,
-                        method: 'GET',
-                        success: function (pokemon) {
-                            addPokemonCard(pokemon);
-                        }
+                        type: 'GET',
+                        dataType: 'json'
                     });
                 });
+
+                console.log(pokemonDetailsPromises);
+    
+                // Espera a que todas las solicitudes AJAX estén completas
+                Promise.all(pokemonDetailsPromises)
+                    .then(detailsArray => {
+                        // Ordena el array de detalles por el ID del Pokémon
+                        detailsArray.sort((a, b) => a.id - b.id);
+    
+                        // Recorre el array ordenado y construye las cards
+                        detailsArray.forEach(details => {
+                            addPokemonCard(details);
+                        });
+                    })
+                    .catch(error => {
+                        console.log('Error al obtener detalles de los Pokémon:', error);
+                    });
             },
-            error: function () {
+            error: function() {
                 alert('Tipo no encontrado.');
             }
         });
     }
 
-    function addPokemonCard2(details) {
-        const pokemonCard = $('<div>').addClass('pokemon-card');
-        pokemonCard.html(`
-            <h3>${details.name}</h3>
-            <img src="${details.sprites.other['official-artwork'].front_default}" alt="${details.name}">
-            <p>ID: ${details.id}</p>
-            <p>Type: ${details.types.map(type => type.type.name).join(', ')}</p>
-        `);
-        $pokemonContainer.append(pokemonCard);
-    }
-
     function addPokemonCard(details) {
-        //tiene que haber una función que se fije si es un elemento o una lista de elementos
-
-
-        // Borra todas las cards de Pokémon que hay por defecto en el main
-        $('.pokemons').empty();
-
-        $('#water').empty();
-        $('#grass').empty();
-        $('#electric').empty();
-        $('#normal').empty();
-
         const card = `
             <div class="pokemon">
                 <img src="${details.sprites.other['official-artwork'].front_default}" alt="${details.name}">
@@ -108,11 +131,12 @@ $(document).ready(function () {
                 <p>${details.name.charAt(0).toUpperCase() + details.name.slice(1)}</p>
                 <div class="types extra-content">
                     ${details.types.map(type => `<p class="${type.type.name}">${type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}</p>`).join('')}
+
                 </div>
             </div>
         `;
         // Agrega la card al contenedor principal
-        $('.pokemons').append(card); //cuando es mas de un pokemon se pisan entre si y se muestra el último
+        $('.pokemons').append(card);
         
     }
 });
