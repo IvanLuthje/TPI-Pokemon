@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- <script src='js/main2.js'></script> -->
-    <!-- <script src='js/scripts.js'></script> -->
+    <script src='js/scripts.js'></script>
     <script src='js/scripts2.js'></script>
 </head>
 <body>
@@ -47,296 +47,61 @@
 
             <main class="main">
 
-                <section class="content2">
+                <section class="pokemons">
 
-                    <select name="" id="filtro">
-                        <!--option value="sel" id="opciones">---Seleccionar opción---</option-->
-                        <option value="nombre" id="opciones">Nombre</option>
-                        <option value="tipos" id="opciones">Tipos</option>
-                        <option value="item" id="opciones">Item</option>
-                    </select>
-
-                    <div class="datos_pokemon"></div>
-                    <div class="datos_item"></div>  
-
-                    <section class="category" id="fire">
-                        <h2><img src="/img/Tipo_fuego_icono_EP.svg" class="tiny_image" alt="Ícono_fuego"> Fuego</h2>
-                        <div class="pokemons">            
-                            <div class="pokemon">      
-                                <img src="/img/4.png" alt="Charmander">
-                                <p id="idnum">#004</p>
-                                <p>Charmander</p>
-                                <div class="types extra-content extra-content">
-                                    <p class="fire">Fuego</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/5.png" alt="Charmeleon">
-                                <p id="idnum">#005</p>
-                                <p>Charmeleon</p>
-                                <div class="types extra-content extra-content">
-                                    <p class="fire">Fuego</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/6.png" alt="Charizard">
-                                <p id="idnum">#006</p>
-                                <p>Charizard</p>
-                                <div class="types extra-content">
-                                    <p class="fire">Fuego</p>
-                                    <p class="flying">Volador</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/37.png" alt="Vulpix">
-                                <p id="idnum">#037</p>
-                                <p>Vulpix</p>
-                                <div class="types extra-content">
-                                    <p class="fire">Fuego</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/38.png" alt="Ninetales">
-                                <p id="idnum">#038</p>
-                                <p>Ninetales</p>
-                                <div class="types extra-content">
-                                    <p class="fire">Fuego</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/58.png" alt="Growlithe">
-                                <p id="idnum">#058</p>
-                                <p>Growlithe</p>
-                                <div class="types extra-content">
-                                    <p class="fire">Fuego</p>
-                                </div>
-                            </div>
+                    <div class="pokemon">         
+                        <img src="/img/1.png" alt="Bulbasaur">
+                        <p id="idnum">#001</p>
+                        <p>Bulbasaur</p>
+                        <div class="types extra-content">
+                            <p class="grass">Planta</p>
+                            <p class="poison">Veneno</p>
                         </div>
-                    </section>
-                    <section class="category" id="water">
-                        <h2><img src="/img/Tipo_agua_icono_EP.svg" class="tiny_image" alt="Ícono_agua"> Agua</h2>
-                        <div class="pokemons">
-                            <div class="pokemon">         
-                                <img src="/img/7.png" alt="Squirtle">
-                                <p id="idnum">#007</p>
-                                <p>Squirtle</p>
-                                <div class="types extra-content">
-                                    <p class="water">Agua</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/8.png" alt="Wartortle">
-                                <p id="idnum">#008</p>
-                                <p>Wartortle</p>
-                                <div class="types extra-content">
-                                    <p class="water">Agua</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/9.png" alt="Blastoise">
-                                <p id="idnum">#009</p>
-                                <p>Blastoise</p>
-                                <div class="types extra-content">
-                                    <p class="water">Agua</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/54.png" alt="Psyduck">
-                                <p id="idnum">#054</p>
-                                <p>Psyduck</p>
-                                <div class="types extra-content">
-                                    <p class="water">Agua</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/55.png" alt="Golduck">
-                                <p id="idnum">#055</p>
-                                <p>Golduck</p>
-                                <div class="types extra-content">
-                                    <p class="water">Agua</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/60.png" alt="Poliwag">
-                                <p id="idnum">#060</p>
-                                <p>Poliwag</p>
-                                <div class="types extra-content">
-                                    <p class="water">Agua</p>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="pokemon">
+                        <img src="/img/2.png" alt="Ivysaur">
+                        <p id="idnum">#002</p>
+                        <p>Ivysaur</p>
+                        <div class="types extra-content">
+                            <p class="grass">Planta</p>
+                            <p class="poison">Veneno</p>
                         </div>
-                    </section>
-                    <section class="category" id="grass">
-                        <h2><img src="/img/Tipo_planta_icono_EP.svg" class="tiny_image" alt="Ícono_planta"> Planta</h2>
-                        <div class="pokemons">
-                            <div class="pokemon">         
-                                <img src="/img/1.png" alt="Bulbasaur">
-                                <p id="idnum">#001</p>
-                                <p>Bulbasaur</p>
-                                <div class="types extra-content">
-                                    <p class="grass">Planta</p>
-                                    <p class="poison">Veneno</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/2.png" alt="Ivysaur">
-                                <p id="idnum">#002</p>
-                                <p>Ivysaur</p>
-                                <div class="types extra-content">
-                                    <p class="grass">Planta</p>
-                                    <p class="poison">Veneno</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/3.png" alt="Venusaur">
-                                <p id="idnum">#003</p>
-                                <p>Venusaur</p>
-                                <div class="types extra-content">
-                                    <p class="grass">Planta</p>
-                                    <p class="poison">Veneno</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/43.png" alt="Oddish">
-                                <p id="idnum">#043</p>
-                                <p>Oddish</p>
-                                <div class="types extra-content">
-                                    <p class="grass">Planta</p>
-                                    <p class="poison">Veneno</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/44.png" alt="Gloom">
-                                <p id="idnum">#044</p>
-                                <p>Gloom</p>
-                                <div class="types extra-content">
-                                    <p class="grass">Planta</p>
-                                    <p class="poison">Veneno</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/45.png" alt="Vileplume">
-                                <p id="idnum">#045</p>
-                                <p>Vileplume</p>
-                                <div class="types extra-content">
-                                    <p class="grass">Planta</p>
-                                    <p class="poison">Veneno</p>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="pokemon">
+                        <img src="/img/3.png" alt="Venusaur">
+                        <p id="idnum">#003</p>
+                        <p>Venusaur</p>
+                        <div class="types extra-content">
+                            <p class="grass">Planta</p>
+                            <p class="poison">Veneno</p>
                         </div>
-                    </section>
-                    <section class="category" id="electric">
-                        <h2><img src="/img/Tipo_eléctrico_icono_EP.svg" class="tiny_image" alt="Ícono_eléctrico"> Eléctrico</h2>
-                        <div class="pokemons">
-                            <div class="pokemon">         
-                                <img src="/img/25.png" alt="Pikachu">
-                                <p id="idnum">#025</p>
-                                <p>Pikachu</p>
-                                <div class="types extra-content">
-                                    <p class="electric">Eléctrico</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/26.png" alt="Raichu">
-                                <p id="idnum">#026</p>
-                                <p>Raichu</p>
-                                <div class="types extra-content">
-                                    <p class="electric">Eléctrico</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/81.png" alt="Magnemite">
-                                <p id="idnum">#081</p>
-                                <p>Magnemite</p>
-                                <div class="types extra-content">
-                                    <p class="electric">Eléctrico</p>
-                                    <p class="steel">Acero</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/82.png" alt="Magneton">
-                                <p id="idnum">#082</p>
-                                <p>Magneton</p>
-                                <div class="types extra-content">
-                                    <p class="electric">Eléctrico</p>
-                                    <p class="steel">Acero</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/100.png" alt="Voltorb">
-                                <p id="idnum">#100</p>
-                                <p>Voltorb</p>
-                                <div class="types extra-content">
-                                    <p class="electric">Eléctrico</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/101.png" alt="Electrode">
-                                <p id="idnum">#101</p>
-                                <p>Electrode</p>
-                                <div class="types extra-content">
-                                    <p class="electric">Eléctrico</p>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="pokemon">      
+                        <img src="/img/4.png" alt="Charmander">
+                        <p id="idnum">#004</p>
+                        <p>Charmander</p>
+                        <div class="types extra-content">
+                            <p class="fire">Fuego</p>
                         </div>
-                    </section>
-                    <section class="category" id="normal">
-                        <h2><img src="/img/Tipo_normal_icono_EP.svg" class="tiny_image" alt="Ícono_normal"> Normal</h2>
-                        <div class="pokemons">
-                            <div class="pokemon">         
-                                <img src="/img/19.png" alt="Rattata">
-                                <p id="idnum">#019</p>
-                                <p>Rattata</p>
-                                <div class="types extra-content">
-                                    <p class="normal">Normal</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/20.png" alt="Raticate">
-                                <p id="idnum">#020</p>
-                                <p>Raticate</p>
-                                <div class="types extra-content">
-                                    <p class="normal">Normal</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/21.png" alt="Spearow">
-                                <p id="idnum">#021</p>
-                                <p>Spearow</p>
-                                <div class="types extra-content">
-                                    <p class="normal">Normal</p>
-                                    <p class="flying">Volador</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/22.png" alt="Fearow">
-                                <p id="idnum">#022</p>
-                                <p>Fearow</p>
-                                <div class="types extra-content">
-                                    <p class="normal">Normal</p>
-                                    <p class="flying">Volador</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/39.png" alt="Jigglypuff">
-                                <p id="idnum">#039</p>
-                                <p>Jigglypuff</p>
-                                <div class="types extra-content">
-                                    <p class="fairy">Hada</p>
-                                    <p class="normal">Normal</p>
-                                </div>
-                            </div>
-                            <div class="pokemon">
-                                <img src="/img/40.png" alt="Wigglytuff">
-                                <p id="idnum">#040</p>
-                                <p>Wigglytuff</p>
-                                <div class="types extra-content">
-                                    <p class="fairy">Hada</p>
-                                    <p class="normal">Normal</p>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="pokemon">
+                        <img src="/img/5.png" alt="Charmeleon">
+                        <p id="idnum">#005</p>
+                        <p>Charmeleon</p>
+                        <div class="types extra-content">
+                            <p class="fire">Fuego</p>
                         </div>
-                    </section>
+                    </div>
+                    <div class="pokemon">
+                        <img src="/img/6.png" alt="Charizard">
+                        <p id="idnum">#006</p>
+                        <p>Charizard</p>
+                        <div class="types extra-content">
+                            <p class="fire">Fuego</p>
+                            <p class="flying">Volador</p>
+                        </div>
+                    </div>
+                            
                 </section>
                 
             </main>
