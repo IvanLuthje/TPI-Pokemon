@@ -167,7 +167,7 @@ $(document).ready(function(){
             // $(".datos_pokemon").html("<h1>" + dato_pokemon.name + "</h1><img src='" + dato_pokemon.sprites.front_default + "' alt='" + dato_pokemon.name + "'><p>Peso: " + dato_pokemon.weight + "</p><p>Altura: " + dato_pokemon.height + "cm</p>");
             //$(".datos_pokemon").html("<h1>" + dato_pokemon.name + "</h1>" + "<div class='pokemon'>" + "<img src='" + dato_pokemon.sprites.front_default + "'>" + "</div>" + "<p>Exp:" + dato_pokemon.base_experience + "</p>" + "<p>Peso:" + dato_pokemon.weight + "Kg</p>"  +  "<p>Altura: " + dato_pokemon.height + "m</p>" + "<button class='compartir' onClick='compartir()'> " + "Compartir" + "</button>");
             if (id_nombre!=''){
-                $(".datos_pokemon").html("<h1>" + dato_pokemon.name + "</h1>"  + "<div class='pokemon'>" + "<img src='" + dato_pokemon.sprites.front_default + "'>" + "</div>"  +  "<p>ID:" + dato_pokemon.id + "</p>"  +  "<p>Exp:" + dato_pokemon.base_experience + "</p>" + "<p>Peso:" + dato_pokemon.weight + "Kg</p>" + "<p>Descripcion:" + dato_pokemon.flavor_text + "</p>"  +  "<p>Altura: " + dato_pokemon.height + "m</p>" + "<button class='compartir' onClick='compartir(this)'> " + "Compartir" + "</button>");
+                $(".datos_pokemon").html("<h1>" + dato_pokemon.name + "</h1>"  + "<div class='pokemon'>" + "<img src='" + dato_pokemon.sprites.front_default + "'>" + "</div>"  +  "<p>ID:" + dato_pokemon.id + "</p>"  +  "<p>Exp:" + dato_pokemon.base_experience + "</p>" + "<p>Peso:" + dato_pokemon.weight + "Kg</p>" + "<p>Descripcion:" + dato_pokemon.flavor_text + "</p>"  +  "<p>Altura: " + dato_pokemon.height + "m</p>");
             }
             },
 
