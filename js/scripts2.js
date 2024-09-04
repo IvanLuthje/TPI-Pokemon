@@ -27,7 +27,6 @@ $(document).ready(function () {
                 searchByName(searchTerm);
             }
         } else {
-            // Buscar por ID (es un número)
             searchById(searchTerm);
         }
     });
@@ -100,7 +99,7 @@ $(document).ready(function () {
                     });
                 });
 
-                console.log(pokemonDetailsPromises);
+                //console.log(pokemonDetailsPromises);
     
                 // Espera a que todas las solicitudes AJAX estén completas
                 Promise.all(pokemonDetailsPromises)
