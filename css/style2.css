@@ -82,7 +82,7 @@ body {
     border: 2px solid #FFCC00;
     border-left: none;
     border-radius: 0 4px 4px 0;
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    cursor: pointer;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
 }
@@ -99,20 +99,20 @@ body {
 /* Estilo para el nav */
 .nav-menu {
     display: flex;
-    flex-flow: row wrap; /* Permite que los elementos se envuelvan en la siguiente fila si no caben en una */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    background-color: #333; /* Color de fondo del nav */
+    flex-flow: row wrap;
+    justify-content: center;
+    background-color: #333;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     margin-bottom: 15px;
-    position: sticky; /* Para que siga por la pantalla al usuario */
-    top: 0px; /* Fija el aside al tope de la página al hacer scroll */
+    position: sticky;
+    top: 0px;
     z-index: 1000;
 }
 
 .nav-menu li {
     list-style: none;
-    margin: 5px; /* Espacio entre los botones */
+    margin: 5px;
 }
 
 /* Estilo para los enlaces */
@@ -120,9 +120,8 @@ body {
     display: inline-block;
     padding: 10px 20px;
     text-decoration: none;
-    /* color: white; */
-    border-radius: 20px; /* Bordes redondeados */
-    transition: background-color 0.3s ease; /* Animación suave al pasar el mouse */
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
 }
 
 .nav-menu a:hover {
@@ -223,8 +222,21 @@ body {
     background: linear-gradient(to right, #F85888, #FF69B4);
 }
 
+.teamColorTitle {
+    background: linear-gradient(to right, #ffffff, #edecec);
+}
+
+.teamColor {
+    background: linear-gradient(to right, #ffffff, #cfcece);
+}
+
 .custom-list li a:hover {
     opacity: 0.8; /* Transparencia al pasar por encima */
+}
+
+.content {
+    display: flex;
+    flex-flow: row wrap;
 }
 
 /* Estilo para el main */
@@ -273,23 +285,26 @@ body {
     height: auto; /* Mantiene la proporción de la imagen */
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
-}   
-
-/* Estilo para el primer párrafo que se colocará en la parte superior derecha */
-#idnum {
-    position: absolute;
-    top: 10px; /* Distancia desde la parte superior del contenedor */
-    right: 10px; /* Distancia desde la parte derecha del contenedor */
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 5px;
-    border-radius: 5px;
-    z-index: 1; /* Asegura que el párrafo esté por encima de otros elementos */
-    margin: 0;
+    cursor: pointer;
 }
 
 .pokemon p {
     margin: 10px 0;
 }
+
+/* Estilo para el primer párrafo que se colocará en la parte superior derecha */
+#idnum {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1;
+    margin: 0;
+}
+
+
 
 .types {
     display: flex;
@@ -309,12 +324,12 @@ body {
 
 /* Estilo para el footer */
 .footer {
-    background-color: #333333; /* Color de fondo gris oscuro */
+    background-color: #333333;
     color: #FFFFFF;
     height: 20px; /* Altura del footer, cambiar si se agregan mas elementos */
     text-align: center;
 
-    order: 4; /* El footer se coloca al final */
+    order: 4;
     margin-top: auto; /* Con esto hago que el footer siempre se mantenga abajo */
     /* Tener en cuenta que para que esto sea posible, se tiene que modificar el body */
     /* y el wrapper (ver los cambios agregados al body y wrapper) */
@@ -324,6 +339,84 @@ body {
 .extra-content {
     display: none;
 }
+
+.pokemonTeam {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1 100%;
+    order: 1;
+    position: sticky;
+    top: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    background-image: url('https://cdn.vectorstock.com/i/1000v/03/09/pokeball-icon-sign-seamless-pattern-on-a-gray-vector-11290309.jpg');
+    background-color: #e0f7fa;
+    box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    text-align: center;
+    font-size: 16px;
+    gap: 10px;
+
+    padding: 10px 10px;
+    z-index: 1000;
+}
+
+.pokemonTeam img {
+    margin-right: 13px;
+}
+
+.pokemonTeam p {
+    display: block;
+    margin: 0;
+    color: black;
+}
+
+.pokemon-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+.pokemon-gif {
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+}
+
+#pokemon-total {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.round-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.round-button:hover {
+    background-color: #45a049;
+}
+
+.round-button:active {
+    background-color: #3e8e41;
+}
+
+
 
 /* Responsive ============================================================== */
 
@@ -346,6 +439,10 @@ body {
         flex: 1 1 190px;
         max-width: 190px;
     }
+
+    .pokemonTeam {
+        font-size: 18px;
+    }
 }
 
 /* Tablets en orientación vertical */
@@ -354,6 +451,17 @@ body {
         flex-direction: row;
         justify-content: space-between;
         padding: 0px 30px;
+    }
+
+    .pokemonTeam {
+        flex: 1; /* El aside ocupa 1 parte del espacio disponible según el flexbox */
+        position: sticky; /* Para que siga por la pantalla al usuario */
+        top: 20px; /* Fija el aside al tope de la página al hacer scroll */
+        font-size: 18px;
+    }
+
+    .main {
+        flex: 3;
     }
 
     .search-button {
@@ -370,8 +478,13 @@ body {
         max-width: 200px;
     }
 
+    .pokemon-entry {
+        width: 100%;
+        padding: 10px 5px;
+    }
+
     .extra-content {
-        display: block; /* Hace visible los tipos de pokemones en las cards */
+       display: block; /* Hace visible el/los tipos de los pokemones en las cards */
     }
 }
 
@@ -397,7 +510,10 @@ body {
         width: 80%;
         display: block; /* Asegura que la imagen sea un bloque para el ajuste del ancho */
         margin: 0 auto; /* Centra la imagen dentro de la tarjeta */
+    }
 
+    .pokemon-entry {
+        padding: 10px 10px;
     }
 
 }
@@ -415,6 +531,10 @@ body {
     .pokemon {
         flex: 1 1 240px;
         max-width: 28%;
+    }
+
+    .pokemon-entry {
+        width: 80%;
     }
 
 }

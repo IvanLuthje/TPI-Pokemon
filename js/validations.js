@@ -123,4 +123,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         return true;
     }
+
+    // Evento de cambio de imágenes del formulario
+    const images = ["https://archive.org/download/1697331700298/1697331700298.jpg", "https://ia600502.us.archive.org/16/items/1697331700298/1697331705064.jpg", "https://ia600502.us.archive.org/16/items/1697331700298/1697331710942.jpg", "https://ia800502.us.archive.org/16/items/1697331700298/1697331284995.jpg"];
+
+    const element = document.getElementById('surveyID');
+
+    // Función para elegir un elemento al azar del array
+    function getRandomImage() {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        return images[randomIndex]; // Retorna el elemento del array
+    }
+
+    // Asignar la imagen aleatoria como fondo del elemento
+    element.style.backgroundImage = `url(${getRandomImage()})`;
+
 });
