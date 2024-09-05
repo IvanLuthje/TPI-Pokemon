@@ -89,6 +89,8 @@ $(document).ready(function () {
             success: function(typeData) {
                 // Borra todas las cards de Pokémon que hay actualmente en el contenedor
                 $('.pokemons').empty();
+
+                let pokemons10 = []; // Crea un array donde solo va a haber 10 pokemones
     
                 // Crea un array de promesas para obtener detalles de cada Pokémon
                 const pokemonDetailsPromises = typeData.pokemon.map(pokemonEntry => {
@@ -99,12 +101,12 @@ $(document).ready(function () {
                     });
                 });
 
-                //console.log(pokemonDetailsPromises);
+                pokemons10 = pokemonDetailsPromises.slice(0, 10);
     
                 // Espera a que todas las solicitudes AJAX estén completas
-                Promise.all(pokemonDetailsPromises)
+                Promise.all(pokemons10)
                     .then(detailsArray => {
-                        // Ordena el array de detalles por el ID del Pokémon
+                        
                         detailsArray.sort((a, b) => a.id - b.id);
     
                         // Recorre el array ordenado y construye las cards

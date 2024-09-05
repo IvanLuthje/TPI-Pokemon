@@ -11,7 +11,6 @@
     <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- <script src='js/main2.js'></script> -->
     <script src='js/scripts.js'></script>
     <script src='js/scripts2.js'></script>
 </head>
@@ -28,7 +27,7 @@
             </div>
         </header>
 
-        <nav class="nav-menu">
+        <nav class="nav-menu" id="types_nav">
             <li><a class="fire" href="#fire">Fuego</a></li>
             <li><a class="water" href="#water">Agua</a></li>
             <li><a class="grass" href="#grass">Planta</a></li>
@@ -41,66 +40,72 @@
             <li><a class="steel" href="survey.html">Encuesta</a></li>
         </nav>
 
-        <main class="main">
+        <section class="content">
+            <aside id="teamSelected" class="pokemonTeam" style="display: none;">
+                <p id="pokemon-total" class="teamColorTitle">Pokemones seleccionados: 0</p>
+            </aside>
 
-            <section class="pokemons">
+            <main class="main">
 
-                <div class="pokemon">         
-                    <img src="/img/1.png" alt="Bulbasaur">
-                    <p id="idnum">#001</p>
-                    <p>Bulbasaur</p>
-                    <div class="types extra-content">
-                        <p class="grass">Planta</p>
-                        <p class="poison">Veneno</p>
+                <section class="pokemons" id="pkms-container">
+    
+                    <div class="pokemon">         
+                        <img src="/img/1.png" alt="Bulbasaur">
+                        <p id="idnum">#001</p>
+                        <p>Bulbasaur</p>
+                        <div class="types extra-content">
+                            <p class="grass">Planta</p>
+                            <p class="poison">Veneno</p>
+                        </div>
                     </div>
-                </div>
-                <div class="pokemon">
-                    <img src="/img/2.png" alt="Ivysaur">
-                    <p id="idnum">#002</p>
-                    <p>Ivysaur</p>
-                    <div class="types extra-content">
-                        <p class="grass">Planta</p>
-                        <p class="poison">Veneno</p>
+                    <div class="pokemon">
+                        <img src="/img/2.png" alt="Ivysaur">
+                        <p id="idnum">#002</p>
+                        <p>Ivysaur</p>
+                        <div class="types extra-content">
+                            <p class="grass">Planta</p>
+                            <p class="poison">Veneno</p>
+                        </div>
                     </div>
-                </div>
-                <div class="pokemon">
-                    <img src="/img/3.png" alt="Venusaur">
-                    <p id="idnum">#003</p>
-                    <p>Venusaur</p>
-                    <div class="types extra-content">
-                        <p class="grass">Planta</p>
-                        <p class="poison">Veneno</p>
+                    <div class="pokemon">
+                        <img src="/img/3.png" alt="Venusaur">
+                        <p id="idnum">#003</p>
+                        <p>Venusaur</p>
+                        <div class="types extra-content">
+                            <p class="grass">Planta</p>
+                            <p class="poison">Veneno</p>
+                        </div>
                     </div>
-                </div>
-                <div class="pokemon">      
-                    <img src="/img/4.png" alt="Charmander">
-                    <p id="idnum">#004</p>
-                    <p>Charmander</p>
-                    <div class="types extra-content">
-                        <p class="fire">Fuego</p>
+                    <div class="pokemon">      
+                        <img src="/img/4.png" alt="Charmander">
+                        <p id="idnum">#004</p>
+                        <p>Charmander</p>
+                        <div class="types extra-content">
+                            <p class="fire">Fuego</p>
+                        </div>
                     </div>
-                </div>
-                <div class="pokemon">
-                    <img src="/img/5.png" alt="Charmeleon">
-                    <p id="idnum">#005</p>
-                    <p>Charmeleon</p>
-                    <div class="types extra-content">
-                        <p class="fire">Fuego</p>
+                    <div class="pokemon">
+                        <img src="/img/5.png" alt="Charmeleon">
+                        <p id="idnum">#005</p>
+                        <p>Charmeleon</p>
+                        <div class="types extra-content">
+                            <p class="fire">Fuego</p>
+                        </div>
                     </div>
-                </div>
-                <div class="pokemon">
-                    <img src="/img/6.png" alt="Charizard">
-                    <p id="idnum">#006</p>
-                    <p>Charizard</p>
-                    <div class="types extra-content">
-                        <p class="fire">Fuego</p>
-                        <p class="flying">Volador</p>
+                    <div class="pokemon">
+                        <img src="/img/6.png" alt="Charizard">
+                        <p id="idnum">#006</p>
+                        <p>Charizard</p>
+                        <div class="types extra-content">
+                            <p class="fire">Fuego</p>
+                            <p class="flying">Volador</p>
+                        </div>
                     </div>
-                </div>
-                        
-            </section>
-            
-        </main>
+                            
+                </section>
+                
+            </main>
+        </section>
         
         <footer class="footer">
             &copy; 2024 Desarrollado por Fernando Blanco & Ivan Luthje
