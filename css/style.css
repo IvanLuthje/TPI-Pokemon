@@ -124,9 +124,14 @@ height: 75%;
 }
 
 .boton_busqueda{
-	width: 100%;
-	font-family: 'pokemon-font', sans-serif; 
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: #24ab2c;
+	border: none;
+	color: #ffffff;
 }
+
 
 .pokemon img{
 	width:200px;
@@ -168,7 +173,7 @@ height: 75%;
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
-	background-color: #fede84;
+	background-color: #ffa500;
 	border: none;
 	color: #'1f7042';
 }
