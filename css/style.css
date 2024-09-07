@@ -128,7 +128,7 @@
 
 
 
-	@media screen and (max-width: 600px){
+	@media screen and (max-width: 768px){
         h1{
 			text-align: center;
 		}
@@ -232,7 +232,7 @@
 	}
 		
 
-	@media screen and (min-width: 601px){
+	@media screen and (min-width: 768px){
 		.main2{
 			visibility: hidden;
 		}
