@@ -80,9 +80,9 @@ $(document).ready(function(){
                var altura = dato_pokemon.height*10
 
                $(".datos_pokemon").html(
-                "#" + id + "</p>"  +  
-                "<h1>" + dato_pokemon.name + "</h1>"  + 
+                "<h2>#" + id + "</h2>"  +  
                 "<div class='pokemon'>" + "<img src='" + imagen + "'>" + 
+                "<h1>" + dato_pokemon.name + "</h1>"  + 
                 "</div>"  + 
                 "<p>Exp:" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
                  + "kg</p>" + "<p><strong>Altura: </strong>" + altura
@@ -105,8 +105,7 @@ $(document).ready(function(){
             
             success: function(dato_pokemon){ 
                 var descripcion = dato_pokemon.flavor_text_entries[26].flavor_text;
-               $(".descripcion").html("<p>" + "Descripción: " + descripcion + "</p>" + "<button class='compartir' onClick='Mostrar(this)'> " + "Compartir" + "</button>");
-            },
+                $(".descripcion").html("<p>" + "Descripción: " + descripcion + "</p>" + "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");            },
 
             
         });
