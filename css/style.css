@@ -19,6 +19,10 @@ h1{
 	font-family: pokemon-font;
 	src: url(../fonts/pokemonsolid.ttf);
 }
+@font-face {
+	font-family: lato;
+	src: url(../fonts/Lato-Light.ttf);
+}
 
 .imagen img{
 	width:100%;
@@ -32,39 +36,39 @@ h1{
 	display: flex;
 	flex-direction: row;
 	font-size: 10px;
+	height:1080px;
   }
   
   .col_izq {
-	background-color: #00435f;;
+	background-color: #00435f;
 	padding: 10px;
 	flex: 0%;
+	font-size:15px;
+	font-family: 'lato', sans-serif;
   }
   
   .col_der {
 	background-color: #fede84;
 	padding: 20px;
 	flex: 80%;
+	font-size: 15px;
   }
 
 
 .col_der_comp{
-	position: absolute;
-	margin-left: 1%;
-	top:0;
-	left:15%; 
-	width:85%;
-	height:100%	;
 	background-color: #1f7042;
+	padding: 20px;
+	flex: 80%;
+	font-size: 15px;
 }
 
 .col_izq_comp{
-	position:absolute;
-	top:0;
-	left:0;
-	width:15%;
-	height:1080px;
 	background-color:#fede84;
 	font-family: roboto;
+	padding: 10px;
+	flex: 0%;
+	font-size:15px;
+	font-family: 'lato', sans-serif;
 }
 
 .col_izq_comp a{
@@ -75,14 +79,18 @@ h1{
 	margin-left: 1%;
 	color: #000000;
 	width: 35%;
-	font-family: roboto;
+	font-family: lato;
 }
 
 .descripcion{
 	margin-left: 1%;
 	color: #000000;
 	width: 35%;
-	font-family: roboto;
+	font-family: lato;
+}
+
+.formulario{
+	margin-top:0%;
 }
 
 .datos_item{
@@ -139,7 +147,25 @@ footer{
 @media screen and (max-width: 768px){
    .main{
 		flex-direction: column;
+	   
    }
+	.descripcion{
+		width:100%;
+		margin:0%;
+		color: #fede84;
+	}
+	.datos_pokemon{
+		width:100%;
+		margin:0%;
+		color: #fede84;
+	}
+	h1{
+		text-align:center;
+		color: #fede84;
+	}
+	.col_der{
+		background-color: #00435f;
+	}
 	
 }
 	
