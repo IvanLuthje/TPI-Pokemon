@@ -1,4 +1,4 @@
-function Mostrar(dato_pokemon){
+function Compartir(dato_pokemon){
     let dato = dato_pokemon.dato;
     localStorage.setItem('dato_pokemon', dato);
     window.location.href='compartir.html';
@@ -76,7 +76,7 @@ $(document).ready(function () {
                 addPokemonCard(pokemon);
             },
             error: function () {
-                alert('Pokémon no encontrado.');
+                alert('Pokémon ' + name + ' no encontrado.');
             }
         });
     }
@@ -145,7 +145,7 @@ $(document).ready(function () {
                 <div class="types extra-content">
                     ${details.types.map(type => `<p class="${type.type.name}">${type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}</p>`).join('')}
                 </div>
-                <button class='compartir' alt='compartir' onClick='Mostrar(this)'><i class='fa fa-share-alt' aria-hidden='true'></i></button>
+                <button class='compartir' alt='compartir' onClick='Compartir(this)'><i class='fa fa-share-alt' aria-hidden='true'></i></button>
             </div>
         `;
         // Agrega la card al contenedor principal
