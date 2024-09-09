@@ -1,3 +1,15 @@
+function Mostrar(dato_pokemon){
+    let dato = dato_pokemon.dato;
+    localStorage.setItem('dato_pokemon', dato);
+    window.location.href='compartir.html';
+};
+
+function reset(){
+    location.reload(true)
+}
+
+
+
 $(document).ready(function () {
     const $searchButton = $('.search-button');
     const $searchInput = $('.search-input');
@@ -132,8 +144,8 @@ $(document).ready(function () {
                 <p>${details.name.charAt(0).toUpperCase() + details.name.slice(1)}</p>
                 <div class="types extra-content">
                     ${details.types.map(type => `<p class="${type.type.name}">${type.type.name.charAt(0).toUpperCase() + type.type.name.slice(1)}</p>`).join('')}
-
                 </div>
+                <button class='compartir' alt='compartir' onClick='Mostrar(this)'><i class='fa fa-share-alt' aria-hidden='true'></i></button>
             </div>
         `;
         // Agrega la card al contenedor principal

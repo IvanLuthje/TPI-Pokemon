@@ -10,6 +10,11 @@ function iniciarMap(){
     });
 }
 
+function reset(){
+    location.reload(true)
+}
+
+
 
 
 // function Mostrar(){
