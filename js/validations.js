@@ -127,6 +127,17 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+    function reset(){
+        location.reload(true)
+    }
+
+   
+    
+
+
+    
+
+
     // Evento de cambio de imágenes del formulario
     const images = ["https://archive.org/download/1697331700298/1697331700298.jpg", "https://ia600502.us.archive.org/16/items/1697331700298/1697331705064.jpg", "https://ia600502.us.archive.org/16/items/1697331700298/1697331710942.jpg", "https://ia800502.us.archive.org/16/items/1697331700298/1697331284995.jpg"];
 
@@ -142,3 +153,13 @@ document.addEventListener('DOMContentLoaded', function() {
     element.style.backgroundImage = `url(${getRandomImage()})`;
 
 });
+
+function cancelar() {
+    var respuesta = confirm('Desea volver a la pagina principal?');
+    if (respuesta == true){
+        location.href = "index2.html"
+    }
+    else{
+        return false;
+    }
+};
