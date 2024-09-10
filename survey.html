@@ -50,17 +50,17 @@
             <section class="survey" id="surveyID">
                 <h2>Encuesta de Satisfacción</h2>
 
-                 <form action="#" method="get"> <!-- puse "get" para que no salte el error, solo se recargue la página -->
+                 <form action="#" id="formulario" method="get"> <!-- puse "get" para que no salte el error, solo se recargue la página -->
                     <label for="first-name">Nombre:</label>
-                    <input type="text" id="first-name" name="first-name">
+                    <input type="text" id="firstname" name="first-name">
                     <br>
 
                     <label for="last-name">Apellido:</label>
-                    <input type="text" id="last-name" name="last-name">
+                    <input type="text" id="lastname" name="last-name">
                     <br>
 
                     <label for="birthdate">Fecha de Nacimiento:</label>
-                    <input type="date" id="birthdate" name="birthdate">
+                    <input type="date" id="birthdate" name="birth-date">
                     <br>
 
                     <div class="form-group">
@@ -91,7 +91,7 @@
                     <br>
 
                     <div class="button-group">
-                        <button type="submit">Enviar</button>
+                        <button type="button" onclick="enviar()">Enviar</button>
                         <button type="button" onclick="cancelar()" class="cancel">Cancelar</button>
                         <button class="reset" onclick="reset()">Restablecer valores</button> <!-- sin type="reset" -->
                     </div>

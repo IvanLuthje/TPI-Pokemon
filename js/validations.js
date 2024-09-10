@@ -1,15 +1,18 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     // Obtiene el primer formulario en el documento y lo guarda en la variable 'form'
     const form = document.querySelector('form');
     
     // Obtiene los elementos del formulario por sus IDs y nombres y los guarda en variables
-    const firstName = document.getElementById('first-name');
-    const lastName = document.getElementById('last-name');
+    const firstName = document.getElementById('firstname');
+    const lastName = document.getElementById('lastname');
     const birthdate = document.getElementById('birthdate');
     const gender = document.getElementsByName('gender');
     const rating = document.getElementsByName('rating');
     const email = document.getElementById('email');
     const comment = document.getElementById('comment');
+
+    
 
     form.addEventListener('submit', function(event) {
         
@@ -61,6 +64,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return false;
     }
 
+
+    
+
     // Función para validar que el formato de nombre y apellido sea correcto (solo letras)
     function validateNameSurname(value, field) {
         const regex = /^[a-zA-Z]+$/; // Expresión regular que solo permite letras
@@ -70,6 +76,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         return true;
     }
+
+    function reset(){
+        location.reload(true)
+    }
+
+   
 
     // Función para validar el formato de la fecha de nacimiento ('dd-mm-yyyy')
     function validateBirthdate(inputDate) {
@@ -124,6 +136,10 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+
+
+ 
+
     // Evento de cambio de imágenes del formulario
     const images = ["https://archive.org/download/1697331700298/1697331700298.jpg", "https://ia600502.us.archive.org/16/items/1697331700298/1697331705064.jpg", "https://ia600502.us.archive.org/16/items/1697331700298/1697331710942.jpg", "https://ia800502.us.archive.org/16/items/1697331700298/1697331284995.jpg"];
 
@@ -139,3 +155,17 @@ document.addEventListener('DOMContentLoaded', function() {
     element.style.backgroundImage = `url(${getRandomImage()})`;
 
 });
+
+function enviar() {
+    const formulario = document.getElementById('formulario');
+    const firstName = formulario.firstname.value;
+    const lastName = formulario.lastname.value;
+    const birthdate = formulario.birthdate.value;
+    const gender = formulario.gender.value;
+    const rating = formulario.rating.value;
+    const email = formulario.email.value;
+    const comment = formulario.comment.value;    
+
+    // Muestra los datos en un alert
+    alert(`Nombre: ${firstName}\n Apellido: ${lastName}\n Fecha de nacimiento: ${birthdate}\n  Correo Electrónico: ${email}\n Mensaje: ${comment}`);
+}  
