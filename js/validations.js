@@ -167,5 +167,5 @@ function enviar() {
     const comment = formulario.comment.value;    
 
     // Muestra los datos en un alert
-    alert(`Nombre: ${firstName}\n Apellido: ${lastName}\n Fecha de nacimiento: ${birthdate}\n Género: ${gender}\n Valoración de la página:${rating}\n   Correo Electrónico: ${email}\n Mensaje: ${comment}`);
+    alert(` Nombre: ${firstName}\n Apellido: ${lastName}\n Fecha de nacimiento: ${birthdate}\n Género: ${gender}\n Valoración de la página:${rating}\n Correo Electrónico: ${email}\n Mensaje: ${comment}`);
 }  

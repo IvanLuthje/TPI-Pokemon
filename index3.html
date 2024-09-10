@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Pokemon</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style2.css">
+
+    <link rel="icon" type="image/x-icon" href="img/pokeball-logo.png">
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='js/main2.js'></script>
+    <script src='js/scripts.js'></script>
+    <script src='js/scripts2.js'></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="col_izq">
+            <div class="imagen"> <a href="index.html"><img src='img/International_Pokémon_logo.svg.png'></a></div>
+            <p><a href="contacto.html">CONTACTO</a></p>
+            <p><a href="compartir.html">COMPARTIR</a></p>
+            <p><a href="index2.html">INDEX nuevo</i></a></p>
+            <select name="Seleccionar tipo de pokemon" id="filtro">
+                <p><a class="fire" href="#fire">Fuego</a></p>
+                <p><a class="water" href="#water">Agua</a></p>
+                <p><a class="grass" href="#grass">Planta</a></p>
+                <p><a class="electric" href="#electric">Eléctrico</a></p>
+                <p><a class="normal" href="#normal">Normal</a></p>
+            </select>
+            <p><a class="steel" href="index.html">Index Original</a></p>
+            <p><a class="steel" href="compartir.html">Compartir</a></p>
+            <p><a class="steel" href="contacto.html">Contacto Original</a></p>
+            <p><a class="steel" href="contact.html">Contacto Nuevo</a></p>
+            <p><a class="steel" href="survey.html">Encuesta</a></p>
+
+
+        </div>
+        <div class="col_der">
+            <div class="formulario">
+                <input class="id_nombre search-input" id="nombre" type="text" placeholder="Ingresar el nombre o ID de un pokemon...">
+                <button class="search-button boton_busqueda" id="busqueda" type="button" aria-label="Buscar"><i class="fa fa-search"></i></button>
+                    <!--option value="sel" id="opciones">---Seleccionar opción---</option-->
+                    <option value="nombre" id="opciones">Nombre</option>
+                    <section class="content">
+                        <aside id="teamSelected" class="pokemonTeam" style="display: none;">
+                            <p id="pokemon-total" class="teamColorTitle">Pokemones seleccionados: 0</p>
+                        </aside>
+            
+                        <main class="main">
+            
+                            <section class="pokemons" id="pkms-container">
+                
+                                <div class="pokemon">         
+                                    <img src="/img/1.png" alt="Bulbasaur">
+                                    <p id="idnum">#001</p>
+                                    <p>Bulbasaur</p>
+                                    <div class="types extra-content">
+                                        <p class="grass">Planta</p>
+                                        <p class="poison">Veneno</p>
+                                    </div>
+                                </div>
+                                <div class="pokemon">
+                                    <img src="/img/2.png" alt="Ivysaur">
+                                    <p id="idnum">#002</p>
+                                    <p>Ivysaur</p>
+                                    <div class="types extra-content">
+                                        <p class="grass">Planta</p>
+                                        <p class="poison">Veneno</p>
+                                    </div>
+                                </div>
+                                <div class="pokemon">
+                                    <img src="/img/3.png" alt="Venusaur">
+                                    <p id="idnum">#003</p>
+                                    <p>Venusaur</p>
+                                    <div class="types extra-content">
+                                        <p class="grass">Planta</p>
+                                        <p class="poison">Veneno</p>
+                                    </div>
+                                </div>
+                                <div class="pokemon">      
+                                    <img src="/img/4.png" alt="Charmander">
+                                    <p id="idnum">#004</p>
+                                    <p>Charmander</p>
+                                    <div class="types extra-content">
+                                        <p class="fire">Fuego</p>
+                                    </div>
+                                </div>
+                                <div class="pokemon">
+                                    <img src="/img/5.png" alt="Charmeleon">
+                                    <p id="idnum">#005</p>
+                                    <p>Charmeleon</p>
+                                    <div class="types extra-content">
+                                        <p class="fire">Fuego</p>
+                                    </div>
+                                </div>
+                                <div class="pokemon">
+                                    <img src="/img/6.png" alt="Charizard">
+                                    <p id="idnum">#006</p>
+                                    <p>Charizard</p>
+                                    <div class="types extra-content">
+                                        <p class="fire">Fuego</p>
+                                        <p class="flying">Volador</p>
+                                    </div>
+                                </div>
+                                        
+                            </section>
+                            
+                        </main>
+                    </section>
+                    
+                </select>
+                <button class="boton_busqueda" id="busqueda" type="button" aria-label="Buscar"><i class="fa fa-search"></i></button>
+                <button class="reset" onclick="reset()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+
+            </div>
+            <div class="datos">
+                <div class="datos_pokemon"></div>
+                <div class="descripcion"></div>
+                <div class="datos_item"></div>  
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- <div class="main2">
+        <div class="col">
+            <div class="imagen"><a href="index.html"></a><img src='img/International_Pokémon_logo.svg.png'></div>
+            <div class="col2">
+                <nav id="navegador">
+                    <a href="javascript:void(0);" class="icon" onclick="navegador()">&#9776; </a>
+                    <a href="contacto.html">CONTACTO</a>
+                    <a href="compartir.html">COMPARTIR</a>
+                </nav>
+            </div>
+            <input class="nombre_res" id="nombre_res" type="text" placeholder="Ingresar el nombre de un pokemon o ID de Pokemon">
+            <select name="" id="filtro2">
+                <option value="nombre" id="opciones">Nombre</option>
+                <option value="tipos" id="opciones">Tipos</option>
+                <option value="item" id="opciones">Item</option>
+            </select>
+            <button class="busqueda_res" id="busqueda_res" type="button">Buscar</button>
+            <div class="datos_pokemon"></div> 
+            <div class="descripcion"></div>
+            <div class="datos_item"></div> 
+        </div>
+    </div> -->
+
+</body>
+<!-- <footer>
+    Pokemon
+</footer> -->
+
+</html>
