@@ -4,13 +4,22 @@
     padding: 15px;
 }
 
+.survey h2{
+    background-color: #f9f9f9;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+}
+
 form {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 500px;
-
     
     background: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
 }
@@ -60,6 +69,8 @@ form textarea {
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 16px;
+
+    /* background-color: red; */
 }
 
 /* Contenedor de los botones */

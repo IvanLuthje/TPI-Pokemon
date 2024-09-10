@@ -304,8 +304,6 @@ body {
     margin: 0;
 }
 
-
-
 .types {
     display: flex;
     flex-flow: row wrap;
@@ -383,6 +381,11 @@ body {
     border-radius: 10px;
 }
 
+.pkm-img {
+    width: 40px;
+    height: 40px;
+}
+
 .pokemon-gif {
     width: 50px;
     height: 50px;
@@ -406,6 +409,7 @@ body {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    width: 100%;
 }
 
 .round-button:hover {
@@ -442,6 +446,10 @@ body {
 
     .pokemonTeam {
         font-size: 18px;
+    }
+
+    .round-button {
+        width: 60%;
     }
 }
 

@@ -1,15 +1,13 @@
 $(document).ready(function() {  
     let pokemonCount = 0;       // Variable para contar los Pokémon seleccionados.
     let selectedPokemons = [];  // Inicializa un arreglo para almacenar los nombres de los Pokémon seleccionados.
-    let pokemonArray = []; // Arreglo de pokemones por tipo
+    let pokemonArray = []; // Arreglo de pokemones
     let nav = $('#types_nav');
-
-    let pkmsContainer = $('#pkms-container');
 
     // Función para cargar los Pokémon de la primera generación.
     function cargarPokemonesPrimeraGeneracion() {
         $.ajax({
-            url: 'https://pokeapi.co/api/v2/pokemon?limit=151',
+            url: 'https://pokeapi.co/api/v2/pokemon?limit=151', //`https://pokeapi.co/api/v2/generation/${generationId}/`
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -54,6 +52,46 @@ $(document).ready(function() {
         });
     }
 
+    // Delegación de eventos para manejar el click en imágenes cargadas dinámicamente.
+    $(document).on('click', 'div.pokemon img', function() {
+        let $this = $(this);  // La imagen clickeada.
+        let $pokemon = $this.closest('.pokemon');  // El contenedor de la card del Pokémon.
+        let pokemonName = $pokemon.find('p').eq(1).text();  // Obtiene el nombre del Pokémon desde el segundo párrafo dentro del contenedor.
+        let pokemonImg = $this.attr('src');  // Obtiene la URL de la imagen del Pokémon. Osea que obtiene el atributo src de la imagen.
+        let pokemonIdString = $pokemon.find('#idnum').text(); //Obtiene la cadena de string del ID
+        let pokemonId = pokemonIdString.replace('#', ''); // Elimina el símbolo '#'
+
+        // Verifica si el Pokémon ya está seleccionado.
+        if ($this.hasClass('selected')) {       // Si está seleccionado, se deselecciona
+            $this.removeClass('selected').css('opacity', '1');  // Quita la clase 'selected' y restablece la opacidad a 1.
+            $pokemon.css('background-color', '');  // Restablece el color de fondo
+            pokemonCount--;
+            if (pokemonCount == 0) nav.css('position', 'sticky');
+            
+            // Elimina el nombre del Pokémon del arreglo de seleccionados.
+            selectedPokemons = selectedPokemons.filter(pokemon => pokemon.name !== pokemonName);
+        } else{ // Si no está seleccionado, se selecciona
+            if(pokemonCount <= 5){
+                $this.addClass('selected').css('opacity', '0.6');  // Agrega la clase 'selected' a la imagen y ajusta la opacidad a 0.6.
+                $pokemon.css('background-color', '#f0f0f0');
+                nav.css('position', 'relative'); // El nav no sigue al usuario por pantalla
+                pokemonCount++;
+                
+                // Si el pokemon no está en la lista (busca por id), agrega el nombre, la imagen y el ID
+                if (!selectedPokemons.some(pokemon => pokemon.id === pokemonId)) {
+                    selectedPokemons.push({name: pokemonName, img: pokemonImg, id: pokemonId}); //guarda un objeto con nombre, imagen e ID
+                }
+            }
+            else{
+                alert('No puedes seleccionar mas de 6 pokemones');
+            }
+            
+        }
+
+        updatePokemonTotal(); // Actualiza el texto del total de pokemones y muestra u oculta el aside
+        updatePokemonList(); // Actualiza el contenido del aside
+    });
+
     // Función para actualizar el texto del total de Pokémon en la página.
     function updatePokemonTotal() {
         $('#pokemon-total').text('Pokemones seleccionados: ' + pokemonCount);
@@ -68,24 +106,27 @@ $(document).ready(function() {
 
     // Función para actualizar el contenido del aside con los Pokémon seleccionados.
     function updatePokemonList() {
-        let $teamSelected = $('#teamSelected');
+        let $teamSelected = $('#teamSelected'); //obtiene el elemento aside del DOM
 
         // Elimina los pokemones existentes en el aside.
         $teamSelected.find('section.pokemon-entry').remove();
 
-        // Añade un nuevo pokemon con la imagen, nombre y gif
-        selectedPokemons.forEach((pokemon) => {
+        // Añade un nuevo pokemon con la imagen, nombre y gif. Recorre la lista de los pokes seleccionados.
+        selectedPokemons.forEach((pokemon) => { //Recorre y por cada poke agrega una section con la imagen de la pokebola, el nombre y el gif
             var pokemonGif = findPokemonGifByID(parseInt(pokemon.id)); // Obtiene el gif del pokemon seleccionado
 
             if ($teamSelected.find('section.pokemon-entry').length < 6) {
                 let newSection = `
                     <section class="pokemon-entry teamColor">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg" alt="Ícono personalizado" width="24" height="24">
+                        <img class="pkm-img" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Pok%C3%A9_Ball_icon.svg" alt="Ícono personalizado">
                         <p> ${pokemon.name} </p>
                         <img class="pokemon-gif" src="${pokemonGif}">
                     </section>
                 `;
                 $teamSelected.append(newSection);
+
+                // Llama a la función de animación para hacer que la imagen gire un poco
+                animatePokemonImage($('.pkm-img').last());
             }
 
         });
@@ -118,50 +159,41 @@ $(document).ready(function() {
         });
     }
 
-    function findPokemonGifByID(id) {
-        let foundPokemon = pokemonArray.find(pokemonArray => pokemonArray.id === id);
-        return foundPokemon.sprites.other['showdown'].front_default;
+    function findPokemonGifByID(id) { //recibe un entero id
+        let foundPokemon = pokemonArray.find(pokemonArray => pokemonArray.id === id); //busca el pokemon con ese id
+        return foundPokemon.sprites.other['showdown'].front_default; //retorna el gif de ese pokemon
     }
 
-    // Delegación de eventos para manejar el click en imágenes cargadas dinámicamente.
-    $(document).on('click', 'div.pokemon img', function() {
-        let $this = $(this);  // La imagen clickeada.
-        let $pokemon = $this.closest('.pokemon');  // El contenedor de la card del Pokémon.
-        let pokemonName = $pokemon.find('p').eq(1).text();  // Obtiene el nombre del Pokémon desde el segundo párrafo dentro del contenedor.
-        let pokemonImg = $this.attr('src');  // Obtiene la URL de la imagen del Pokémon.
-        let pokemonIdString = $pokemon.find('#idnum').text(); //Obtiene la cadena de string del ID
-        let pokemonId = pokemonIdString.replace('#', ''); // Elimina el símbolo '#'
+    // Función para animar la pokebola
+    function animatePokemonImage($image) {
+        
+        // Define el ángulo inicial de rotación. Comienza con -15 grados (giro hacia la izquierda).
+        let rotateAngle = -15;
+        
+        // '1' significa rotar hacia la derecha, y '-1' rotar hacia la izquierda.
+        let direction = 1;
 
-        // Verifica si el Pokémon ya está seleccionado.
-        if ($this.hasClass('selected')) {       // Si está seleccionado, se deselecciona
-            $this.removeClass('selected').css('opacity', '1');  // Quita la clase 'selected' y restablece la opacidad a 1.
-            $pokemon.css('background-color', '');  // Restablece el color de fondo
-            pokemonCount--;
-            if (pokemonCount == 0) {nav.css('position', 'sticky');};
-            
-            // Elimina el nombre del Pokémon del arreglo de seleccionados.
-            selectedPokemons = selectedPokemons.filter(pokemon => pokemon.name !== pokemonName);
-        } else{ // Si no está seleccionado, se selecciona
-            if(pokemonCount <= 5){
-                $this.addClass('selected').css('opacity', '0.6');  // Agrega la clase 'selected' y ajusta la opacidad a 0.6.
-                $pokemon.css('background-color', '#f0f0f0');
-                nav.css('position', 'relative'); // El nav no sigue al usuario por pantalla
-                pokemonCount++;
+        //bucle
+        setInterval(function() {
+            rotateAngle = direction * 15;
+
+            $image.animate({ value: rotateAngle }, {
                 
-                // Si el pokemon no está en la lista, agrega el nombre, la imagen y el ID
-                if (!selectedPokemons.some(pokemon => pokemon.id === pokemonId)) {
-                    selectedPokemons.push({name: pokemonName, img: pokemonImg, id: pokemonId});
-                }
-            }
-            else{
-                alert('No puedes seleccionar mas de 6 pokemones');
-            }
-            
-        }
+                step: function(now) {
+                    $(this).css('transform', 'rotate(' + now + 'deg)');
+                },
 
-        updatePokemonTotal();
-        updatePokemonList(); // Actualiza el contenido del aside
-    });
+                duration: 200,
+
+                // 'swing' hace que la animación sea más suave al principio y al final.
+                easing: 'swing',
+
+                complete: function() {
+                    direction *= -1;
+                }
+            });
+        }, 500);
+    }
 
     // Llama a la función para cargar los Pokémon al cargar la página.
     cargarPokemonesPrimeraGeneracion();

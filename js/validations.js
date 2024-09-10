@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Obtiene el primer formulario en el documento y lo guarda en la variable 'form'
+    // Obtiene el formulario en el documento y lo guarda en la variable 'form'
     const form = document.querySelector('form');
     
     // Obtiene los elementos del formulario por sus IDs y nombres y los guarda en variables
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para validar el formato de la fecha de nacimiento ('dd-mm-yyyy')
     function validateBirthdate(inputDate) {
-        console.log(inputDate);
+        console.log("La fecha tiene formato: " + inputDate);
 
         // La fecha que llega está en formato 'aaaa-mm-dd'
         const regexDate = /^\d{4}-\d{2}-\d{2}$/;
@@ -84,11 +84,14 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
     
-        // Dividir la fecha en partes: aaaa, mm, dd
+        // Dividir la fecha en partes: aaaa, mm, dd y las coloca en un array
         const [year, month, day] = inputDate.split('-');
+
+        //console.log("mes anterior: " + (month - 1));
     
         // Verificar que las partes de la fecha son válidas
         const date = new Date(year, month - 1, day);
+
         if (
             date.getFullYear() != year ||
             date.getMonth() + 1 != month ||
