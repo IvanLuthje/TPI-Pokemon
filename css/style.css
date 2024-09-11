@@ -145,6 +145,7 @@ height: 75%;
 	background-color: #24ab2c;
 	border: none;
 	color: #ffffff;
+	margin-left: 0%;
 }
 
 
@@ -242,7 +243,13 @@ footer{
 	.col_der{
 		background-color: #00435f;
 	}
-	
+	.id_nombre{
+		width:85%
+	}
+
+	#filtro{
+		width:85%;
+	}
 }
 	
 
