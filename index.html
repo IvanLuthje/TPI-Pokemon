@@ -20,18 +20,19 @@
             <div class="imagen"> <a href="index.html"><img src='img/International_Pokémon_logo.svg.png'></a></div>
             <p><a href="contacto.html">CONTACTO</a></p>
             <p><a href="compartir.html">COMPARTIR</a></p>
-            <p><a href="index2.html">ENCUESTA</a></p>
+            <p><a href="encuesta.html">ENCUESTA</a></p>
         </div>
         <div class="col_der">
             <div class="formulario">
                 <input class="id_nombre" id="nombre" type="text" placeholder="Ingresar el nombre de un pokemon o ID de Pokemon">
+                <button class="boton_busqueda" id="busqueda" type="button" aria-label="Buscar"><i class="fa fa-search"></i></button>
+
                 <select name="" id="filtro">
                     <!--option value="sel" id="opciones">---Seleccionar opción---</option-->
                     <option value="nombre" id="opciones">Nombre</option>
                     <option value="tipos" id="opciones">Tipos</option>
                     <option value="item" id="opciones">Item</option>
                 </select>
-                <button class="boton_busqueda" id="busqueda" type="button" aria-label="Buscar"><i class="fa fa-search"></i></button>
                 <button class="reset" onclick="reset()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
 
             </div>
