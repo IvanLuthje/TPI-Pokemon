@@ -124,6 +124,41 @@ height: 75%;
     font-family: 'lato';
 }
 
+#email_emisor{
+	
+    /* display: block; */
+    margin-top: 0;
+    /* background: 0 0; */
+    border-width: 0 0 1px;
+    line-height: 26px;
+    /* height: 30px; */
+    border-radius: 0;
+    border-style: solid;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px 2px 1px;
+    padding: 2px 2px 1px;
+    font-family: 'lato';
+}
+
+#email_receptor{
+	
+    /* display: block; */
+    margin-top: 0;
+    /* background: 0 0; */
+    border-width: 0 0 1px;
+    line-height: 26px;
+    /* height: 30px; */
+    border-radius: 0;
+    border-style: solid;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px 2px 1px;
+    padding: 2px 2px 1px;
+    font-family: 'lato';
+}
+
+
 
 .id_nombre{
 	  margin-top: 0;
@@ -166,6 +201,7 @@ height: 75%;
 	background-color: #1f7042;
 	border: none;
 	color: #FFFFFF;
+	margin-left:20%;
 }
 
 .enviar{
@@ -195,7 +231,7 @@ height: 75%;
 }
 
 
-.comentario {
+#comentario {
     -ms-flex-order: 2;
     order: 2;
     /* display: block; */
