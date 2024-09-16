@@ -1,3 +1,4 @@
+
 function iniciarMap(){
     var coord = {lat:-34.922883333333, lng:-57.956316666667};
     var map = new google.maps.Map(document.getElementById('googleMap'),{
@@ -13,6 +14,7 @@ function iniciarMap(){
 function reset(){
     location.reload(true)
 }
+
 
 
 
@@ -64,9 +66,11 @@ function navegador() {
 
 
 $(document).ready(function(){
+ 
+
     $("#busqueda").click(function(){
-        let filtro = document.querySelector('#filtro');
-        var id_nombre = $("#nombre").val().toLowerCase().replace(/[^a-zA-Z0-9]/g, '');    
+        let filtro = document.querySelector('#filtro'); // Se declara el comportamiento de los filtros de nombre, items entre otros
+        var id_nombre = $("#nombre").val().toLowerCase().replace(/[^a-zA-Z0-9]/g, '');   
 
     if (filtro.value == 'nombre'){
         $.ajax({
@@ -156,4 +160,84 @@ $(document).ready(function(){
       
     });
 
+        
 });
+
+function validar() {
+    const form = document.getElementById('formulario');
+    const nombre = form.nombre.value;
+    const apellido = form.apellido.value;
+    const nacimiento = form.nacimiento.value;
+    const genero = form.genero.value;
+    const calificacion = form.calificacion.value;
+    const email = form.email.value;
+    const comentario = form.comentario.value;
+    
+    if (nombre == "") {
+        alert("El nombre no debe quedar vacio");
+        return false;
+    }
+
+    if (nombre.search(/[^0-9]/g)) {
+        alert("El nombre no debe contener números");
+        return false;
+    }
+    
+    if (nombre.search(/[^a-z]/g)) {
+		alert("El nombre debe contener mayus");
+        return false;
+
+    }
+    
+    if (apellido == "") {
+        alert("El apellido no debe estar vacio");
+        return false;
+    }
+
+    if (apellido.search(/[^0-9]/g)) {
+        alert("El apellido no debe contener números");
+        return false;
+    }
+
+    if (apellido.search(/[^a-z]/g)) {
+		alert("El apellido debe contener mayus");
+        return false;
+
+    }
+
+    if (nacimiento == "") {
+        alert("Debe ingresar fecha de nacimiento");
+        return false;
+    }
+
+    if (calificacion == "") {
+        alert("Debe calificar la página");
+        return false;
+    }
+
+    if (email == "") {
+        alert("Debe ingresar el correo electrónico");
+        return false;
+    }
+
+    if (email == "r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]") {
+        alert("Debe ingresar el correo electrónico válido");
+        return false;
+    }
+
+
+    // Muestra los datos en un alert
+    alert(` Nombre: ${nombre}\n Apellido: ${apellido}\n Fecha de nacimiento: ${nacimiento}\n Género: ${genero}\n Valoración de la página: ${calificacion}\n Correo Electrónico: ${email}\n Mensaje: ${comentario}`);
+    
+
+
+
+    
+   
+    
+
+
+}
+
+
+

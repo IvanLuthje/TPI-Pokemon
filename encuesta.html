@@ -20,29 +20,35 @@
             <p><a href="contacto.html">CONTACTO</a></p>
         </div>
         <div class="col_der_comp">
-            <h2><big><b>COMPARTIR</b></big></h2>
-            Nombre<br>
-            <input class="nombre" placeholder="Nombre" type="text"><br>
-            Apellido<br>
-            <input class="apellido" placeholder="Apellido" type="text"><br>
-            Fecha de Nacimiento<br>
-            <input type="date" class="nacimiento"><br>
-            Valoración de la página<br>
-            <input type="radio" id="lamentable" name="age" value="lamentable">Lamentable<br>
-            <input type="radio" id="mala" name="age" value="mala">Mala<br>
-            <input type="radio" id="regular" name="age" value="regular">Podría ser mejor<br>
-            <input type="radio" id="buena" name="age" value="buena">Cumple con mis expectativas<br>
-            <input type="radio" id="excelente" name="age" value="excelente">Me encantó<br>
+            <form id="formulario">
+                <h2><big><b>COMPARTIR</b></big></h2>
+                Nombre<br>
+                <input id="nombre" placeholder="Nombre" type="text"><br>
+                Apellido<br>
+                <input id="apellido" placeholder="Apellido" type="text"><br>
+                Fecha de Nacimiento<br>
+                <input type="date" id="nacimiento"><br>
+                Genero<br>
+                <input type="radio" id="genero" name="masculino" value="Masculino">Masculino<br>
+                <input type="radio" id="genero" name="femenino" value="Femenino">Femenino<br>
+                Valoración de la página<br>
+                <input type="radio" id="calificacion" name="lamentable" value="Lamentable">Lamentable<br>
+                <input type="radio" id="calificacion" name="mala" value="Mala">Mala<br>
+                <input type="radio" id="calificacion" name="regular" value="Podría ser mejor">Podría ser mejor<br>
+                <input type="radio" id="calificacion" name="buena" value="Cumple con mis expectativas">Cumple con mis expectativas<br>
+                <input type="radio" id="calificacion" name="excelente" value="Me encantó">Me encantó<br>
 
 
-            Email<br>
-            <input class="email" placeholder="Email" type="text"><br>
-            Comentario<br>
-            <textarea class="comentario" name="comentario" placeholder="Comentario"></textarea>
-            
-            <button class="enviar" onClick="validar()"><i class='fa fa-paper-plane' aria-hidden='true'></i></button>
-            <button class="cancel" onclick="cancelar()"><i class="fa fa-window-close" aria-hidden="true"></i></button>
-            <button class="reset" onclick="reset()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                Email<br>
+                <input id="email" class="email_receptor" placeholder="Email" type="text"><br>
+                Comentario<br>
+                <textarea id="comentario" class="comentario" name="comentario" placeholder="Comentario"></textarea>
+            </form>
+
+                <button class="enviar" onClick="validar()"><i class='fa fa-paper-plane' aria-hidden='true'></i></button>
+                <button class="cancel" onclick="cancelar()"><i class="fa fa-window-close" aria-hidden="true"></i></button>
+                <button class="reset" onclick="reset()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+          
         </div>
 </body>
 </html>
