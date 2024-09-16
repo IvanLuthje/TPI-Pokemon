@@ -151,7 +151,7 @@ $(document).ready(function(){
                 alert("Tipo no disponible");
             }
 
-
+        
 
 
         });
@@ -228,13 +228,41 @@ function validar() {
 
     // Muestra los datos en un alert
     alert(` Nombre: ${nombre}\n Apellido: ${apellido}\n Fecha de nacimiento: ${nacimiento}\n Género: ${genero}\n Valoración de la página: ${calificacion}\n Correo Electrónico: ${email}\n Mensaje: ${comentario}`);
-    
 
 
+}
 
+function enviar() {
+    const form = document.getElementById('formulario_compartir');
+    const emaile = form.email_emisor.value;
+    const emailr = form.email_receptor.value;
+
+    const comentario = form.comentario.value;
+
+    if (emaile == "") {
+        alert("Debe ingresar el correo electrónico");
+        return false;
+    }
+
+    if (emaile == "r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]") {
+        alert("Debe ingresar el correo electrónico válido");
+        return false;
+    }
     
-   
     
+    if (emailr == "") {
+        alert("Debe ingresar el correo electrónico");
+        return false;
+    }
+
+    if (emailr == "r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]") {
+        alert("Debe ingresar el correo electrónico válido");
+        return false;
+    }
+
+
+    // Muestra los datos en un alert
+    alert(` Nombre: ${nombre}\n Apellido: ${apellido}\n Fecha de nacimiento: ${nacimiento}\n Género: ${genero}\n Valoración de la página: ${calificacion}\n Correo Electrónico: ${email}\n Mensaje: ${comentario}`);
 
 
 }
