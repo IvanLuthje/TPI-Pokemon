@@ -1,0 +1,69 @@
+$(document).ready(function() {
+    $('#pokemon-form').on('submit', function(event) {
+        event.preventDefault();
+        const pokemonName = $('#pokemon-name').val().toLowerCase();
+
+        $.ajax({
+            url: `https://pokeapi.co/api/v2/pokemon/${pokemonName}`,
+            method: 'GET',
+            success: function(data) {
+                // Guardar en localStorage
+                localStorage.setItem('pokemonData', JSON.stringify(data));
+                
+                // Mostrar información
+                $('#pokemon-info').html(`
+                    <h2>${data.name}</h2>
+                    <img src="${data.sprites.front_default}" alt="${data.name}">
+                    <p>Altura: ${data.height / 10} m</p>
+                    <p>Peso: ${data.weight / 10} kg</p>
+                `);
+            },
+            error: function() {
+                alert('No se pudo encontrar el Pokémon.');
+            }
+        });
+    });
+
+    $('#share-btn').on('click', function() {
+        const pokemonData = localStorage.getItem('pokemonData');
+        if (pokemonData) {
+            const data = JSON.parse(pokemonData);
+            const shareData = {
+                title: `Información sobre ${data.name}`,
+                text: `Nombre: ${data.name}\nAltura: ${data.height / 10} m\nPeso: ${data.weight / 10} kg`,
+                url: `https://pokeapi.co/api/v2/pokemon/${data.id}`
+            };
+            
+            if (navigator.share) {
+                navigator.share(shareData)
+                    .then(() => console.log('Información compartida exitosamente.'))
+                    .catch((error) => console.log('Error al compartir:', error));
+            } else {
+                alert('La función de compartir no está disponible en este navegador.');
+            }
+        } else {
+            alert('No hay información para compartir.');
+        }
+    });
+});
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeAPI Formulario</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Buscar Pokémon</h1>
+    <form id="pokemon-form">
+        <input type="text" id="pokemon-name" placeholder="Nombre del Pokémon" required>
+        <button type="submit">Buscar</button>
+    </form>
+    <div id="pokemon-info"></div>
+    <button id="share-btn">Compartir Resultados</button>
+</body>
+</html>
