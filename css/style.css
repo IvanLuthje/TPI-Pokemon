@@ -40,6 +40,12 @@ h2{
 	display: flex;
 	flex-direction: row;
 	font-size: 10px;
+  }
+
+  .main2 {
+	display: flex;
+	flex-direction: row;
+	font-size: 10px;
 	height:1080px;
   }
   
@@ -56,6 +62,7 @@ h2{
 	padding: 20px;
 	flex: 80%;
 	font-size: 15px;
+	  
   }
 
 
@@ -107,7 +114,6 @@ h2{
 	border-radius: 10px;
 	padding: 10px;
 	text-align: center;
-	width: 30%;
 }
 
 #googleMap {
@@ -289,11 +295,25 @@ footer{
 	#filtro{
 		width:85%;
 	}
-	@media (min-width: 601px) and (max-width: 1024px){
-		.datos{
-			width:50%;
-		}
+
+}
+@media screen and (min-width: 600px){
+	.datos{
+		width:50%;
+	}
+	.id_nombre{
+		width:85%;
+	}
+	#filtro{
+		width:85%;
+	}
+}
+
+@media screen and (min-width: 768px){
+	.datos{
+		width:30%;
 	}
 
 }
+	
 

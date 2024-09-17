@@ -68,7 +68,7 @@ function navegador() {
 $(document).ready(function() {
 
     $.ajax({
-        url: 'https://pokeapi.co/api/v2/pokemon?limit=10',
+        url: 'https://pokeapi.co/api/v2/pokemon?limit=20',
         method: 'GET',
         success: function(dato_pokemon) {
             var listaPokemon = dato_pokemon.results;
