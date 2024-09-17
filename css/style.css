@@ -268,8 +268,12 @@ footer{
 		flex-direction: column;   
    }
 
+    .main2{
+		flex-direction: column;   
+   }
+
    .datos{
-	   width:100%;
+	   width:85%;
    }
 	.descripcion{
 		width:100%;
