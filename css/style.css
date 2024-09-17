@@ -83,6 +83,8 @@ h2{
 	margin-left: 1%;
 	color: #000000;
 	font-family: lato;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .descripcion{
@@ -92,7 +94,7 @@ h2{
 }
 
 .formulario{
-	margin-top:0%;
+	margin-top:10%;
 }
 
 .datos_item{
@@ -100,13 +102,12 @@ h2{
 }
 
 .datos{
-	width:33.3%;
-	/* border-radius: 30px;
-	background-color:#ffffff;
-	border: 3px;
-	height:55%; */
-	
-	
+	border: 1px solid #fede84;
+	background-color: #ffffff; 
+	border-radius: 10px;
+	padding: 10px;
+	text-align: center;
+	width: 30%;
 }
 
 #googleMap {
@@ -161,7 +162,7 @@ height: 75%;
 
 
 .id_nombre{
-	  margin-top: 0;
+	margin-top: 0;
     border-width: 0 0 1px;
     border-style: solid;
     width: 90%;
@@ -201,7 +202,6 @@ height: 75%;
 	background-color: #1f7042;
 	border: none;
 	color: #FFFFFF;
-	margin-left:20%;
 }
 
 .enviar{
@@ -257,10 +257,13 @@ footer{
 
 
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 600px){
    .main{
-		flex-direction: column;
-	   
+		flex-direction: column;   
+   }
+
+   .datos{
+	   width:100%;
    }
 	.descripcion{
 		width:100%;
@@ -286,7 +289,11 @@ footer{
 	#filtro{
 		width:85%;
 	}
-}
-	
+	@media (min-width: 601px) and (max-width: 1024px){
+		.datos{
+			width:50%;
+		}
+	}
 
+}
 
