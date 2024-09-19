@@ -102,6 +102,7 @@ h2{
 
 .formulario{
 	margin-top:10%;
+
 }
 
 .datos_item{
@@ -123,7 +124,7 @@ height: 75%;
 
 #filtro{
 	height: 50px;
-    width: 100%;
+    border-radius:30px 0 0 30px;
     border: none;
     font-family: 'lato';
 	margin-bottom: 5%;
@@ -166,9 +167,11 @@ height: 75%;
 
 .id_nombre{
 	height: 50px;
-	
+	border-radius:30px 0 0 30px;
 	border: none;
 	font-family: 'lato';
+	
+	
 }
 
 	
@@ -177,19 +180,22 @@ height: 75%;
 .boton_busqueda{
 	width: 50px;
 	height: 50px;
-	border-radius: 0 30% 30% 0%;
+	border-radius: 0 30px 30px 0%;
 	background-color: #24ab2c;
+	margin:-0.7%;
 	border: none;
-	color: #ffffff;		
+	color: #ffffff;
+
 }
 
 .reset2{
 	width: 50px;
 	height: 50px;
-	border-radius: 0 30% 30% 0%;
+	border-radius: 0 30px 30px 0%;
 	background-color: #ffa500;
 	border: none;
-	color: #ffffff;		
+	color: #ffffff;
+	margin:-0.7%;
 }
 
 .pokemon img{
@@ -321,4 +327,43 @@ footer{
 
 }
 	
+@media screen and (max-width: 310px){
+   .main{
+		flex-direction: column;   
+   }
+
+    .main2{
+		flex-direction: column;   
+   }
+
+   .datos{
+	   width:100%;
+   }
+	.descripcion{
+		width:100%;
+		margin:0%;
+		color: #fede84;
+	}
+	.datos_pokemon{
+		width:100%;
+		margin:0%;
+		color: #fede84;
+	}
+	h1{
+		text-align:center;
+		color: #fede84;
+	}
+	.col_der{
+		background-color: #00435f;
+	}
+	.id_nombre{
+		width:50%
+		;
+	}
+
+	#filtro{
+		width:50%;
+	}
+
+}
 
