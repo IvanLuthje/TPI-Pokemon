@@ -122,13 +122,11 @@ height: 75%;
 }
 
 #filtro{
-    margin-top: 0;
-    border-width: 0 0 1px;
-    border-style: solid;
-    width: 90%;
-    box-sizing: border-box;
-    padding: 2px 2px 1px;
+	height: 50px;
+    width: 100%;
+    border: none;
     font-family: 'lato';
+	margin-bottom: 5%;
 }
 
 #email_emisor{
@@ -161,20 +159,16 @@ height: 75%;
     width: 100%;
     box-sizing: border-box;
     padding: 2px 2px 1px;
-    padding: 2px 2px 1px;
     font-family: 'lato';
 }
 
 
 
 .id_nombre{
-	margin-top: 0;
-    border-width: 0 0 1px;
-    border-style: solid;
-    width: 90%;
-    box-sizing: border-box;
-    padding: 2px 2px 1px;
-    font-family: 'lato';
+	height: 50px;
+	
+	border: none;
+	font-family: 'lato';
 }
 
 	
@@ -183,13 +177,20 @@ height: 75%;
 .boton_busqueda{
 	width: 50px;
 	height: 50px;
-	border-radius: 50%;
+	border-radius: 0 30% 30% 0%;
 	background-color: #24ab2c;
 	border: none;
-	color: #ffffff;
-	margin-left: 0%;
+	color: #ffffff;		
 }
 
+.reset2{
+	width: 50px;
+	height: 50px;
+	border-radius: 0 30% 30% 0%;
+	background-color: #ffa500;
+	border: none;
+	color: #ffffff;		
+}
 
 .pokemon img{
 	width:200px;
@@ -293,11 +294,11 @@ footer{
 		background-color: #00435f;
 	}
 	.id_nombre{
-		width:85%
+		width:80%
 	}
 
 	#filtro{
-		width:85%;
+		width:80%;
 	}
 
 }
