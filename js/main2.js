@@ -18,17 +18,14 @@ function reset(){
 
 
 
-
-// function Mostrar(){
-//     let indice_res = localStorage.getItem('info');
-//     $(".comentario_res").val(localStorage.getItem(indice_res));
-//     localStorage.clear();
-// }
-
 function Mostrar(datos){
-    let dato = datos.dato;
-    localStorage.setItem('datos', dato);
+    localStorage.setItem('datos', comentario);
     window.location.href='compartir.html';
+    $(document).ready(function(datos) {
+        // Recuperar el comentario del almacenamiento local
+        var comentario = datos.id;
+        $('#comentario').html(comentario);    
+    });
 };
 
 function compartir() {
@@ -88,7 +85,10 @@ $(document).ready(function() {
                             "<h2> #" + id + "</h2>"  +  
                             "<div class='pokemon'>" + "<img src='" + imagen + "'>" +  "</div>" +
                             "<h1>" + nombre + "</h1>" + 
-                            "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + "</div>");
+                            "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
+                            "<button class='descripcion' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
+                            "<button class='favoritos' alt='favoritos' onClick='Mostrar(this)'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                 
+                            "</div>");
                     },
               
                 });
@@ -129,7 +129,10 @@ $(document).ready(function() {
                 "<p>Exp:" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
                  + "kg</p>" + "<p><strong>Altura: </strong>" + altura
                  + "cm</p>" + "<div>" +
-                 "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + "</div>");
+                 "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
+                 "<button class='descripcion' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
+                 "<button class='favoritos' alt='favoritos' onClick='Mostrar(this)'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                 
+                 "</div>");
                let results = datos;
             },
             
@@ -178,7 +181,9 @@ $(document).ready(function() {
                 "<p>" + "Costo:  " + costo  +  "</p>" + 
                 "<p>" + "Tipo:  " +  tipo +  "</p>" + 
                 // "Descripción: " + datos.flavor_text_entries[13].text + "</p>" + 
-                "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + "</div>");
+                "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
+                "<button class='descripcion' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
+                "<button class='favoritos' alt='favoritos' onClick='Mostrar(this)'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                                 "</div>");
             },
             error: function(xhr, status) {
                 alert("El item " + id_nombre + " no se ha encontrado");

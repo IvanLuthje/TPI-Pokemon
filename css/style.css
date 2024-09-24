@@ -37,10 +37,10 @@ h2{
   }
   
   .main {
-	display: flex;
-	flex-direction: row;
-	font-size: 10px;
-  }
+		display: flex;
+		flex-direction: row;
+		font-size: 10px;
+	}
 
   .main2 {
 	display: flex;
@@ -124,7 +124,7 @@ height: 75%;
 
 #filtro{
 	height: 50px;
-    border-radius:30px 0 0 30px;
+    border-radius:30px 30px 30px 30px;
     border: none;
     font-family: 'lato';
 	margin-bottom: 5%;
@@ -167,26 +167,51 @@ height: 75%;
 
 .id_nombre{
 	height: 50px;
-	border-radius:30px 0 0 30px;
+	border-radius:30px;
 	border: none;
 	font-family: 'lato';
 	
 	
 }
 
-	
+.descripcion{
+	width: 50px;
+	height: 50px;
+	/* margin:-5%; */
+	border-radius: 50%;
+	background-color: #4aaaaa;
+	border: none;
+	/*! color: #ffffff; */
+}
 
+.descripcion:hover{
+  opacity: 70%;
+}
+
+.favoritos{
+	width: 50px;
+	height: 50px;
+	/* margin:-5%; */
+	border-radius: 50%;
+	background-color: #faaaaa;
+	border: none;
+	/*! color: #ffffff; */
+}
+
+.favoritos:hover{
+  opacity: 70%;
+}
 
 .boton_busqueda{
 	width: 50px;
 	height: 50px;
-	border-radius: 0 30px 30px 0%;
+	/* margin:-5%; */
+	border-radius: 50%;
 	background-color: #ffffff;
-	margin:-0.7%;
 	border: none;
 	/*! color: #ffffff; */
-
 }
+
 .boton_busqueda:hover{
   opacity: 70%;
 }
@@ -194,11 +219,11 @@ height: 75%;
 .reset2{
 	width: 50px;
 	height: 50px;
-	border-radius: 0 30px 30px 0%;
+	border-radius: 30px;
 	background-color: #ffa500;
 	border: none;
 	color: #ffffff;
-	margin:-0.7%;
+	/* margin:-0.7%; */
 }
 
 .reset2:hover{
@@ -383,8 +408,7 @@ footer{
 		background-color: #00435f;
 	}
 	.id_nombre{
-		width:50%
-		;
+		width:50%;
 	}
 
 	#filtro{
