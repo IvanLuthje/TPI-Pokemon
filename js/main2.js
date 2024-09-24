@@ -20,7 +20,7 @@ function reset(){
 
 
 // function Mostrar(){
-//     let indice_res = localStorage.getItem('datos_pokemon');
+//     let indice_res = localStorage.getItem('info');
 //     $(".comentario_res").val(localStorage.getItem(indice_res));
 //     localStorage.clear();
 // }
@@ -33,7 +33,7 @@ function Mostrar(datos){
 
 function compartir() {
     location.href = "compartir.html";
-    localStorage.setItem("datos_pokemon", guardarPokemon); 
+    localStorage.setItem("info", guardarPokemon); 
 }
 
 function enviar_resultado(comentario){
@@ -83,7 +83,7 @@ $(document).ready(function() {
                         var imagen = datos.sprites.front_default;
                         
                         // Agregar Pokémon a la lista
-                        $(".datos_pokemon").append(
+                        $(".info").append(
                             "<div class='datos'>" + 
                             "<h2> #" + id + "</h2>"  +  
                             "<div class='pokemon'>" + "<img src='" + imagen + "'>" +  "</div>" +
@@ -120,7 +120,7 @@ $(document).ready(function() {
                var peso = datos.weight/10
                var altura = datos.height*10
 
-               $(".datos_pokemon").html(
+               $(".info").html(
                 "<div class='datos'>" +
                 "<h2>#" + id + "</h2>"  +  
                 "<div class='pokemon'>" + "<img src='" + imagen + "'>" + 
@@ -163,8 +163,22 @@ $(document).ready(function() {
             url: "https://pokeapi.co/api/v2/item/" + id_nombre, 
             type: "GET",
             dataType: "json",
-            success: function(datos){
-               $(".datos_pokemon").html("<div class ='titulo'>" + "<h1>" + datos.names[5].name + "</h1>" + "</div>" + "<div class='item'>" + "<img src='" + datos.sprites.default + "'>" +  "</div>" + "<p>" + "Costo:  " +  datos.cost +  "</p>" + "<p>" + "Tipo:  " +  datos.category.name +  "</p>" + "Descripción: " + datos.flavor_text_entries[13].text + "</p>" + "<button class='compartir' onClick='compartir()'> " + "Compartir" + "</button>");
+            success: function(datos){ 
+                var nombre = datos.names[5].name
+                var imagen = datos.sprites.default
+                var costo = datos.cost
+                var tipo = datos.category.name
+                var id = datos.id 
+      
+               $(".info").html(
+                "<div class ='datos'>" +
+                "<h2>#" + id + "</h2>"  +  
+                "<h1>" + nombre + "</h1>" + 
+                "<div class='item'>" + "<img src='" + imagen + "'>" +  "</div>" + 
+                "<p>" + "Costo:  " + costo  +  "</p>" + 
+                "<p>" + "Tipo:  " +  tipo +  "</p>" + 
+                // "Descripción: " + datos.flavor_text_entries[13].text + "</p>" + 
+                "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + "</div>");
             },
             error: function(xhr, status) {
                 alert("El item " + id_nombre + " no se ha encontrado");
@@ -178,8 +192,8 @@ $(document).ready(function() {
             type: "GET",
             dataType: "json",
             success: function(datos){
-               // $(".datos_pokemon").html("<h1>" + datos.name + "</h1><img src='" + datos.sprites.front_default + "' alt='" + datos.name + "'><p>Peso: " + datos.weight + "</p><p>Altura: " + datos.height + "cm</p>");
-               $(".datos_pokemon").html("");
+               // $(".info").html("<h1>" + datos.name + "</h1><img src='" + datos.sprites.front_default + "' alt='" + datos.name + "'><p>Peso: " + datos.weight + "</p><p>Altura: " + datos.height + "cm</p>");
+               $(".info").html("");
             },
             error: function(xhr, status) {
                 alert("Tipo no disponible");

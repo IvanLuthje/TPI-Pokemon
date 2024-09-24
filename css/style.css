@@ -86,7 +86,7 @@ h2{
 	color:#000000;
 }
 
-.datos_pokemon{
+.info{
 	margin-left: 1%;
 	color: #000000;
 	font-family: lato;
@@ -310,7 +310,7 @@ footer{
 		margin:0%;
 		color: #fede84;
 	}
-	.datos_pokemon{
+	.info{
 		width:100%;
 		margin:0%;
 		color: #fede84;
@@ -370,7 +370,7 @@ footer{
 		margin:0%;
 		color: #fede84;
 	}
-	.datos_pokemon{
+	.info{
 		width:100%;
 		margin:0%;
 		color: #fede84;
