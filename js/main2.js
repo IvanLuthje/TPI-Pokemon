@@ -25,9 +25,9 @@ function reset(){
 //     localStorage.clear();
 // }
 
-function Mostrar(dato_pokemon){
-    let dato = dato_pokemon.dato;
-    localStorage.setItem('dato_pokemon', dato);
+function Mostrar(datos){
+    let dato = datos.dato;
+    localStorage.setItem('datos', dato);
     window.location.href='compartir.html';
 };
 
@@ -70,22 +70,22 @@ $(document).ready(function() {
     $.ajax({
         url: 'https://pokeapi.co/api/v2/pokemon?limit=20',
         method: 'GET',
-        success: function(dato_pokemon) {
-            var listaPokemon = dato_pokemon.results;
+        success: function(datos) {
+            var listaPokemon = datos.results;
             
-            listaPokemon.forEach(function(dato_pokemon) {
+            listaPokemon.forEach(function(datos) {
                 $.ajax({
-                    url: dato_pokemon.url,
+                    url: datos.url,
                     method: 'GET',
-                    success: function(dato_pokemon) {
-                        var id = dato_pokemon.id;
-                        var nombre = dato_pokemon.name;
-                        var imagen = dato_pokemon.sprites.front_default;
+                    success: function(datos) {
+                        var id = datos.id;
+                        var nombre = datos.name;
+                        var imagen = datos.sprites.front_default;
                         
                         // Agregar Pokémon a la lista
                         $(".datos_pokemon").append(
                             "<div class='datos'>" + 
-                            "<h2>" + id + "</h2>"  +  
+                            "<h2> #" + id + "</h2>"  +  
                             "<div class='pokemon'>" + "<img src='" + imagen + "'>" +  "</div>" +
                             "<h1>" + nombre + "</h1>" + 
                             "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + "</div>");
@@ -104,20 +104,21 @@ $(document).ready(function() {
         var id_nombre = $("#nombre").val().toLowerCase().replace(/[^a-zA-Z0-9]/g, '');   
 
     if (filtro.value == 'nombre'){
+        
         $.ajax({
             url: 'https://pokeapi.co/api/v2/pokemon/' + id_nombre, 
             type: "GET",
             dataType: "json",
             
 
-            
-            success: function(dato_pokemon){ 
-               var nombre = dato_pokemon.name
-               var imagen = dato_pokemon.sprites.front_default
-               var experiencia = dato_pokemon.base_experience
-               var id = dato_pokemon.id 
-               var peso = dato_pokemon.weight/10
-               var altura = dato_pokemon.height*10
+            //Mostrar cada pokemon
+            success: function(datos){ 
+               var nombre = datos.name
+               var imagen = datos.sprites.front_default
+               var experiencia = datos.base_experience
+               var id = datos.id 
+               var peso = datos.weight/10
+               var altura = datos.height*10
 
                $(".datos_pokemon").html(
                 "<div class='datos'>" +
@@ -127,8 +128,9 @@ $(document).ready(function() {
                 "</div>"  + 
                 "<p>Exp:" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
                  + "kg</p>" + "<p><strong>Altura: </strong>" + altura
-                 + "cm</p>" + "<div>");
-               let results = dato_pokemon;
+                 + "cm</p>" + "<div>" +
+                 "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + "</div>");
+               let results = datos;
             },
             
             error: function(xhr, status) {
@@ -139,19 +141,19 @@ $(document).ready(function() {
             
         });
 
-        $.ajax({
-            url: 'https://pokeapi.co/api/v2/pokemon-species/' + id_nombre, 
-            type: "GET",
-            dataType: "json",
+        // $.ajax({
+        //     url: 'https://pokeapi.co/api/v2/pokemon-species/' + id_nombre, 
+        //     type: "GET",
+        //     dataType: "json",
             
 
             
-            success: function(dato_pokemon){ 
-                var descripcion = dato_pokemon.flavor_text_entries[26].flavor_text;
-                $(".descripcion").html("<p>" + "Descripción: " + descripcion + "</p>" + "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");},
+        //     success: function(datos){ 
+        //         var descripcion = datos.flavor_text_entries[26].flavor_text;
+        //         $(".descripcion").html("<p>" + "Descripción: " + descripcion + "</p>" + "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");},
 
             
-        });
+        // });
 
 
         
@@ -161,10 +163,8 @@ $(document).ready(function() {
             url: "https://pokeapi.co/api/v2/item/" + id_nombre, 
             type: "GET",
             dataType: "json",
-            success: function(dato_pokemon){
-
-               // $(".datos_pokemon").html("<h1>" + dato_pokemon.name + "</h1><img src='" + dato_pokemon.sprites.front_default + "' alt='" + dato_pokemon.name + "'><p>Peso: " + dato_pokemon.weight + "</p><p>Altura: " + dato_pokemon.height + "cm</p>");
-               $(".datos_pokemon").html("<div class ='titulo'>" + "<h1>" + dato_pokemon.names[5].name + "</h1>" + "</div>" + "<div class='item'>" + "<img src='" + dato_pokemon.sprites.default + "'>" +  "</div>" + "<p>" + "Costo:  " +  dato_pokemon.cost +  "</p>" + "<p>" + "Tipo:  " +  dato_pokemon.category.name +  "</p>" + "Descripción: " + dato_pokemon.flavor_text_entries[13].text + "</p>" + "<button class='compartir' onClick='compartir()'> " + "Compartir" + "</button>");
+            success: function(datos){
+               $(".datos_pokemon").html("<div class ='titulo'>" + "<h1>" + datos.names[5].name + "</h1>" + "</div>" + "<div class='item'>" + "<img src='" + datos.sprites.default + "'>" +  "</div>" + "<p>" + "Costo:  " +  datos.cost +  "</p>" + "<p>" + "Tipo:  " +  datos.category.name +  "</p>" + "Descripción: " + datos.flavor_text_entries[13].text + "</p>" + "<button class='compartir' onClick='compartir()'> " + "Compartir" + "</button>");
             },
             error: function(xhr, status) {
                 alert("El item " + id_nombre + " no se ha encontrado");
@@ -177,8 +177,8 @@ $(document).ready(function() {
             url: "https://pokeapi.co/api/v2/type/" + "nombre_tipos", 
             type: "GET",
             dataType: "json",
-            success: function(dato_pokemon){
-               // $(".datos_pokemon").html("<h1>" + dato_pokemon.name + "</h1><img src='" + dato_pokemon.sprites.front_default + "' alt='" + dato_pokemon.name + "'><p>Peso: " + dato_pokemon.weight + "</p><p>Altura: " + dato_pokemon.height + "cm</p>");
+            success: function(datos){
+               // $(".datos_pokemon").html("<h1>" + datos.name + "</h1><img src='" + datos.sprites.front_default + "' alt='" + datos.name + "'><p>Peso: " + datos.weight + "</p><p>Altura: " + datos.height + "cm</p>");
                $(".datos_pokemon").html("");
             },
             error: function(xhr, status) {

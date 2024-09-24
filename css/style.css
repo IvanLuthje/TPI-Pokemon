@@ -187,6 +187,9 @@ height: 75%;
 	/*! color: #ffffff; */
 
 }
+.boton_busqueda:hover{
+  opacity: 70%;
+}
 
 .reset2{
 	width: 50px;
@@ -196,6 +199,10 @@ height: 75%;
 	border: none;
 	color: #ffffff;
 	margin:-0.7%;
+}
+
+.reset2:hover{
+	opacity: 70%;
 }
 
 .pokemon img{
@@ -217,6 +224,10 @@ height: 75%;
 	color: #FFFFFF;
 }
 
+.compartir:hover{
+	opacity: 70%;
+}
+
 .enviar{
 	width: 50px;
 	height: 50px;
@@ -225,6 +236,11 @@ height: 75%;
 	border: none;
 	color: #'1f7042';
 }
+
+.enviar:hover{
+	opacity: 70%;
+}
+
 .cancel{
 	width: 50px;
 	height: 50px;
@@ -232,6 +248,10 @@ height: 75%;
 	background-color: #dd3e41;
 	border: none;
 	color: #'1f7042';
+}
+
+.cancel:hover{
+	opacity: 70%;
 }
 
 .reset{
@@ -243,6 +263,9 @@ height: 75%;
 	color: #'1f7042';
 }
 
+.reset:hover{
+		opacity: 70%;
+}
 
 #comentario {
     -ms-flex-order: 2;
@@ -323,6 +346,9 @@ footer{
 @media screen and (min-width: 768px){
 	.datos{
 		width:30%;
+	}
+	.datos:hover{
+		opacity: 60%;
 	}
 
 }
