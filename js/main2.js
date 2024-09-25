@@ -18,24 +18,16 @@ function reset(){
 
 
 
-function Mostrar(datos){
-    localStorage.setItem('datos', comentario);
+function Compartir(datos){
     window.location.href='compartir.html';
-    $(document).ready(function(datos) {
-        // Recuperar el comentario del almacenamiento local
-        var comentario = datos.id;
-        $('#comentario').html(comentario);    
-    });
+    var id = datos.id;
+    var nombre = datos.name;
+    $('#pokemonData').html(datos.id + datos.);
+    
 };
 
-function compartir() {
-    location.href = "compartir.html";
-    localStorage.setItem("info", guardarPokemon); 
-}
 
-function enviar_resultado(comentario){
-    let guardarPokemon= JSON.parse(guardarPersona);
-}
+
 
 function cancelar() {
     var respuesta = confirm('Desea volver a la pagina principal?');
@@ -85,9 +77,9 @@ $(document).ready(function() {
                             "<h2> #" + id + "</h2>"  +  
                             "<div class='pokemon'>" + "<img src='" + imagen + "'>" +  "</div>" +
                             "<h1>" + nombre + "</h1>" + 
-                            "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
-                            "<button class='descripcion' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
-                            "<button class='favoritos' alt='favoritos' onClick='Mostrar(this)'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                 
+                            "<button class='compartir' alt='compartir' onClick='Compartir(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
+                            "<button class='descripcion' alt='compartir' onClick='Descripcion(this)'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
+                            "<button class='favoritos' alt='favoritos' onClick='Favoritos(this)'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                 
                             "</div>");
                     },
               
@@ -297,7 +289,7 @@ function enviar() {
         return false;
     }
 
-    if (emaile == "r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]") {
+    if (emaile == "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/") {
         alert("Debe ingresar el correo electrónico válido");
         return false;
     }
@@ -311,6 +303,12 @@ function enviar() {
     if (emailr == "r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]") {
         alert("Debe ingresar el correo electrónico válido");
         return false;
+    }
+
+    else{
+        alert("Redireccionando al gestor de correo")
+        window.location = 'mailto: ' + $("#email_receptor").val() + '?subject=' + 'Compartir&body=' + $("#comentario").val();
+        return true;
     }
 
 
