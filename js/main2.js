@@ -22,7 +22,6 @@ function Compartir(datos){
     window.location.href='compartir.html';
     var id = datos.id;
     var nombre = datos.name;
-    $('#pokemonData').html(datos.id + datos.);
     
 };
 
@@ -82,15 +81,14 @@ $(document).ready(function() {
                             "<button class='favoritos' alt='favoritos' onClick='Favoritos(this)'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                 
                             "</div>");
                     },
+                    
               
                 });
             });
         },
     });
 
-
    
-
     $("#busqueda").click(function(){
         let filtro = document.querySelector('#filtro'); // Se declara el comportamiento de los filtros de nombre, items entre otros
         var id_nombre = $("#nombre").val().toLowerCase().replace(/[^a-zA-Z0-9]/g, '');   
