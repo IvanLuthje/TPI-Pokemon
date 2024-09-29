@@ -11,45 +11,7 @@ function iniciarMap(){
     });
 }
 
-const favoritos = new Set();
 
-function marcarFavorito(nombre, elemento) {
-    if (favoritos.has(nombre)) {
-        favoritos.delete(nombre);
-        elemento.classList.remove('favorito');
-    } else {
-        favoritos.add(nombre);
-        elemento.classList.add('favorito');
-    }
-    localStorage.setItem('favoritos', JSON.stringify(Array.from(favoritos)));
-}
-
-function verFavoritos() {
-    window.location.href = 'index.html';
-}
-
-function cargarFavoritos() {
-    const favoritosGuardados = JSON.parse(localStorage.getItem('favoritos'));
-    if (favoritosGuardados) {
-        favoritosGuardados.forEach(nombre => favoritos.add(nombre));
-    }
-}
-
-function mostrarFavoritos() {
-    const lista = document.getElementById('favoritos');
-    const favoritosArray = Array.from(favoritos);
-    
-    if (favoritosArray.length === 0) {
-        lista.innerHTML = '<li>No hay favoritos.</li>';
-        return;
-    }
-
-    favoritosArray.forEach(nombre => {
-        const li = document.createElement('li');
-        li.textContent = nombre;
-        lista.appendChild(li);
-    });
-}
 
 
 
