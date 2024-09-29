@@ -56,7 +56,7 @@ function navegador() {
 $(document).ready(function() {
 
     $.ajax({
-        url: 'https://pokeapi.co/api/v2/pokemon?limit=20',
+        url: 'https://pokeapi.co/api/v2/pokemon?limit=21',
         method: 'GET',
         success: function(datos) {
             var listaPokemon = datos.results;
@@ -81,6 +81,10 @@ $(document).ready(function() {
                             "<button class='favoritos' alt='favoritos' onClick='Favoritos(this)'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                 
                             "</div>");
                     },
+
+                    error: function(xhr, status) {
+                        $(".info").html("Pokémon " + id_nombre + " no disponible");
+                    }
                     
               
                 });
@@ -127,7 +131,7 @@ $(document).ready(function() {
             },
             
             error: function(xhr, status) {
-                alert("Pokémon " + id_nombre + " no disponible");
+              $(".info").html("Pokémon " + id_nombre + " no disponible");
             },
 
         
