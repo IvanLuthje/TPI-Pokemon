@@ -86,7 +86,7 @@ h2{
 	color:#000000;
 }
 
-.info{
+.info_id{
 	margin-left: 1%;
 	color: #000000;
 	font-family: lato;
@@ -322,7 +322,7 @@ footer{
 		margin:0%;
 		color: #fede84;
 	}
-	.info{
+	.info_id{
 		width:100%;
 		margin:0%;
 		color: #fede84;
@@ -388,7 +388,7 @@ footer{
 		margin:0%;
 		color: #fede84;
 	}
-	.info{
+	.info_id{
 		width:100%;
 		margin:0%;
 		color: #fede84;

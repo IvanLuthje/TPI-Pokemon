@@ -25,8 +25,6 @@ function reset(){
 
 function Compartir(datos){
     window.location.href='compartir.html';
-    var id = datos.id;
-    var nombre = datos.name;
     
 };
 
@@ -76,7 +74,7 @@ $(document).ready(function() {
                         var imagen = datos.sprites.front_default;
                         
                         // Agregar Pokémon a la lista
-                        $(".info").append(
+                        $(".info_id").append(
                             "<div class='datos'>" + 
                             "<h2> #" + id + "</h2>"  +  
                             "<div class='pokemon'>" + "<img src='" + imagen + "'>" +  "</div>" +
@@ -88,7 +86,7 @@ $(document).ready(function() {
                     },
 
                     error: function(xhr, status) {
-                        $(".info").html("Pokémon " + id_nombre + " no disponible");
+                        $(".info_id").html("Pokémon " + id_nombre + " no disponible");
                     }
                     
                     
@@ -120,7 +118,7 @@ $(document).ready(function() {
                var peso = datos.weight/10
                var altura = datos.height*10
 
-               $(".info").html(
+               $(".info_id").html(
                 "<div class='datos'>" +
                 "<h2>#" + id + "</h2>"  +  
                 "<div class='pokemon'>" + "<img src='" + imagen + "'>" + 
@@ -137,7 +135,7 @@ $(document).ready(function() {
             },
             
             error: function(xhr, status) {
-              $(".info").html("Pokémon " + id_nombre + " no disponible");
+              $(".info_id").html("Pokémon " + id_nombre + " no disponible");
             },
 
         
@@ -173,7 +171,7 @@ $(document).ready(function() {
                 var tipo = datos.category.name
                 var id = datos.id 
       
-               $(".info").html(
+               $(".info_id").html(
                 "<div class ='datos'>" +
                 "<h2>#" + id + "</h2>"  +  
                 "<h1>" + nombre + "</h1>" + 
@@ -197,8 +195,8 @@ $(document).ready(function() {
             type: "GET",
             dataType: "json",
             success: function(datos){
-               // $(".info").html("<h1>" + datos.name + "</h1><img src='" + datos.sprites.front_default + "' alt='" + datos.name + "'><p>Peso: " + datos.weight + "</p><p>Altura: " + datos.height + "cm</p>");
-               $(".info").html("");
+               // $(".info_id").html("<h1>" + datos.name + "</h1><img src='" + datos.sprites.front_default + "' alt='" + datos.name + "'><p>Peso: " + datos.weight + "</p><p>Altura: " + datos.height + "cm</p>");
+               $(".info_id").html("");
             },
             error: function(xhr, status) {
                 alert("Tipo no disponible");
