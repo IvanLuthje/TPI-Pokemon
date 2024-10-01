@@ -84,8 +84,11 @@ $(document).ready(function() {
                                      + "kg</p>" + "<p><strong>Altura: </strong>" + altura
                                      + "cm</p>" + "<div>" +
                                     "<p>" + "Descripción: " + desc + "</p>" + 
-                                    "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");},
-                               });                        
+                                    "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");},
+                               });
+                                $('.compartir').click(function(){
+                                    window.location.href='compartir.html';
+                                });                        
                             });
                             $('.cerrar').click(function(){
                                 modal.style.display = "none";
@@ -93,12 +96,15 @@ $(document).ready(function() {
                             $('.compartir').click(function(){
                                 window.location.href='compartir.html';
                             });   
-                                                
+                            $('.favoritos').click(function(){
+                                window.location.href='compartir.html';
+                            });                       
 
                     },
 
                     error: function() {
-                        $(".info_id").html("Pokémon " + id_nombre + " no disponible");
+                        modal.style.display = "block";
+                        $(".info").html("Pokémon " + id_nombre + " no disponible");
                     }
                     
                     
@@ -184,7 +190,9 @@ $(document).ready(function() {
             },
             
             error: function() {
-              $(".info_id").html("Pokémon " + id_nombre + " no disponible");
+              var modal = document.getElementById("modal");
+              modal.style.display = "block";
+              $(".info").html("Pokémon " + id_nombre + " no disponible");
             }
 
         
@@ -211,9 +219,7 @@ $(document).ready(function() {
                 "<h2>#" + id + "</h2>"  +  
                 "<h1>" + nombre + "</h1>" + 
                 "<div class='item'>" + "<img src='" + imagen + "'>" +  "</div>" + 
-                // "<p>" + "Costo:  " + costo  +  "</p>" + 
-                // "<p>" + "Tipo:  " +  tipo +  "</p>" + 
-                // ç" + 
+           
                 "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
                 "<button class='descripcion' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
                 "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" + "</div>");
@@ -233,8 +239,10 @@ $(document).ready(function() {
             }); 
                       
             },
-            error: function(xhr, status) {
-                $(".info_id").html("El item " + id_nombre + " no se ha encontrado");
+            error: function() {
+                var modal = document.getElementById("modal");
+                modal.style.display = "block";
+                $(".info").html("El item " + id_nombre + " no se ha encontrado");
             }
            
         });
