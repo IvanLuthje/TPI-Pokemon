@@ -19,6 +19,7 @@ h2{
 }
 
 
+
 @font-face {
 	font-family: pokemon-font;
 	src: url(../fonts/pokemonsolid.ttf);
@@ -63,6 +64,13 @@ h2{
 	flex: 80%;
 	font-size: 15px;
 	  
+  }
+
+
+
+  .alert{
+	font-family: lato;
+	color:#ffffff;
   }
 
 

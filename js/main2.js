@@ -1,4 +1,3 @@
-
 function iniciarMap(){
     var coord = {lat:-34.922883333333, lng:-57.956316666667};
     var map = new google.maps.Map(document.getElementById('googleMap'),{
@@ -13,23 +12,14 @@ function iniciarMap(){
 
 
 
-
-
-
 function reset(){
     location.reload(true)
 }
-
-
-
 
 function Compartir(datos){
     window.location.href='compartir.html';
     
 };
-
-
-
 
 function cancelar() {
     var respuesta = confirm('Desea volver a la pagina principal?');
@@ -44,17 +34,6 @@ function cancelar() {
 function reestablecer(){
     HTMLInputElement.reset()
 }
-
-function navegador() {
-    var x = document.getElementById("navegador");
-    if (x.className === "navegador") {
-        x.className += " responsive";
-    } else {
-        x.className = "navegador";
-    }
-} 
-
-
 
 $(document).ready(function() {
 
@@ -72,6 +51,10 @@ $(document).ready(function() {
                         var id = datos.id;
                         var nombre = datos.name;
                         var imagen = datos.sprites.front_default;
+                        var experiencia = datos.base_experience
+                        var id = datos.id 
+                        var peso = datos.weight/10
+                        var altura = datos.height*10
                         
                         // Agregar Pokémon a la lista
                         $(".info_id").append(
@@ -80,12 +63,30 @@ $(document).ready(function() {
                             "<div class='pokemon'>" + "<img src='" + imagen + "'>" +  "</div>" +
                             "<h1>" + nombre + "</h1>" + 
                             "<button class='compartir' alt='compartir' onClick='Compartir(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
-                            "<button class='descripcion' alt='compartir' onClick='Descripcion(this)'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
+                            "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
                             "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                 
                             "</div>");
+                        $('.descripcion').click(function(){
+                            $.ajax({
+                                url: 'https://pokeapi.co/api/v2/pokemon-species/' + nombre, 
+                                type: "GET",
+                                dataType: "json",                
+                                success: function(datos){ 
+                                   var desc = datos.flavor_text_entries[26].flavor_text;
+                                   $(".info").html(
+                                    "<h1>" + nombre + "</h1>"  + 
+                                    "</div>"  + 
+                                    "<p>Exp:" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
+                                     + "kg</p>" + "<p><strong>Altura: </strong>" + altura
+                                     + "cm</p>" + "<div>" +
+                                    "<p>" + "Descripción: " + desc + "</p>" + 
+                                    "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");},
+                               });                        
+                            });                            
+
                     },
 
-                    error: function(xhr, status) {
+                    error: function() {
                         $(".info_id").html("Pokémon " + id_nombre + " no disponible");
                     }
                     
@@ -127,34 +128,39 @@ $(document).ready(function() {
                 "<p>Exp:" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
                  + "kg</p>" + "<p><strong>Altura: </strong>" + altura
                  + "cm</p>" + "<div>" +
-                 "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
-                 "<button class='descripcion' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
+                 "<button class='compartir' alt='compartir' onClick='Compartir(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
+                 "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
                  "<button class='favoritos' alt='favoritos' onClick='Mostrar(this)'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                 
                  "</div>");
-               let results = datos;
+
+                 $('.descripcion').click(function(){
+                  
+                    $.ajax({
+                        url: 'https://pokeapi.co/api/v2/pokemon-species/' + id_nombre, 
+                        type: "GET",
+                        dataType: "json",                
+                        success: function(datos){ 
+                           var desc = datos.flavor_text_entries[26].flavor_text;
+                           $(".info").html(
+                            "<h1>" + nombre + "</h1>"  + 
+                            "</div>"  + 
+                            "<p>Exp:" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
+                             + "kg</p>" + "<p><strong>Altura: </strong>" + altura
+                             + "cm</p>" + "<div>" +
+                            "<p>" + "Descripción: " + desc + "</p>" + 
+                            "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");},
+                       });
+                    }); 
+                      
             },
             
-            error: function(xhr, status) {
+            error: function() {
               $(".info_id").html("Pokémon " + id_nombre + " no disponible");
-            },
+            }
 
         
             
         });
-
-        // $.ajax({
-        //     url: 'https://pokeapi.co/api/v2/pokemon-species/' + id_nombre, 
-        //     type: "GET",
-        //     dataType: "json",
-            
-
-            
-        //     success: function(datos){ 
-        //         var descripcion = datos.flavor_text_entries[26].flavor_text;
-        //         $(".descripcion").html("<p>" + "Descripción: " + descripcion + "</p>" + "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");},
-
-            
-        // });
 
 
         
@@ -176,50 +182,33 @@ $(document).ready(function() {
                 "<h2>#" + id + "</h2>"  +  
                 "<h1>" + nombre + "</h1>" + 
                 "<div class='item'>" + "<img src='" + imagen + "'>" +  "</div>" + 
-                "<p>" + "Costo:  " + costo  +  "</p>" + 
-                "<p>" + "Tipo:  " +  tipo +  "</p>" + 
-                // "Descripción: " + datos.flavor_text_entries[13].text + "</p>" + 
+                // "<p>" + "Costo:  " + costo  +  "</p>" + 
+                // "<p>" + "Tipo:  " +  tipo +  "</p>" + 
+                // ç" + 
                 "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
                 "<button class='descripcion' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
-                "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                                 "</div>");
+                "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                         "</div>");
+                $('.descripcion').click(function(){
+                    $(".info").html(
+                    "<h1>" + nombre + "</h1>" + 
+                    "<div class='item'>" + "<img src='" + imagen + "'>" +  "</div>" + 
+                    "<p>" + "Costo:  " + costo  +  "</p>" + 
+                    "<p>" + "Tipo:  " +  tipo +  "</p>" +
+                    "Descripción: " + datos.flavor_text_entries[13].text + "</p>"); 
+                    // "Descripción: " + datos.flavor_text_entries[13].text + "</p>" + 
+            }); 
+                      
             },
             error: function(xhr, status) {
-                alert("El item " + id_nombre + " no se ha encontrado");
+                $(".info_id").html("El item " + id_nombre + " no se ha encontrado");
             }
            
         });
       }
-      if (filtro.value == 'tipos'){
-        $.ajax({
-            url: "https://pokeapi.co/api/v2/type/" + "nombre_tipos", 
-            type: "GET",
-            dataType: "json",
-            success: function(datos){
-               // $(".info_id").html("<h1>" + datos.name + "</h1><img src='" + datos.sprites.front_default + "' alt='" + datos.name + "'><p>Peso: " + datos.weight + "</p><p>Altura: " + datos.height + "cm</p>");
-               $(".info_id").html("");
-            },
-            error: function(xhr, status) {
-                alert("Tipo no disponible");
-            }
-
-        
-
-
-        });
-      }
-
+    
       
     });
 
-    $('#pokemon-list').on('click', '.favoritos', function() {
-        var pokemonName = $(this).data('name');
-        $('#favoritos').append('<li>' + pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1) + ' <span class="eliminar">Eliminar</span></li>');
-    });
-
-    // Eliminar Pokémon de la lista de favoritos
-    $('#favoritos').on('click', '.eliminar', function() {
-        $(this).parent().remove();
-    });
 
         
 });
@@ -235,60 +224,60 @@ function validar() {
     const comentario = form.comentario.value;
     
     if (nombre == "") {
-        alert("El nombre no debe quedar vacio");
+        $(".info_id").html("El nombre no debe quedar vacio");
         return false;
     }
 
     if (nombre.search(/[^0-9]/g)) {
-        alert("El nombre no debe contener números");
+        $(".info_id").html("El nombre no debe contener números");
         return false;
     }
     
     if (nombre.search(/[^a-z]/g)) {
-		alert("El nombre debe contener mayus");
+		$(".info_id").html("El nombre debe contener mayus");
         return false;
 
     }
     
     if (apellido == "") {
-        alert("El apellido no debe estar vacio");
+        $(".info_id").html("El apellido no debe estar vacio");
         return false;
     }
 
     if (apellido.search(/[^0-9]/g)) {
-        alert("El apellido no debe contener números");
+        $(".info_id").html("El apellido no debe contener números");
         return false;
     }
 
     if (apellido.search(/[^a-z]/g)) {
-		alert("El apellido debe contener mayus");
+		$(".info_id").html("El apellido debe contener mayus");
         return false;
 
     }
 
     if (nacimiento == "") {
-        alert("Debe ingresar fecha de nacimiento");
+        $(".info_id").html("Debe ingresar fecha de nacimiento");
         return false;
     }
 
     if (calificacion == "") {
-        alert("Debe calificar la página");
+        $(".info_id").html("Debe calificar la página");
         return false;
     }
 
     if (email == "") {
-        alert("Debe ingresar el correo electrónico");
+        $(".info_id").html("Debe ingresar el correo electrónico");
         return false;
     }
 
     if (email == "r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]") {
-        alert("Debe ingresar el correo electrónico válido");
+        $(".info_id").html("Debe ingresar el correo electrónico válido");
         return false;
     }
 
 
-    // Muestra los datos en un alert
-    alert(` Nombre: ${nombre}\n Apellido: ${apellido}\n Fecha de nacimiento: ${nacimiento}\n Género: ${genero}\n Valoración de la página: ${calificacion}\n Correo Electrónico: ${email}\n Mensaje: ${comentario}`);
+    // Muestra los datos en un $(".info_id").html
+    $(".info_id").html(` Nombre: ${nombre}\n Apellido: ${apellido}\n Fecha de nacimiento: ${nacimiento}\n Género: ${genero}\n Valoración de la página: ${calificacion}\n Correo Electrónico: ${email}\n Mensaje: ${comentario}`);
 
 
 }
@@ -301,35 +290,35 @@ function enviar() {
     const comentario = form.comentario.value;
 
     if (emaile == "") {
-        alert("Debe ingresar el correo electrónico");
+        $(".alert").html("Debe ingresar el correo electrónico");
         return false;
     }
 
     if (emaile == "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/") {
-        alert("Debe ingresar el correo electrónico válido");
+        $(".alert").html("Debe ingresar el correo electrónico válido");
         return false;
     }
     
     
     if (emailr == "") {
-        alert("Debe ingresar el correo electrónico");
+        $(".alert").html("Debe ingresar el correo electrónico");
         return false;
     }
 
     if (emailr == "r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]") {
-        alert("Debe ingresar el correo electrónico válido");
+        $(".alert").html("Debe ingresar el correo electrónico válido");
         return false;
     }
 
     else{
-        alert("Redireccionando al gestor de correo")
+        $(".alert").html("Redireccionando al gestor de correo")
         window.location = 'mailto: ' + $("#email_receptor").val() + '?subject=' + 'Compartir&body=' + $("#comentario").val();
         return true;
     }
 
 
-    // Muestra los datos en un alert
-    alert(` Nombre: ${nombre}\n Apellido: ${apellido}\n Fecha de nacimiento: ${nacimiento}\n Género: ${genero}\n Valoración de la página: ${calificacion}\n Correo Electrónico: ${email}\n Mensaje: ${comentario}`);
+    // Muestra los datos en un $(".info_id").html
+    $(".info_id").html(` Nombre: ${nombre}\n Apellido: ${apellido}\n Fecha de nacimiento: ${nacimiento}\n Género: ${genero}\n Valoración de la página: ${calificacion}\n Correo Electrónico: ${email}\n Mensaje: ${comentario}`);
 
 
 }
