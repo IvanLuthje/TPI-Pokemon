@@ -157,50 +157,24 @@ $(document).ready(function() {
                  "<button class='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                 
                  "</div>");
 
-                $('.favoritos').click(function(){
-                    agregarFavoritos(nombre);
-                });
-                            
-                function agregarFavoritos(id) {
-                    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                        if (!favoritos.includes(id)) {
-                             favoritos.push(id);
-                             localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                             mostrarFavoritos();
-                        } 
-                        
-                        else {
-                            alert(`El pokemon ${nombre} ya está en favoritos.`);
-                        }
-                    }
-
-                function removerFavoritos(nombre) {
-                    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                    favoritos = favoritos.filter(pokemon => pokemon !== nombre);
+                $(".favoritos").click(function(){
+                    favoritos.push(pokemon);
                     localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                    mostrarFavoritos();
-                }
-                        
-                function mostrarFavoritos() {
-                    const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                    actualizarListaFavoritos();
+                });
+
+              
+
+                function actualizarListaFavoritos() {
+                    favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
                     $('.lista_favoritos').empty();
-                        if (favoritos.length) {
-                            favoritos.forEach(pokemon => {
-                                $('.lista_favoritos').append(`
-                                    <div>
-                                        ${pokemon} 
-                                        <button id="eliminar" data-name="${pokemon}">&times;</button>
-                                    </div>
-                                `);
-                            });
-                        } else {
-                            ('.lista_favoritos').text('No hay favoritos.');
-                        }
-                            }
-                        
-                        $('#eliminar').click(function() {
-                             removerFavoritos(pokemon);
-                        });
+                    favoritos.forEach(pokemon => {
+                    $('.lista_favoritos').append(pokemon);
+                });
+            }
+           
+                            
+              
                             
 
                  $('.descripcion').click(function(){
