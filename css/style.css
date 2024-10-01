@@ -130,17 +130,17 @@ height: 75%;
 }
 
 #modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 5; /* Sit on top */
-	padding-top: 100px; /* Location of the box */
+	display: none; 
+	position: fixed; 
+	z-index: 5; 
+	padding-top: 100px; 
 	left: 0;
 	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgba(0,0,0,0.4); 
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; 
 	font-family: 'lato';
+	background-color: #00000055;
   }
   
   .modal-pokemon {

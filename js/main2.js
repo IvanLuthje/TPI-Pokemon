@@ -40,6 +40,12 @@ $(document).ready(function() {
         location.reload(true)
     });
 
+    $('.compartir').click(function(){
+        window.location.href='compartir.html';
+    }); 
+
+  
+
     $.ajax({
         url: 'https://pokeapi.co/api/v2/pokemon?limit=21',
         method: 'GET',
@@ -58,6 +64,8 @@ $(document).ready(function() {
                         var id = datos.id 
                         var peso = datos.weight/10
                         var altura = datos.height*10
+
+                       
                         
                         // Agregar Pokémon a la lista
                         $(".info_id").append(
@@ -69,33 +77,34 @@ $(document).ready(function() {
                             "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
                             "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                 
                             "</div>");
+
+                         
                         $('.descripcion').click(function(){
-                            $.ajax({
-                                url: 'https://pokeapi.co/api/v2/pokemon-species/' + nombre, 
-                                type: "GET",
-                                dataType: "json",                
-                                success: function(datos){ 
-                                   var desc = datos.flavor_text_entries[26].flavor_text;
-                                   modal.style.display = "block";
-                                   $(".info").html(
-                                    "<h1>" + nombre + "</h1>"  + 
-                                    "</div>"  + 
-                                    "<p>Exp:" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
-                                     + "kg</p>" + "<p><strong>Altura: </strong>" + altura
-                                     + "cm</p>" + "<div>" +
-                                    "<p>" + "Descripción: " + desc + "</p>" + 
-                                    "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");},
-                               });
-                                $('.compartir').click(function(){
-                                    window.location.href='compartir.html';
-                                });                        
+                       
+                                $.ajax({
+                                    url: 'https://pokeapi.co/api/v2/pokemon-species/' + nombre, 
+                                    type: "GET",
+                                    dataType: "json",                
+                                    success: function(datos){ 
+                                    var desc = datos.flavor_text_entries[26].flavor_text;
+                                    modal.style.display = "block";
+                                    $(".info").html(
+                                        "<h1>" + nombre + "</h1>"  + 
+                                        "</div>"  + 
+                                        "<div class='pokemon'>" + "<img src='" + imagen + "'>" + 
+                                        "<p><strong>Exp: </strong>" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
+                                        + "kg</p>" + "<p><strong>Altura: </strong>" + altura
+                                        + "cm</p>" + "<div>" +
+                                        "<p>" + "<strong> Descripción: </strong>" + desc + "</p>" + 
+                                        "<button class='compartir' onclick='Compartir()'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");},
+                                });
+
+                                                 
                             });
                             $('.cerrar').click(function(){
                                 modal.style.display = "none";
                             }); 
-                            $('.compartir').click(function(){
-                                window.location.href='compartir.html';
-                            });   
+                          
                             $('.favoritos').click(function(){
                                 window.location.href='compartir.html';
                             });                       
@@ -116,6 +125,7 @@ $(document).ready(function() {
 
    
     $("#busqueda").click(function(){
+        let pokemon = $('#id_nombre').val();
         let filtro = document.querySelector('#filtro'); // Se declara el comportamiento de los filtros de nombre, items entre otros
         var id_nombre = $("#nombre").val().toLowerCase().replace(/[^a-zA-Z0-9]/g, '');   
 
@@ -142,10 +152,56 @@ $(document).ready(function() {
                 "<div class='pokemon'>" + "<img src='" + imagen + "'>" + 
                 "<h1>" + nombre + "</h1>"  + 
                 "</div>"  + 
-                 "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
+                 "<button class='compartir' onclick='Compartir()'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
                  "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
                  "<button class='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +                 
                  "</div>");
+
+                $('.favoritos').click(function(){
+                    agregarFavoritos(nombre);
+                });
+                            
+                function agregarFavoritos(id) {
+                    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                        if (!favoritos.includes(id)) {
+                             favoritos.push(id);
+                             localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                             mostrarFavoritos();
+                        } 
+                        
+                        else {
+                            alert(`El pokemon ${nombre} ya está en favoritos.`);
+                        }
+                    }
+
+                function removerFavoritos(nombre) {
+                    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                    favoritos = favoritos.filter(pokemon => pokemon !== nombre);
+                    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                    mostrarFavoritos();
+                }
+                        
+                function mostrarFavoritos() {
+                    const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                    $('.lista_favoritos').empty();
+                        if (favoritos.length) {
+                            favoritos.forEach(pokemon => {
+                                $('.lista_favoritos').append(`
+                                    <div>
+                                        ${pokemon} 
+                                        <button id="eliminar" data-name="${pokemon}">&times;</button>
+                                    </div>
+                                `);
+                            });
+                        } else {
+                            ('.lista_favoritos').text('No hay favoritos.');
+                        }
+                            }
+                        
+                        $('#eliminar').click(function() {
+                             removerFavoritos(pokemon);
+                        });
+                            
 
                  $('.descripcion').click(function(){
                   
@@ -161,17 +217,17 @@ $(document).ready(function() {
                             "<h1>" + nombre + "</h1>"  + 
                             "</div>"  + 
                             "<div class='pokemon'>" + "<img src='" + imagen + "'>" + 
-                            "<p>Exp:" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
+                            "<p><strong>Exp: </strong>" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
                              + "kg</p>" + "<p><strong>Altura: </strong>" + altura
                              + "cm</p>" + "<div>" +
-                            "<p>" + "Descripción: " + desc + "</p>" + 
-                            "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");},
+                            "<p>" + "<strong> Descripción: </strong>" + desc + "</p>" + 
+                            "<button class='compartir' onclick='Compartir()'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");},
                             
                        });
 
                        $('.compartir').click(function(){
                           window.location.href='compartir.html';
-                         $('#compartir').val("Este es el area");
+                         $('#compartir').val('compartir');
                         });  
                   
                     }); 
@@ -179,14 +235,7 @@ $(document).ready(function() {
                         modal.style.display = "none";
                     });
 
-                    $('.compartir').click(function(){
-                        window.location.href='compartir.html';
-                        $('#compartir').val("Este es el area");
-                    });  
                   
-                    $('.favoritos').click(function(){
-                        window.location.href='historial.html';
-                    });  
             },
             
             error: function() {
@@ -220,7 +269,7 @@ $(document).ready(function() {
                 "<h1>" + nombre + "</h1>" + 
                 "<div class='item'>" + "<img src='" + imagen + "'>" +  "</div>" + 
            
-                "<button class='compartir' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
+                "<button class='compartir' onclick='Compartir()'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" + 
                 "<button class='descripcion' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" + 
                 "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" + "</div>");
                 $('.descripcion').click(function(){
@@ -231,7 +280,11 @@ $(document).ready(function() {
                     "<div class='item'>" + "<img src='" + imagen + "'>" +  "</div>" + 
                     "<p>" + "Costo:  " + costo  +  "</p>" + 
                     "<p>" + "Tipo:  " +  tipo +  "</p>" +
-                    "Descripción: " + datos.flavor_text_entries[13].text + "</p>"); 
+                    "Descripción: " + datos.flavor_text_entries[13].text + "</p>" +
+                    "<button class='compartir' onclick='Compartir()'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>"
+
+                ); 
+                    
                     // "Descripción: " + datos.flavor_text_entries[13].text + "</p>" + 
                 $('.cerrar').click(function(){
                     modal.style.display = "none";
