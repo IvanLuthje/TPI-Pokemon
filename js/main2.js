@@ -11,20 +11,20 @@ function iniciarMap() {
 }
 
 function Compartir() {
-     window.location.href = 'compartir.html';
-     $("#comentario").html(nombre,desc)
+    window.location.href = 'compartir.html';
+    $("#comentario").html(nombre, desc)
 
- };
+};
 
- function abrirFav() {
+function abrirFav() {
     document.getElementById("navegador").style.width = "150px";
 }
 
 function cerrarFav() {
     document.getElementById("navegador").style.width = "0";
- 
+
 }
- 
+
 
 
 
@@ -104,82 +104,82 @@ $(document).ready(function () {
                                         "<p>" + "<strong> Descripción: </strong>" + desc + "</p>" +
                                         "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");
                                 },
-                                
+
                             });
 
 
                         });
 
-        
+
                         $('.cerrar').click(function () {
                             modal.style.display = "none";
                         });
 
-                      
-                        $('.favoritos').click(function() {
-                             agregarFavoritos(nombre)                        
+
+                        $('.favoritos').click(function () {
+                            agregarFavoritos(nombre)
                         });
-                            
-    
-                        
-                        function  agregarFavoritos(nombre) {
+
+
+
+                        function agregarFavoritos(nombre) {
                             let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                                if (!favoritos.includes(nombre)) {
-                                     favoritos.push(nombre);
-                                     localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                                     alert('Se ha agregado un pokemon');
-                                     mostrarFavoritos();
-                                  
-                                } 
-                                
-                                else {
-                                    alert(`El pokemon ${nombre} ya está en favoritos.`);
-                                }
+                            if (!favoritos.includes(nombre)) {
+                                favoritos.push(nombre);
+                                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                                alert('Se ha agregado un pokemon');
+                                mostrarFavoritos();
+
                             }
 
-        
-                            function removerFavoritos() {
-                                let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                                favoritos = favoritos.filter(f => f !== pokemon);
-                                localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                                mostrarFavoritos();
+                            else {
+                                alert(`El pokemon ${nombre} ya está en favoritos.`);
                             }
-                                
+                        }
+
+
+                        function removerFavoritos() {
+                            let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                            favoritos = favoritos.filter(f => f !== pokemon);
+                            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                            mostrarFavoritos();
+                        }
+
                         function mostrarFavoritos() {
                             const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
                             $('.lista_favoritos').empty();
                             $('.lista_favoritos').html('<h1>Favoritos</h1>' + '</br>');
-                                if (favoritos.length) {
-                                    favoritos.forEach(pokemon => {
-                                        $('.lista_favoritos').append(`
+                            if (favoritos.length) {
+                                favoritos.forEach(pokemon => {
+                                    $('.lista_favoritos').append(`
                                                 ${pokemon} 
                                                 <button id="eliminar" data-name="${pokemon}">&times;</button>
                                                 </br>
                                         `);
-                                    });
-                                } 
-                                else {
-                                    $('.lista_favoritos').html('<h1>Favoritos</h1>'+ '</br>' + 'No se encuentran favoritos');
-                                }
-                                }
-
-                                
-                                
-                                $('#eliminar').click(function() {
-                                    removerFavoritos();
-                                    mostrarFavoritos();                                
                                 });
+                            }
+                            else {
+                                $('.lista_favoritos').html('<h1>Favoritos</h1>' + '</br>' + 'No se encuentran favoritos');
+                            }
+                        }
 
-                                $('#eliminar-todos').click(function() {
-                                    localStorage.clear();
-                                    mostrarFavoritos();
-                                });
-                                
 
-                                mostrarFavoritos();
-                    
-                
-                                        
+
+                        $('#eliminar').click(function () {
+                            removerFavoritos();
+                            mostrarFavoritos();
+                        });
+
+                        $('#eliminar-todos').click(function () {
+                            localStorage.clear();
+                            mostrarFavoritos();
+                        });
+
+
+                        mostrarFavoritos();
+
+
+
 
 
 
@@ -199,7 +199,7 @@ $(document).ready(function () {
 
 
     $("#busqueda").click(function () {
-       
+
         let filtro = document.querySelector('#filtro'); // Se declara el comportamiento de los filtros de nombre, items entre otros
         var id_nombre = $("#nombre").val().toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
 
@@ -230,84 +230,84 @@ $(document).ready(function () {
                         "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
                         "<button class='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
                         "</div>");
-                        $('.favoritos').click(function() {
-                            agregarFavoritos(nombre);
-                        });
-                        
+                    $('.favoritos').click(function () {
+                        agregarFavoritos(nombre);
+                    });
 
-                        function  agregarFavoritos(nombre) {
-                            let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                                if (!favoritos.includes(nombre)) {
-                                     favoritos.push(nombre);
-                                     localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                                     alert('Se ha agregado un pokemon');
-                                     mostrarFavoritos();
-                                  
-                                } 
-                                
-                                else {
-                                    alert(`El pokemon ${nombre} ya está en favoritos.`);
-                                }
-                            }
 
-        
-                            function removerFavoritos() {
-                                let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                                favoritos = favoritos.filter(f => f !== pokemon);
-                                localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                                mostrarFavoritos();
-                            }
-                                
-                        function mostrarFavoritos() {
-                            const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                            $('.lista_favoritos').empty();
-                            $('.lista_favoritos').html('<h1>Favoritos</h1>' + '</br>');
-                                if (favoritos.length) {
-                                    favoritos.forEach(pokemon => {
-                                        $('.lista_favoritos').append(`
+                    function agregarFavoritos(nombre) {
+                        let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                        if (!favoritos.includes(nombre)) {
+                            favoritos.push(nombre);
+                            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                            alert('Se ha agregado un pokemon');
+                            mostrarFavoritos();
+
+                        }
+
+                        else {
+                            alert(`El pokemon ${nombre} ya está en favoritos.`);
+                        }
+                    }
+
+
+                    function removerFavoritos() {
+                        let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                        favoritos = favoritos.filter(f => f !== pokemon);
+                        localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                        mostrarFavoritos();
+                    }
+
+                    function mostrarFavoritos() {
+                        const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                        $('.lista_favoritos').empty();
+                        $('.lista_favoritos').html('<h1>Favoritos</h1>' + '</br>');
+                        if (favoritos.length) {
+                            favoritos.forEach(pokemon => {
+                                $('.lista_favoritos').append(`
                                                 ${pokemon} 
                                                 <button id="eliminar" data-name="${pokemon}">&times;</button>
                                                 </br>
                                         `);
-                                    });
-                                } else {
-                                    $('.lista_favoritos').html('<h1>Favoritos</h1>'+ '</br>' + 'No se encuentran favoritos');
-                                }
-                                }
+                            });
+                        } else {
+                            $('.lista_favoritos').html('<h1>Favoritos</h1>' + '</br>' + 'No se encuentran favoritos');
+                        }
+                    }
 
-                                function mostrarHistorial() {
-                                    const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                                    $('.historial_favoritos').empty();
-                                    $('.historial_favoritos').html('<h1>Favoritos</h1>' + '</br>');
-                                        if (favoritos.length) {
-                                            favoritos.forEach(pokemon => {
-                                                $('.historial_favoritos').append(`
+                    function mostrarHistorial() {
+                        const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                        $('.historial_favoritos').empty();
+                        $('.historial_favoritos').html('<h1>Favoritos</h1>' + '</br>');
+                        if (favoritos.length) {
+                            favoritos.forEach(pokemon => {
+                                $('.historial_favoritos').append(`
                                                         ${pokemon}
                                                         "<h1>" + nombre + "</h1>" +
                                                         "</div>" +
                                                         "<div class='pokemon'>" + "<img src='" + imagen + "'>" +
                                                         "<p><strong>Exp: </strong>" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
                                                         + "kg</p>" + "<p><strong>Altura: </strong>" + altura`);
-                                            });
-                                        } 
-                                        else {
-                                            $('.historial_favoritos').html('<h1>Favoritos</h1>'+ '</br>' + 'No se encuentran favoritos');
-                                        }
-                                        }
-                                
-                                $('#eliminar').click(function() {
-                                    removerFavoritos();                                 
-                                });
+                            });
+                        }
+                        else {
+                            $('.historial_favoritos').html('<h1>Favoritos</h1>' + '</br>' + 'No se encuentran favoritos');
+                        }
+                    }
 
-                                $('#eliminar-todos').click(function() {
-                                    localStorage.clear();
-                                    mostrarFavoritos();
-                                });
+                    $('#eliminar').click(function () {
+                        removerFavoritos();
+                    });
 
-                                mostrarFavoritos();
-                                mostrarHistorial();
-                    
-                
+                    $('#eliminar-todos').click(function () {
+                        localStorage.clear();
+                        mostrarFavoritos();
+                    });
+
+                    mostrarFavoritos();
+                    mostrarHistorial();
+
+
 
 
 
@@ -334,9 +334,9 @@ $(document).ready(function () {
 
                         });
 
-                        
 
-                    
+
+
 
                     });
                     $('.cerrar').click(function () {
@@ -348,7 +348,7 @@ $(document).ready(function () {
                         var subject_text = nombre;
                         $('#subject').text(subject_text);
                     });
-                    
+
 
 
                 },
@@ -398,60 +398,60 @@ $(document).ready(function () {
 
                         );
 
-                        $('.favoritos').click(function() {
+                        $('.favoritos').click(function () {
                             agregarFavoritos(nombre);
                         });
-                        
+
 
                         function agregarFavoritos(nombre) {
                             let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                                if (!favoritos.includes(nombre)) {
-                                     favoritos.push(nombre);
-                                     localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                                     alert('Se ha agregado un pokemon');
-                                     mostrarFavoritos();
-                                  
-                                } 
-                                
-                                else {
-                                    alert(`El pokemon ${nombre} ya está en favoritos.`);
-                                }
+                            if (!favoritos.includes(nombre)) {
+                                favoritos.push(nombre);
+                                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                                alert('Se ha agregado un pokemon');
+                                mostrarFavoritos();
+
                             }
 
-        
-                            function removerFavoritos(nombre) {
-                                let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                                favoritos = favoritos.filter(f => f !== nombre);
-                                localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                                mostrarFavoritos();
+                            else {
+                                alert(`El pokemon ${nombre} ya está en favoritos.`);
                             }
-                                
+                        }
+
+
+                        function removerFavoritos(nombre) {
+                            let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                            favoritos = favoritos.filter(f => f !== nombre);
+                            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                            mostrarFavoritos();
+                        }
+
                         function mostrarFavoritos() {
                             const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
                             $('.lista_favoritos').html('<h1>Favoritos</h1>' + '</br>');
-                                if (favoritos.length) {
-                                    favoritos.forEach(pokemon => {
-                                        $('.lista_favoritos').append(`
+                            if (favoritos.length) {
+                                favoritos.forEach(pokemon => {
+                                    $('.lista_favoritos').append(`
                                                 ${pokemon} 
                                                 <button id="eliminar" data-name="${pokemon}">&times;</button>
                                                 </br>
                                         `);
-                                    });
-                                } else {
-                                    ('.lista_favoritos').text("No se encuentran favoritos");
-                                }
-                                }
-                                
-                                $('#eliminar').click(function() {
-                                    removerFavoritos();                                 
                                 });
+                            } else {
+                                ('.lista_favoritos').text("No se encuentran favoritos");
+                            }
+                        }
 
-                                $('#eliminar-todos').click(function() {
-                                    localStorage.clear();
-                                });
+                        $('#eliminar').click(function () {
+                            removerFavoritos();
+                        });
 
-                                mostrarFavoritos();
-                    
+                        $('#eliminar-todos').click(function () {
+                            localStorage.clear();
+                        });
+
+                        mostrarFavoritos();
+
 
                         $('.cerrar').click(function () {
                             modal.style.display = "none";
@@ -464,7 +464,7 @@ $(document).ready(function () {
                                 <p>Altura: ${altura}</p>
                                 <p>Peso: ${peso}</p>
                             `;
-                            
+
                         });
                     });
 
