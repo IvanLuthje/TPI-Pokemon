@@ -16,6 +16,16 @@ function Compartir() {
 
  };
 
+ function abrirFav() {
+    document.getElementById("navegador").style.width = "150px";
+}
+
+function cerrarFav() {
+    document.getElementById("navegador").style.width = "0";
+ 
+}
+ 
+
 
 
 
@@ -152,14 +162,19 @@ $(document).ready(function () {
                                     $('.lista_favoritos').html('<h1>Favoritos</h1>'+ '</br>' + 'No se encuentran favoritos');
                                 }
                                 }
+
+                                
                                 
                                 $('#eliminar').click(function() {
-                                    removerFavoritos();                                 
+                                    removerFavoritos();
+                                    mostrarFavoritos();                                
                                 });
 
                                 $('#eliminar-todos').click(function() {
                                     localStorage.clear();
+                                    mostrarFavoritos();
                                 });
+                                
 
                                 mostrarFavoritos();
                     
@@ -259,6 +274,26 @@ $(document).ready(function () {
                                     $('.lista_favoritos').html('<h1>Favoritos</h1>'+ '</br>' + 'No se encuentran favoritos');
                                 }
                                 }
+
+                                function mostrarHistorial() {
+                                    const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                                    $('.historial_favoritos').empty();
+                                    $('.historial_favoritos').html('<h1>Favoritos</h1>' + '</br>');
+                                        if (favoritos.length) {
+                                            favoritos.forEach(pokemon => {
+                                                $('.historial_favoritos').append(`
+                                                        ${pokemon}
+                                                        "<h1>" + nombre + "</h1>" +
+                                                        "</div>" +
+                                                        "<div class='pokemon'>" + "<img src='" + imagen + "'>" +
+                                                        "<p><strong>Exp: </strong>" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
+                                                        + "kg</p>" + "<p><strong>Altura: </strong>" + altura`);
+                                            });
+                                        } 
+                                        else {
+                                            $('.historial_favoritos').html('<h1>Favoritos</h1>'+ '</br>' + 'No se encuentran favoritos');
+                                        }
+                                        }
                                 
                                 $('#eliminar').click(function() {
                                     removerFavoritos();                                 
@@ -266,9 +301,11 @@ $(document).ready(function () {
 
                                 $('#eliminar-todos').click(function() {
                                     localStorage.clear();
+                                    mostrarFavoritos();
                                 });
 
                                 mostrarFavoritos();
+                                mostrarHistorial();
                     
                 
 

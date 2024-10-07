@@ -21,6 +21,7 @@
             <p><a href="contacto.html">CONTACTO</a></p>
             <p><a href="compartir.html">COMPARTIR</a></p>
             <p><a href="historial.html">HISTORIAL</a></p>
+            <p><a><span onclick="abrirFav()">FAVORITOS</span></a></p>
         </div>
         
         <div class="col_der">
@@ -35,6 +36,8 @@
                 </select>
        
                 <button class="reset"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+    
+
 
             </div>
 
@@ -52,13 +55,16 @@
                 </div>
             </div>
 
+
        
          
        
     </div>
+    <div id="navegador">                     
+        <a href="javascript:void(0)" class="closebtn" onclick="cerrarFav()"><i class="fa fa-window-close" aria-hidden="true"></i></a>
+        <div class="lista_favoritos"></div>
 
-    <div class="lista_favoritos"></div>
-    
+    </div>
 </body>
 <!-- <footer>
     Pokemon

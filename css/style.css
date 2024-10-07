@@ -229,6 +229,42 @@ height: 75%;
 	
 }
 
+.navegador {
+    height: 100%;
+    width: 0;
+    position: absolute;
+    z-index: 10;
+    top: 1;
+    left: 20;
+    background-image: url("44-redROG.png");
+    overflow-x: hidden;
+    transition: 1.0s;
+    padding-top: 60px;
+}
+
+.navegador a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #E1C5C5;
+    display: block;
+    transition: 0.1s;
+	
+}
+
+.navegador a:hover, .offcanvas a:focus{
+    color: #DA8383;
+    
+}
+
+.navegador .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
 .descripcion{
 	width: 50px;
 	height: 50px;
