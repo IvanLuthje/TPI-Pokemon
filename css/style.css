@@ -43,6 +43,8 @@ h2{
 		font-size: 10px;
 	}
 
+  
+
   .main2 {
 	display: flex;
 	flex-direction: row;
@@ -65,6 +67,13 @@ h2{
 	font-size: 15px;
   }
 
+  .lista_favoritos {
+	flex: 5%;
+	font-size: 10px;
+	font-family: 'lato', sans-serif;  
+  }
+
+  
 
 
   .alert{
@@ -157,7 +166,15 @@ height: 75%;
 	font-size: 28px;
 	font-weight: bold;
   }
+
+   {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+  }
   
+
   .cerrar:hover,
   .cerrar:focus {
 	color: #000;
@@ -254,14 +271,20 @@ height: 75%;
   opacity: 70%;
 }
 
-.reset2{
-	width: 50px;
-	height: 50px;
+
+
+#eliminar{
+	width: 20px;
+	height: 20px;
 	border-radius: 30px;
-	background-color: #ffa500;
+	background-color: #aaa319;
 	border: none;
 	color: #ffffff;
+	font:
 	/* margin:-0.7%; */
+}
+#eliminar:hover{
+  opacity: 70%;
 }
 
 .reset2:hover{
