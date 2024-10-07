@@ -181,15 +181,7 @@ height: 75%;
 	margin-bottom: 5%;
 }
 
-#email_emisor{
-	margin-top: 0;
-	height: 26px;
-	border-radius: 30px;
-	border-style: solid;
-	width: 100%;
-	box-sizing: border-box;
-	font-family: 'lato';
-}
+
 
 #email_receptor{
 	margin-top: 0;
@@ -201,7 +193,15 @@ height: 75%;
 	font-family: 'lato';
 }
 
-
+#subject{
+	margin-top: 0;
+	height: 26px;
+	border-radius: 30px;
+	border-style: solid;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: 'lato';
+}
 
 .id_nombre{
 	height: 50px;

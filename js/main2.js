@@ -10,11 +10,11 @@ function iniciarMap() {
     });
 }
 
-function Compartir(datos) {
-    window.location.href = 'compartir.html';
+function Compartir() {
+     window.location.href = 'compartir.html';
+     $("#comentario").html(nombre,desc)
 
-
-};
+ };
 
 
 
@@ -38,10 +38,6 @@ $(document).ready(function () {
 
     $('.reset').click(function () {
         location.reload(true)
-    });
-
-    $('.compartir').click(function () {
-        window.location.href = 'compartir.html';
     });
 
 
@@ -79,7 +75,7 @@ $(document).ready(function () {
                             "</div>");
 
 
-                        $('.descripcion').click(function (id) {
+                        $('.descripcion').click(function (nombre) {
 
                             $.ajax({
                                 url: 'https://pokeapi.co/api/v2/pokemon-species/' + nombre,
@@ -96,19 +92,73 @@ $(document).ready(function () {
                                         + "kg</p>" + "<p><strong>Altura: </strong>" + altura
                                         + "cm</p>" + "<div>" +
                                         "<p>" + "<strong> Descripción: </strong>" + desc + "</p>" +
-                                        "<button class='compartir' onclick='Compartir()'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");
+                                        "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");
                                 },
+                                
                             });
 
 
                         });
+
+        
                         $('.cerrar').click(function () {
                             modal.style.display = "none";
                         });
 
                         $('.favoritos').click(function () {
-                            window.location.href = 'compartir.html';
-                        });
+                            $('.favoritos').click(function() {
+                                agregarFavoritos(nombre)                        
+                            });
+                            
+    
+                            function agregarFavoritos(nombre) {
+                                let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                                    if (!favoritos.includes(nombre)) {
+                                         favoritos.push(nombre);
+                                         localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                                         mostrarFavoritos();
+                                    } 
+                                    
+                                    else {
+                                        alert(`El pokemon ${nombre} ya está en favoritos.`);
+                                    }
+                                }
+    
+            
+                            function removerFavoritos(nombre) {
+                                let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                                favoritos = favoritos.filter(pokemon => pokemon !== nombre);
+                                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                                mostrarFavoritos();
+                            }
+                                    
+                            function mostrarFavoritos() {
+                                const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                                $('.lista_favoritos').empty();
+                                    if (favoritos.length) {
+                                        favoritos.forEach(pokemon => {
+                                            $('.lista_favoritos').append(`
+                                                <div>
+                                                    ${pokemon} 
+                                                    <button id="eliminar" data-name="${pokemon}">&times;</button>
+                                                </div>
+                                            `);
+                                        });
+                                    } else {
+                                        ('.lista_favoritos').text('No hay favoritos.');
+                                    }
+                                        }
+                                    
+                                    $('#eliminar').click(function() {
+                                         removerFavoritos(pokemon);
+                                    });
+                                    $('#eliminar-todos').click(function() {
+                                        localStorage.clear
+                                    });
+                                        
+
+                                });
+
 
                     },
 
@@ -126,9 +176,10 @@ $(document).ready(function () {
 
 
     $("#busqueda").click(function () {
-        let pokemon = $('#id_nombre').val();
+       
         let filtro = document.querySelector('#filtro'); // Se declara el comportamiento de los filtros de nombre, items entre otros
         var id_nombre = $("#nombre").val().toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+        let pokemon = $('#id_nombre').val();
 
         if (filtro.value == 'nombre') {
 
@@ -153,28 +204,65 @@ $(document).ready(function () {
                         "<div class='pokemon'>" + "<img src='" + imagen + "'>" +
                         "<h1>" + nombre + "</h1>" +
                         "</div>" +
-                        "<button class='compartir' onclick='Compartir()'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
+                        "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
                         "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
                         "<button class='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
                         "</div>");
-
-                    $(".favoritos").click(function () {
-                        favoritos.push(pokemon);
-                        localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                        actualizarListaFavoritos();
-                    });
-
-
-
-                    function actualizarListaFavoritos() {
-                        favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                        $('.lista_favoritos').empty();
-                        favoritos.forEach(pokemon => {
-                            $('.lista_favoritos').append(pokemon);
+                        $('.favoritos').click(function() {
+                            agregarFavoritos(nombre);
                         });
-                    }
+                        
 
+                        function agregarFavoritos(id) {
+                            let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                                if (!favoritos.includes(id)) {
+                                     favoritos.push(id);
+                                     localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                                     alert('Se ha agregado un pokemon');
+                                     mostrarFavoritos();
+                                  
+                                } 
+                                
+                                else {
+                                    alert(`El pokemon ${nombre} ya está en favoritos.`);
+                                }
+                            }
 
+        
+                        function removerFavoritos(pokemon) {
+                            let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                            favoritos = favoritos.filter(pokemon => pokemon !== nombre);
+                            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                            mostrarFavoritos();
+                        }
+                                
+                        function mostrarFavoritos() {
+                            const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                            $('.lista_favoritos').empty();
+                                if (favoritos.length) {
+                                    favoritos.forEach(pokemon => {
+                                        $('.lista_favoritos').append(`
+                                            <div>
+                                                ${pokemon} 
+                                                <button id="eliminar" data-name="${pokemon}">&times;</button>
+                                            </div>
+                                       
+                                        `);
+                                    });
+                                } else {
+                                    ('.lista_favoritos').text('No hay favoritos.');
+                                }
+                                }
+                                
+                                $('#eliminar').click(function() {
+                                    removerFavoritos(pokemon);
+                                });
+
+                                $('#eliminar-todos').click(function() {
+                                    localStorage.removeItem('favoritos');   
+                                });
+                    
+                
 
 
 
@@ -196,19 +284,25 @@ $(document).ready(function () {
                                     + "kg</p>" + "<p><strong>Altura: </strong>" + altura
                                     + "cm</p>" + "<div>" +
                                     "<p>" + "<strong> Descripción: </strong>" + desc + "</p>" +
-                                    "<button class='compartir' onclick='Compartir()'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");
+                                    "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");
                             },
 
                         });
 
-                        $('.compartir').click(function () {
-                            window.location.href = 'compartir.html';
-                            $('#compartir').val('compartir');
-                        });
+                        
+
+                    
 
                     });
                     $('.cerrar').click(function () {
                         modal.style.display = "none";
+                    });
+
+                    $('.compartir').click(function () {
+                        window.location.href = 'compartir.html';
+                        $('#subject').html(nombre);
+
+
                     });
 
 
@@ -260,6 +354,10 @@ $(document).ready(function () {
                             "<button class='compartir' onclick='Compartir()'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>"
 
                         );
+
+                        $('.favoritos').click(function() {
+                            agregarFavoritos(nombre)                        
+                        });
 
                         // "Descripción: " + datos.flavor_text_entries[13].text + "</p>" + 
                         $('.cerrar').click(function () {
@@ -383,13 +481,9 @@ function enviar() {
 
     else {
         $(".alert").html("Redireccionando al gestor de correo")
-        window.location = 'mailto: ' + $("#email_receptor").val() + '?subject=' + 'Compartir&body=' + $("#comentario").val();
+        window.location = 'mailto: ' + $("#email_receptor").val() + '?subject=' + $("#subject").val() + '&body=' + $("#comentario").val();
         return true;
     }
-
-
-    // Muestra los datos en un $(".info_id").html
-    $(".info_id").html(` Nombre: ${nombre}\n Apellido: ${apellido}\n Fecha de nacimiento: ${nacimiento}\n Género: ${genero}\n Valoración de la página: ${calificacion}\n Correo Electrónico: ${email}\n Mensaje: ${comentario}`);
 
 
 }
