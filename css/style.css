@@ -6,16 +6,16 @@ body {
 	height: 100%;
 }
 
-a{
-	color:#fede84;
+a {
+	color: #fede84;
 }
 
-h1{
+h1 {
 	font-family: 'pokemon-font', sans-serif;
 }
 
-h2{
-	text-align:center;
+h2 {
+	text-align: center;
 }
 
 
@@ -24,85 +24,85 @@ h2{
 	font-family: pokemon-font;
 	src: url(../fonts/pokemonsolid.ttf);
 }
+
 @font-face {
 	font-family: lato;
 	src: url(../fonts/Lato-Light.ttf);
 }
 
-.imagen img{
-	width:100%;
+.imagen img {
+	width: 100%;
 }
 
 * {
 	box-sizing: border-box;
-  }
-  
-  .main {
-		display: flex;
-		flex-direction: row;
-		font-size: 10px;
-	}
+}
 
-  
+.main {
+	display: flex;
+	flex-direction: row;
+}
 
-  .main2 {
+
+
+.main2 {
 	display: flex;
 	flex-direction: row;
 	font-size: 10px;
-	height:1080px;
-  }
-  
-  .col_izq {
+	height: 1080px;
+}
+
+.col_izq {
 	background-color: #00435f;
 	padding: 10px;
 	flex: 0%;
-	font-size:15px;
+	font-size: 15px;
 	font-family: 'lato', sans-serif;
-  }
-  
-  .col_der {
+}
+
+.col_der {
 	background-color: #fede84;
 	padding: 20px;
 	flex: 80%;
 	font-size: 15px;
-  }
+}
 
-  .lista_favoritos {
+.lista_favoritos {
 	flex: 5%;
-	font-size: 10px;
-	font-family: 'lato', sans-serif;  
-  }
-
-  
+	font-size: 15px;
+	font-family: 'lato', sans-serif;
+}
 
 
-  .alert{
+
+
+.alert {
 	font-family: lato;
-	color:#ffffff;
-  }
+	color: #ffffff;
+}
 
 
-.col_der_comp{
+.col_der_comp {
 	background-color: #1f7042;
 	padding: 20px;
 	flex: 80%;
 	font-size: 15px;
 }
 
-.col_izq_comp{
-	background-color:#fede84;
+.col_izq_comp {
+	background-color: #fede84;
 	font-family: roboto;
 	padding: 10px;
 	flex: 0%;
-	font-size:15px;
+	font-size: 15px;
 	font-family: 'lato', sans-serif;
 }
 
-.col_izq_comp a{
-	color:#000000;
+.col_izq_comp a {
+	color: #000000;
 }
 
-.info_id{
+.info_id {
 	margin-left: 1%;
 	color: #000000;
 	font-family: lato;
@@ -110,97 +110,89 @@ h2{
 	flex-wrap: wrap;
 }
 
-.descripcion{
+.descripcion {
 	margin-left: 1%;
 	color: #000000;
 	font-family: lato;
 }
 
-.formulario{
-	margin-top:10%;
+.formulario {
+	margin-top: 10%;
 
 }
 
-.datos_item{
+.datos_item {
 	color: #000000;
 }
 
-.datos{
+.datos {
 	border: 1px solid #fede84;
-	background-color: #ffffff; 
+	background-color: #ffffff;
 	border-radius: 10px;
 	padding: 10px;
 	text-align: center;
 }
 
 #googleMap {
-width: 100%;
-height: 75%;
+	width: 100%;
+	height: 75%;
 }
 
 #modal {
-	display: none; 
-	position: fixed; 
-	z-index: 5; 
-	padding-top: 100px; 
+	display: none;
+	position: fixed;
+	z-index: 5;
+	padding-top: 100px;
 	left: 0;
 	top: 0;
-	width: 100%; 
-	height: 100%; 
-	overflow: auto; 
+	width: 100%;
+	height: 100%;
+	overflow: auto;
 	font-family: 'lato';
 	background-color: #00000055;
-  }
-  
-  .modal-pokemon {
+}
+
+.modal-pokemon {
 	background-color: #FFFFFF;
 	margin: auto;
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%;
-  }
-  
-  .cerrar {
+}
+
+.cerrar {
 	color: #aaaaaa;
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
-  }
+}
 
-   {
-	color: #aaaaaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-  }
-  
-
-  .cerrar:hover,
-  .cerrar:focus {
+.cerrar:hover,
+.cerrar:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
-  }
+}
 
-#filtro{
+#filtro {
 	height: 50px;
-    border-radius:30px 30px 30px 30px;
-    border: none;
-    font-family: 'lato';
+	border-radius: 30px 30px 30px 30px;
+	border: none;
+	font-family: 'lato';
 	margin-bottom: 0.1%;
 }
 
-#tipo{
+#tipo {
 	height: 50px;
-    border-radius:30px 30px 30px 30px;
-    border: none;
-    font-family: 'lato';
+	border-radius: 30px 30px 30px 30px;
+	border: none;
+	font-family: 'lato';
 	margin-bottom: 5%;
 }
 
 
 
-#email_receptor{
+#email_receptor {
 	margin-top: 0;
 	height: 26px;
 	border-radius: 30px;
@@ -210,7 +202,7 @@ height: 75%;
 	font-family: 'lato';
 }
 
-#subject{
+#subject {
 	margin-top: 0;
 	height: 26px;
 	border-radius: 30px;
@@ -220,52 +212,53 @@ height: 75%;
 	font-family: 'lato';
 }
 
-.id_nombre{
+.id_nombre {
 	height: 50px;
-	border-radius:30px;
+	border-radius: 30px;
 	border: none;
 	font-family: 'lato';
-	
-	
+
+
 }
 
 .navegador {
-    height: 100%;
-    width: 0;
-    position: absolute;
-    z-index: 10;
-    top: 1;
-    left: 20;
-    background-image: url("44-redROG.png");
-    overflow-x: hidden;
-    transition: 1.0s;
-    padding-top: 60px;
+	height: 100%;
+	width: 0;
+	position: absolute;
+	z-index: 10;
+	top: 1;
+	left: 20;
+	background-image: url("44-redROG.png");
+	overflow-x: hidden;
+	transition: 1.0s;
+	padding-top: 60px;
 }
 
 .navegador a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 15px;
-    color: #E1C5C5;
-    display: block;
-    transition: 0.1s;
-	
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 15px;
+	color: #E1C5C5;
+	display: block;
+	transition: 0.1s;
+
 }
 
-.navegador a:hover, .offcanvas a:focus{
-    color: #DA8383;
-    
+.navegador a:hover,
+.offcanvas a:focus {
+	color: #DA8383;
+
 }
 
 .navegador .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
 }
 
-.descripcion{
+.descripcion {
 	width: 50px;
 	height: 50px;
 	/* margin:-5%; */
@@ -275,11 +268,11 @@ height: 75%;
 	/*! color: #ffffff; */
 }
 
-.descripcion:hover{
-  opacity: 70%;
+.descripcion:hover {
+	opacity: 70%;
 }
 
-.favoritos{
+.favoritos {
 	width: 50px;
 	height: 50px;
 	/* margin:-5%; */
@@ -289,11 +282,11 @@ height: 75%;
 	/*! color: #ffffff; */
 }
 
-.favoritos:hover{
-  opacity: 70%;
+.favoritos:hover {
+	opacity: 70%;
 }
 
-.boton_busqueda{
+.boton_busqueda {
 	width: 50px;
 	height: 50px;
 	/* margin:-5%; */
@@ -303,41 +296,41 @@ height: 75%;
 	/*! color: #ffffff; */
 }
 
-.boton_busqueda:hover{
-  opacity: 70%;
+.boton_busqueda:hover {
+	opacity: 70%;
 }
 
 
 
-#eliminar{
+#eliminar {
 	width: 20px;
 	height: 20px;
 	border-radius: 30px;
 	background-color: #aaa319;
 	border: none;
 	color: #ffffff;
-	font:
 	/* margin:-0.7%; */
 }
-#eliminar:hover{
-  opacity: 70%;
-}
 
-.reset2:hover{
+#eliminar:hover {
 	opacity: 70%;
 }
 
-.pokemon img{
-	width:200px;
+.reset2:hover {
+	opacity: 70%;
+}
+
+.pokemon img {
+	width: 200px;
 	height: 200px;
 }
 
-.item img{
-	width:200px;
+.item img {
+	width: 200px;
 	height: 200px;
 }
 
-.compartir{
+.compartir {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
@@ -346,51 +339,51 @@ height: 75%;
 	color: #FFFFFF;
 }
 
-.compartir:hover{
+.compartir:hover {
 	opacity: 70%;
 }
 
-.enviar{
+.enviar {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
 	background-color: #24ab2c;
 	border: none;
-	color: #'1f7042';
+	color: #1f7042;
 }
 
-.enviar:hover{
+.enviar:hover {
 	opacity: 70%;
 }
 
-.cancel{
+.cancel {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
 	background-color: #dd3e41;
 	border: none;
-	color: #'1f7042';
+	color: #1f7042;
 }
 
-.cancel:hover{
+.cancel:hover {
 	opacity: 70%;
 }
 
-.reset{
+.reset {
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;
 	background-color: #ffa500;
 	border: none;
-	color: #'1f7042';
+	color: #1f7042;
 }
 
-.reset:hover{
+.reset:hover {
 	opacity: 70%;
 }
 
 #comentario {
-  	margin-top: 0;
+	margin-top: 0;
 	height: 100px;
 	border-radius: 10px;
 	border-style: solid;
@@ -399,120 +392,135 @@ height: 75%;
 	font-family: 'lato';
 }
 
-footer{
-	background-color:#fede00;
-	padding:1em;
-	text-align:center;
+footer {
+	background-color: #fede00;
+	padding: 1em;
+	text-align: center;
 }
 
 
 
-@media screen and (max-width: 600px){
-   .main{
-		flex-direction: column;   
-   }
+@media screen and (max-width: 600px) {
+	.main {
+		flex-direction: column;
+	}
 
-    .main2{
-		flex-direction: column;   
-   }
+	.main2 {
+		flex-direction: column;
+	}
 
-   .datos{
-	   width:85%;
-   }
-	.descripcion{
-		width:50px;
-		margin:0%;
+	.datos {
+		width: 85%;
+	}
+
+	.descripcion {
+		width: 50px;
+		margin: 0%;
 		color: #fede84;
 	}
-	.info_id{
-		width:100%;
-		margin:0%;
+
+	.info_id {
+		width: 100%;
+		margin: 0%;
 		color: #fede84;
 	}
-	h1{
-		text-align:center;
+
+	h1 {
+		text-align: center;
 		color: #fede84;
 	}
-	.col_der{
+
+	.col_der {
 		background-color: #00435f;
 	}
-	.id_nombre{
-		width:80%
+
+	.id_nombre {
+		width: 80%
 	}
 
-	#filtro{
-		width:80%;
+	#filtro {
+		width: 80%;
 	}
-	#tipo{
-		width:80%;
+
+	#tipo {
+		width: 80%;
 	}
 
 }
-@media screen and (min-width: 600px){
-	.datos{
-		width:50%;
+
+@media screen and (min-width: 600px) {
+	.datos {
+		width: 50%;
 	}
-	.id_nombre{
-		width:85%;
+
+	.id_nombre {
+		width: 85%;
 	}
-	#filtro{
-		width:85%;
+
+	#filtro {
+		width: 85%;
 	}
-	#tipo{
-		width:85%;
+
+	#tipo {
+		width: 85%;
 	}
 }
 
-@media screen and (min-width: 768px){
-	.datos{
-		width:30%;
+@media screen and (min-width: 768px) {
+	.datos {
+		width: 30%;
 	}
-	.datos:hover{
+
+	.datos:hover {
 		opacity: 60%;
 	}
 
 }
-	
-@media screen and (max-width: 310px){
-   .main{
-		flex-direction: column;   
-   }
 
-    .main2{
-		flex-direction: column;   
-   }
+@media screen and (max-width: 310px) {
+	.main {
+		flex-direction: column;
+	}
 
-   .datos{
-	   width:100%;
-   }
-	.descripcion{
-		width:100%;
-		margin:0%;
+	.main2 {
+		flex-direction: column;
+	}
+
+	.datos {
+		width: 100%;
+	}
+
+	.descripcion {
+		width: 100%;
+		margin: 0%;
 		color: #fede84;
 	}
-	.info_id{
-		width:100%;
-		margin:0%;
+
+	.info_id {
+		width: 100%;
+		margin: 0%;
 		color: #fede84;
 	}
-	h1{
-		text-align:center;
+
+	h1 {
+		text-align: center;
 		color: #fede84;
 	}
-	.col_der{
+
+	.col_der {
 		background-color: #00435f;
 	}
-	.id_nombre{
-		width:50%;
+
+	.id_nombre {
+		width: 50%;
 	}
 
-	#filtro{
-		width:50%;
+	#filtro {
+		width: 50%;
 	}
 
-	#tipo{
-		width:50%;
+	#tipo {
+		width: 50%;
 	}
 
 }
-
