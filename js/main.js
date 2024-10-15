@@ -29,6 +29,8 @@ function cerrarFav() {
 
 $(document).ready(function () {
 
+    
+
 
 
     $('.cancel').click(function () {
@@ -170,6 +172,7 @@ $(document).ready(function () {
 
                         $('#eliminar-todos').click(function () {
                             localStorage.clear();
+                            mostrarFavoritos();
                            
                         });
 
@@ -238,6 +241,9 @@ $(document).ready(function () {
                     });
 
 
+                
+
+
                     function agregarFavoritos(nombre) {
                         let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
                         if (!favoritos.includes(nombre)) {
@@ -278,32 +284,6 @@ $(document).ready(function () {
                             $('.lista_favoritos').html('<h2>Favoritos</h2>' + '</br>' + 'No se encuentran favoritos');
                         }
                     }
-
-                    function mostrarHistorial() {
-                      const hist = JSON.parse(localStorage.getItem('favoritos')) || [];
-                      $('.historial_favoritos').empty();
-                      if (hist.length) {
-                          favoritos.forEach(pokemon => {
-                              $('.historial_favoritos').append(`
-                                  ${pokemon}
-                                  <div class='datos'> +
-                                  <h2> #" + id + "</h2> +
-                                  <button id="eliminar" data-name="${pokemon}">&times;</button>
-                                  <div class='pokemon'>" + "<img src='" + imagen + "'>" + </div> +
-                                  "<h1>" + nombre + "</h1>" +
-                                  "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
-                                  "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
-                                  "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
-                                  "</div>"`);
-                          });
-                      }
-                      else {
-                          $('.historial_favoritos').html('<h1>Favoritos</h1>' + '</br>' + 'No se encuentran favoritos');
-                      }
-
-                      mostrarHistorial();
-
-                  }
 
 
 
@@ -356,7 +336,9 @@ $(document).ready(function () {
 
                     $('.compartir').click(function () {
                         window.location.href = 'compartir.html';
-                        $('#subject').encodeURIComponent(nombre);
+                        document.getElementById("#subject").innerHTML = `
+                         ${nombre}
+                        `;
                     });
 
                    
@@ -373,11 +355,6 @@ $(document).ready(function () {
 
 
             });
-
-           
-
-           
-
 
 
         }
@@ -430,6 +407,34 @@ $(document).ready(function () {
                         mostrarFavoritos();
                     }
 
+                    function mostrarHistorial() {
+                        const hist = JSON.parse(localStorage.getItem('favoritos')) || [];
+                        $('.historial_favoritos').empty();
+                        if (hist.length) {
+                            favoritos.forEach(pokemon => {
+                                $('.historial_favoritos').append(`
+                                    ${pokemon}
+                                    <div class='datos'> +
+                                    <h2> #" + id + "</h2> +
+                                    <button id="eliminar" data-name="${pokemon}">&times;</button>
+                                    <div class='pokemon'>" + "<img src='" + imagen + "'>" + </div> +
+                                    "<h1>" + nombre + "</h1>" +
+                                    "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
+                                    "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
+                                    "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
+                                    "</div>"`);
+                            });
+                        }
+  
+                        else {
+                            $('.historial_favoritos').html('<h1>Favoritos</h1>' + '</br>' + 'No se encuentran favoritos');
+                        }
+  
+                       
+  
+                    }
+  
+
                     function mostrarFavoritos() {
                         const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
                         $('.lista_favoritos').html('<h1>Favoritos</h1>' + '</br>');
@@ -454,6 +459,8 @@ $(document).ready(function () {
 
 
                     mostrarFavoritos();
+                    mostrarHistorial(); 
+
 
 
                     $('.descripcion').click(function () {
@@ -478,9 +485,9 @@ $(document).ready(function () {
                         $('.compartir').click(function () {
                             window.location.href = 'compartir.html';
                             document.getElementById("#comentario").innerHTML = `
-                                <h2>Compartiendo Información de ${nombre}</h2>
-                                <p>Altura: ${altura}</p>
-                                <p>Peso: ${peso}</p>
+                                <p>Compartiendo Información de ${nombre}</p>
+                                <p>Costo: ${costo}</p>
+                                <p>Tipo: ${tipo}</p>
                             `;
 
                         });
