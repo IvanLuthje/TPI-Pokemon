@@ -68,7 +68,7 @@ h2 {
 }
 
 .lista_favoritos {
-	width:150px;
+	width: 150px;
 	font-size: 15px;
 	font-family: 'lato', sans-serif;
 }
@@ -278,6 +278,20 @@ h2 {
 }
 
 #eliminar:hover {
+	opacity: 70%;
+}
+
+#eliminar-todos {
+	width: 100px;
+	height: 30px;
+	border-radius: 10px;
+	background-color: #ffa500;
+	border: none;
+	color: #ffffff;
+	/* margin:-0.7%; */
+}
+
+#eliminar-todos:hover {
 	opacity: 70%;
 }
 

@@ -22,6 +22,9 @@ Para ello se tuvo en cuenta que para un display mayor a 600px (tablets y escrito
 
 Funcionalidad
 
+                            <button id="eliminar" data-name="${pokemon}">&times;</button>
+
+
 <!DOCTYPE html>
 <html>
 <head>

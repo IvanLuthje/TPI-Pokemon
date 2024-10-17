@@ -29,7 +29,7 @@ function cerrarFav() {
 
 $(document).ready(function () {
 
-    
+
 
 
 
@@ -71,65 +71,8 @@ $(document).ready(function () {
                         var peso = datos.weight / 10
                         var altura = datos.height * 10
 
-                        $(".info_id").append(
-                            "<div class='datos'>" +
-                            "<h2> #" + id + "</h2>" +
-                            "<div class='pokemon'>" + "<img src='" + imagen + "'>" + "</div>" +
-                            "<h1>" + nombre + "</h1>" +
-                            "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
-                            "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
-                            "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
-                            "</div>");
 
-                        $('.favoritos').click(function () {
-                            agregarFavoritos()
-                        });
-
-
-
-                        function agregarFavoritos(nombre) {
-                            let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                            if (!favoritos.includes(nombre)) {
-                                favoritos.push(nombre);
-                                localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                                alert('Se ha agregado un pokemon');
-                                mostrarFavoritos();
-
-                            }
-
-                            else {
-                                alert(`El pokemon ${nombre} ya está en favoritos.`);
-                            }
-                        }
-
-
-
-                        function mostrarFavoritos() {
-                            const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                            $('.lista_favoritos').empty();
-                            $('.lista_favoritos').html('<h2>Favoritos</h2>' + '</br>');
-                            if (favoritos.length) {
-                                favoritos.forEach(pokemon => {
-                                    $('.lista_favoritos').append(`
-                                                         ${pokemon} 
-                                                         <button id="eliminar" data-name="${pokemon}">&times;</button>
-                                                         </br>
-                                                 `);
-                                });
-                            }
-                            else {
-                                $('.lista_favoritos').html('<h2>Favoritos</h2>' + '</br>' + 'No se encuentran favoritos');
-                            }
-                        }
-
-
-      
-
-                      
-
-
-
-                        $('.descripcion').click(function (datos) {
+                        $('.descripcion').click(function () {
 
                             $.ajax({
                                 url: 'https://pokeapi.co/api/v2/pokemon-species/' + nombre,
@@ -154,6 +97,69 @@ $(document).ready(function () {
 
                         });
 
+                        $(".info_id").append(
+                            "<div class='datos'>" +
+                            "<h2> #" + id + "</h2>" +
+                            "<div class='pokemon'>" + "<img src='" + imagen + "'>" + "</div>" +
+                            "<h1>" + nombre + "</h1>" +
+                            "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
+                            "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
+                            "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
+                            "</div>");
+
+                        $('.favoritos').click(function () {
+                            agregarFavoritos()
+                        });
+
+
+
+                        function agregarFavoritos(nombre) {
+                            let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                            if (!favoritos.includes(nombre)) {
+                                favoritos.push(nombre);
+                                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                                $(".info").html('Se ha agregado un pokemon');
+                                mostrarFavoritos();
+
+                            }
+
+                            else {
+                                var modal = document.getElementById("modal");
+                                modal.style.display = "block";
+                                $(".info").html(`El pokemon ${nombre} ya está en favoritos.`);
+                            }
+                        }
+
+
+
+
+
+
+
+                        function mostrarFavoritos() {
+                            const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                            $('.lista_favoritos').empty();
+                            $('.lista_favoritos').html('<h2>Favoritos</h2>' + '</br>');
+                            if (favoritos.length) {
+                                favoritos.forEach(pokemon => {
+                                    $('.lista_favoritos').append(`
+                                                         ${pokemon} 
+                                                         <button id="eliminar" data-name="${pokemon}">&times;</button>
+                                                         </br>
+                                                 `);
+                                });
+                            }
+                            else {
+                                $('.lista_favoritos').html('<h2>Favoritos</h2>' + '</br>' + 'No se encuentran favoritos');
+                            }
+                        }
+
+
+
+
+
+
+
 
 
 
@@ -163,17 +169,15 @@ $(document).ready(function () {
                         });
 
 
-                  
-
 
                         $('#eliminar').click(function () {
-                            removerFavoritos(); 
+                            removerFavoritos();
                         });
 
                         $('#eliminar-todos').click(function () {
                             localStorage.clear();
                             mostrarFavoritos();
-                           
+
                         });
 
                         function removerFavoritos() {
@@ -185,7 +189,8 @@ $(document).ready(function () {
 
 
                         mostrarFavoritos();
-               
+                        mostrarHistorial();
+
 
 
                     },
@@ -219,12 +224,12 @@ $(document).ready(function () {
 
                 //Mostrar cada pokemon
                 success: function (datos) {
-                  var nombre = datos.name
-                  var imagen = datos.sprites.front_default
-                  var experiencia = datos.base_experience
-                  var id = datos.id
-                  var peso = datos.weight / 10
-                  var altura = datos.height * 10
+                    var nombre = datos.name
+                    var imagen = datos.sprites.front_default
+                    var experiencia = datos.base_experience
+                    var id = datos.id
+                    var peso = datos.weight / 10
+                    var altura = datos.height * 10
 
                     $(".info_id").html(
                         "<div class='datos'>" +
@@ -241,7 +246,7 @@ $(document).ready(function () {
                     });
 
 
-                
+
 
 
                     function agregarFavoritos(nombre) {
@@ -249,12 +254,14 @@ $(document).ready(function () {
                         if (!favoritos.includes(nombre)) {
                             favoritos.push(nombre);
                             localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                            alert('Se ha agregado un pokemon');
+                            $(".info").html('Se ha agregado un pokemon');
                             mostrarFavoritos();
                         }
 
                         else {
-                            alert(`El pokemon ${nombre} ya está en favoritos.`);
+                            var modal = document.getElementById("modal");
+                            modal.style.display = "block";
+                            $(".info").html(`El pokemon ${nombre} ya está en favoritos.`);
                         }
                     }
 
@@ -265,6 +272,7 @@ $(document).ready(function () {
                         localStorage.setItem('favoritos', JSON.stringify(favoritos));
                         mostrarFavoritos();
                     }
+
 
 
 
@@ -286,6 +294,33 @@ $(document).ready(function () {
                     }
 
 
+                    function mostrarHistorial() {
+                        const hist = JSON.parse(localStorage.getItem('favoritos')) || [];
+                        $('.historial_favoritos').empty();
+                        if (hist.length) {
+                            hist.forEach(pokemon => {
+                                $('.historial_favoritos').append(
+                                    "<div class='datos'>" +
+                                    "<h2> #" + id + "</h2>" +
+                                    "<div class='pokemon'>" + "<img src='" + imagen + "'>" + "</div>" +
+                                    "<h1>" + nombre + "</h1>" +
+                                    "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
+                                    "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
+                                    "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
+                                    "</div>");
+                            });
+                        }
+
+                        else {
+                            $('.historial_favoritos').html('<h1>Favoritos</h1>' + '</br>' + 'No se encuentran favoritos');
+                        }
+
+
+
+                    }
+
+
+
 
 
 
@@ -295,16 +330,20 @@ $(document).ready(function () {
 
                     $('#eliminar-todos').click(function () {
                         localStorage.clear();
+                        mostrarFavoritos();
                         mostrarHistorial();
                     });
 
 
                     mostrarFavoritos();
+                    mostrarHistorial();
 
-                   
+
 
 
                     $('.descripcion').click(function () {
+
+
 
                         $.ajax({
                             url: 'https://pokeapi.co/api/v2/pokemon-species/' + id_nombre,
@@ -341,7 +380,7 @@ $(document).ready(function () {
                         `;
                     });
 
-                   
+
 
 
                 },
@@ -389,13 +428,14 @@ $(document).ready(function () {
                         if (!favoritos.includes(nombre)) {
                             favoritos.push(nombre);
                             localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                            alert('Se ha agregado un item');
                             mostrarFavoritos();
 
                         }
 
                         else {
-                            alert(`El item ${nombre} ya está en favoritos.`);
+                            var modal = document.getElementById("modal");
+                            modal.style.display = "block";
+                            $(".info").html(`El item ${nombre} ya está en favoritos.`);
                         }
                     }
 
@@ -406,34 +446,6 @@ $(document).ready(function () {
                         localStorage.setItem('favoritos', JSON.stringify(favoritos));
                         mostrarFavoritos();
                     }
-
-                    function mostrarHistorial() {
-                        const hist = JSON.parse(localStorage.getItem('favoritos')) || [];
-                        $('.historial_favoritos').empty();
-                        if (hist.length) {
-                            favoritos.forEach(pokemon => {
-                                $('.historial_favoritos').append(`
-                                    ${pokemon}
-                                    <div class='datos'> +
-                                    <h2> #" + id + "</h2> +
-                                    <button id="eliminar" data-name="${pokemon}">&times;</button>
-                                    <div class='pokemon'>" + "<img src='" + imagen + "'>" + </div> +
-                                    "<h1>" + nombre + "</h1>" +
-                                    "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
-                                    "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
-                                    "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
-                                    "</div>"`);
-                            });
-                        }
-  
-                        else {
-                            $('.historial_favoritos').html('<h1>Favoritos</h1>' + '</br>' + 'No se encuentran favoritos');
-                        }
-  
-                       
-  
-                    }
-  
 
                     function mostrarFavoritos() {
                         const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
@@ -451,15 +463,51 @@ $(document).ready(function () {
                         }
                     }
 
+
+                    function mostrarHistorial() {
+                        const hist = JSON.parse(localStorage.getItem('favoritos')) || [];
+                        $('.historial_favoritos').empty();
+                        if (hist.length) {
+                            hist.forEach(pokemon => {
+                                $('.historial_favoritos').append(`
+                                    ${pokemon}
+                                    <div class='datos'> +
+                                    <h2> #" + id + "</h2> +
+                                    <button id="eliminar" data-name="${pokemon}">&times;</button>
+                                    <div class='pokemon'>" + "<img src='" + imagen + "'>" + </div> +
+                                    "<h1>" + nombre + "</h1>" +
+                                    "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
+                                    "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
+                                    "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
+                                    "</div>"`);
+                            });
+
+                        }
+
+                        else {
+                            $('.historial_favoritos').html('<h1>Favoritos</h1>' + '</br>' + 'No se encuentran favoritos');
+                        }
+
+
+
+                    }
+
+
+
                     $('#eliminar').click(function () {
                         removerFavoritos(nombre);
                         mostrarFavoritos();
+                    });
 
+                    $('#eliminar-todos').click(function () {
+                        localStorage.clear();
+                        mostrarFavoritos();
+                        mostrarHistorial();
                     });
 
 
                     mostrarFavoritos();
-                    mostrarHistorial(); 
+
 
 
 
