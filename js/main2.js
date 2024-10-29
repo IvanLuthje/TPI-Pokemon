@@ -29,6 +29,11 @@ function cerrarFav() {
 
 $(document).ready(function () {
 
+    
+
+
+
+
 
     $('.cancel').click(function () {
         var respuesta = confirm('Desea volver a la pagina principal?');
@@ -45,174 +50,203 @@ $(document).ready(function () {
         location.reload(true)
     });
 
-    function fetchPokemons() {
-    for (let i = 1; i <= 10; i++) {
     $.ajax({
-        url: 'https://pokeapi.co/api/v2/pokemon/${i}',
-        method: 'GET',
+        url: 'https://pokeapi.co/api/v2/pokemon/' + '55',
+        type: "GET",
+        dataType: "json",
+
+
+        //Mostrar cada pokemon
         success: function (datos) {
+            var nombre = datos.name
+            var imagen = datos.sprites.front_default
+            var experiencia = datos.base_experience
+            var id = datos.id
+            var peso = datos.weight / 10
+            var altura = datos.height * 10
+
+            $(".info_id").html(
+                "<div class='datos'>" +
+                "<h2>#" + id + "</h2>" +
+                "<div class='pokemon'>" + "<img src='" + imagen + "'>" +
+                "<h1>" + nombre + "</h1>" +
+                "</div>" +
+                "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
+                "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
+                "<button class='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
+                "</div>");
+
+          
     
-               
 
-                        var id = datos.id;
-                        var nombre = datos.name;
-                        var imagen = datos.sprites.front_default;
-                        var experiencia = datos.base_experience
-                        var id = datos.id
-                        var peso = datos.weight / 10
-                        var altura = datos.height * 10
+            
+            $('.favoritos').click(function () {
+                agregarFavoritos(nombre);
+            });
+
+         
 
 
-                        $('.descripcion').click(function () {
 
-                            $.ajax({
-                                url: 'https://pokeapi.co/api/v2/pokemon-species/' + nombre,
-                                type: "GET",
-                                dataType: "json",
-                                success: function (datos) {
-                                    var desc = datos.flavor_text_entries[26].flavor_text;
-                                    modal.style.display = "block";
-                                    $(".info").html(
-                                        "<h1>" + nombre + "</h1>" +
-                                        "</div>" +
-                                        "<div class='pokemon'>" + "<img src='" + imagen + "'>" +
-                                        "<p><strong>Exp: </strong>" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
-                                        + "kg</p>" + "<p><strong>Altura: </strong>" + altura
-                                        + "cm</p>" + "<div>" +
-                                        "<p>" + "<strong> Descripción: </strong>" + desc + "</p>" +
-                                        "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");
-                                },
+            function agregarFavoritos(nombre) {
+                let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                if (!favoritos.includes(nombre)) {
+                    favoritos.push(nombre);
+                    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                    $(".info").html('Se ha agregado un pokemon');
+                    mostrarFavoritos();
+                }
 
-                            });
+                else {
+                    var modal = document.getElementById("modal");
+                    modal.style.display = "block";
+                    $(".info").html(`El pokemon ${nombre} ya está en favoritos.`);
+                }
+            }
 
 
-                        });
+            function removerFavoritos() {
+                let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                favoritos = favoritos.filter(f => f.nombre !== nombre );
+                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                mostrarFavoritos();
+            }
 
-                        function agregarFavoritos(nombre) {
-                            let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                            if (!favoritos.includes(nombre)) {
-                                favoritos.push(nombre);
-                                localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                                mostrarFavoritos();
 
-                            }
 
-                            else {
-                                var modal = document.getElementById("modal");
-                                modal.style.display = "block";
-                                $(".info").html(`El pokemon ${nombre} ya está en favoritos.`);
-                            }
-                        }
-                        
 
-                        
+            function mostrarFavoritos() {
+                const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+                $('.lista_favoritos').empty();
+                $('.lista_favoritos').html('<h2>Favoritos</h2>' + '</br>');
+                if (favoritos.length) {
+                    favoritos.forEach(nombre => {
+                        $('.lista_favoritos').append(`
+                                        ${nombre} 
+                                        <button id="eliminar" data-name="${nombre}">&times;</button>
+                                        </br>
+                                `);
+                    });
+                } else {
+                    $('.lista_favoritos').html('<h2>Favoritos</h2>' + '</br>' + 'No se encuentran favoritos');
+                }
+            }
 
-                        $(".info_id").append(
+
+            function mostrarHistorial() {
+                const hist = JSON.parse(localStorage.getItem('favoritos')) || [];
+                $('.historial_favoritos').empty();
+                if (hist.length) {
+                    hist.forEach(nombre => {
+                        $('.historial_favoritos').append(
                             "<div class='datos'>" +
+                            "<button id='eliminar' data-name='${pokemon}'>" + "&times;" + "</button>" +
                             "<h2> #" + id + "</h2>" +
                             "<div class='pokemon'>" + "<img src='" + imagen + "'>" + "</div>" +
                             "<h1>" + nombre + "</h1>" +
                             "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
                             "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
-                            "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
                             "</div>");
+                    });
+                }
 
-                         $('.favoritos').click(function () {
-                             agregarFavoritos(nombre);
-                         });
-
-
-
-                       
+                else {
+                    $('.historial_favoritos').html('<h1>Favoritos</h1>' + '</br>' + 'No se encuentran favoritos');
+                }
 
 
 
-                         function removerFavoritos() {
-                            let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                            favoritos = favoritos.filter(f => f.nombre !== nombre);
-                            localStorage.setItem('favoritos', JSON.stringify(favoritos));
-                            mostrarFavoritos();
-                        }
+            }
+
+            $('.descripcion').click(function () {
 
 
 
-                        function mostrarFavoritos() {
-                            const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                            $('.lista_favoritos').empty();
-                            $('.lista_favoritos').html('<h2>Favoritos</h2>' + '</br>');
-                            if (favoritos.length) {
-                                favoritos.forEach(nombre => {
-                                    $('.lista_favoritos').append(`
-                                                         ${nombre} 
-                                                         <button id="eliminar" data-name="${nombre}">&times;</button>
-                                                         </br>
-                                                 `);
-                                });
-                            }
-                            else {
-                                $('.lista_favoritos').html('<h2>Favoritos</h2>' + '</br>' + 'No se encuentran favoritos');
-                            }
-                        }
-
-
-                     
-
-
-
-
-
-
-
-
-
-                        $('.cerrar').click(function () {
-                            modal.style.display = "none";
-                        });
-
-
-
-                        $('#eliminar').click(function () {
-                            removerFavoritos(nombre);
-                        });
-
-                        $('#eliminar-todos').click(function () {
-                            localStorage.clear();
-                            mostrarFavoritos();
-
-                        });
-
-                        function removerFavoritos() {
-                            const nom = $(this).data('nombre');
-                            localStorage.removeItem(nom);
-                        }
-
-
-
-
-                        mostrarFavoritos();
-
-
-
+                $.ajax({
+                    url: 'https://pokeapi.co/api/v2/pokemon-species/' + '55',
+                    type: "GET",
+                    dataType: "json",
+                    success: function (datos) {
+                        var desc = datos.flavor_text_entries[26].flavor_text;
+                        var modal = document.getElementById("modal");
+                        modal.style.display = "block";
+                        $(".info").html(
+                            "<h1>" + nombre + "</h1>" +
+                            "</div>" +
+                            "<div class='pokemon'>" + "<img src='" + imagen + "'>" +
+                            "<p><strong>Exp: </strong>" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
+                            + "kg</p>" + "<p><strong>Altura: </strong>" + altura
+                            + "cm</p>" + "<div>" +
+                            "<p>" + "<strong> Descripción: </strong>" + desc + "</p>");
                     },
 
-                    error: function () {
-                        modal.style.display = "block";
-                        $(".info").html("Pokémon " + id_nombre + " no disponible");
-                    }
+                });
+
+               
+
+
+            }); 
+
+
+
+
+
+
+            $('#eliminar').click(function () {
+                removerFavoritos();
+            });
+
+            $('#eliminar-todos').click(function () {
+                localStorage.clear();
+                mostrarFavoritos();
+                mostrarHistorial();
+            });
+
+
+            mostrarFavoritos();
+            mostrarHistorial();
+
+
+
+
+         
+            $('.cerrar').click(function () {
+                modal.style.display = "none";
+            });
+
+            $('.compartir').click(function () {
+                window.location.href = 'compartir.html';
+                $("#subject").html(nombre);
+                $("#comentario").text('Exp:' + experiencia + 
+                    'Peso:' + peso + 'kg' +
+                    "Altura:" + altura + 'cm');
+            
                 
+            });
 
-      
+
+
+
         },
+
+        error: function () {
+            var modal = document.getElementById("modal");
+            modal.style.display = "block";
+            $(".info").html("Pokémon " + id_nombre + " no disponible");
+        }
+
+
+
     });
-}
 
 
-    }
-  
+
+
+
     $("#busqueda").click(function () {
 
         let filtro = document.querySelector('#filtro'); // Se declara el comportamiento de los filtros de nombre, items entre otros
-        var id_nombre = $("#nombre").val().toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+        var id_nombre = $("#nombre").val().toLowerCase().replace(/[^a-zA-Z0-9]/g, ''); // Se pueden utilizar mayusculas y minusculas
 
         if (filtro.value == 'nombre') {
 
@@ -242,6 +276,8 @@ $(document).ready(function () {
                         "<button class='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
                         "</div>");
 
+                    $("#comentario").html(nombre + experiencia + id);
+
                     
                     $('.favoritos').click(function () {
                         agregarFavoritos(nombre);
@@ -270,7 +306,7 @@ $(document).ready(function () {
 
                     function removerFavoritos() {
                         let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-                        favoritos = favoritos.filter(f => f !== pokemon);
+                        favoritos = favoritos.filter(f => f.nombre !== nombre);
                         localStorage.setItem('favoritos', JSON.stringify(favoritos));
                         mostrarFavoritos();
                     }
@@ -420,7 +456,6 @@ $(document).ready(function () {
                         "<button class='compartir' onclick='Compartir()'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
                         "<button class='descripcion' alt='compartir' onClick='Mostrar(this)'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
                         "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" + "</div>");
-
                     $('.favoritos').click(function () {
                         agregarFavoritos(nombre);
                     });
