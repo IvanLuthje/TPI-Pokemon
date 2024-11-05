@@ -64,7 +64,7 @@ h2 {
 .col_der {
 	background-color: #fede84;
 	padding: 20px;
-	flex: 70%;
+	flex: 80%;
 	font-size: 15px;
 	
 	
@@ -439,6 +439,11 @@ footer {
 
 	.col_der {
 		background-color: #00435f;
+		flex: 10;
+	}
+	
+	.col_der_comp {
+		flex: 10;
 	}
 
 	.id_nombre {
