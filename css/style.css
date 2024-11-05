@@ -41,7 +41,7 @@ h2 {
 .main {
 	display: flex;
 	flex-direction: row;
-	min-height: 100vh;
+	min-height: 1080px;
 }
 
 
@@ -64,17 +64,10 @@ h2 {
 .col_der {
 	background-color: #fede84;
 	padding: 20px;
-	flex: 60%;
+	flex: 70%;
 	font-size: 15px;
 	
 	
-}
-
-.main-content {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    flex: 1;
 }
 
 .lista_favoritos {
@@ -95,7 +88,7 @@ h2 {
 .col_der_comp {
 	background-color: #1f7042;
 	padding: 20px;
-	flex: 60%;
+	flex: 80%;
 	font-size: 15px;
 }
 

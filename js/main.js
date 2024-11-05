@@ -59,7 +59,7 @@ $(document).ready(function () {
 
 
     $.ajax({
-        url: 'https://pokeapi.co/api/v2/pokemon?limit=21',
+        url: 'https://pokeapi.co/api/v2/pokemon?limit=12',
         method: 'GET',
         success: function (datos) {
             var listaPokemon = datos.results;
@@ -257,12 +257,7 @@ $(document).ready(function () {
                            
                         });
 
-                        function removerFavoritos() {
-                            const nom = $(this).data('nombre');
-                            localStorage.removeItem(nom);
-                        }
-
-
+                
 
 
                         mostrarFavoritos();
