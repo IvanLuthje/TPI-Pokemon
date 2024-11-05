@@ -41,6 +41,7 @@ h2 {
 .main {
 	display: flex;
 	flex-direction: row;
+	min-height: 100vh;
 }
 
 
@@ -55,7 +56,7 @@ h2 {
 .col_izq {
 	background-color: #00435f;
 	padding: 10px;
-	flex: 0%;
+	flex: 0.5;
 	font-size: 15px;
 	font-family: 'lato', sans-serif;
 }
@@ -63,8 +64,17 @@ h2 {
 .col_der {
 	background-color: #fede84;
 	padding: 20px;
-	flex: 80%;
+	flex: 3;
 	font-size: 15px;
+	
+	
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    flex: 1;
 }
 
 .lista_favoritos {
@@ -87,7 +97,6 @@ h2 {
 	padding: 20px;
 	flex: 80%;
 	font-size: 15px;
-	height: 1080px;
 }
 
 .col_izq_comp {
@@ -157,7 +166,7 @@ h2 {
 	width: 100%;
 	height: 100%;
 	overflow: auto;
-	font-family: 'lato';
+	font-family: "Press Start 2P", system-ui;	
 	background-color: #00000055;
 }
 
@@ -380,10 +389,12 @@ h2 {
 	font-family: 'lato';
 }
 
-footer {
-	background-color: #fede00;
-	padding: 1em;
-	text-align: center;
+header, footer {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    padding: 1.5%;
+    font-family: 'lato';
 }
 
 

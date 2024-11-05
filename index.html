@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
     <script src='js/main.js'></script>
 </head>
 
@@ -21,7 +23,7 @@
             <p><a href="contacto.html">CONTACTO</a></p>
             <p><a href="compartir.html">COMPARTIR</a></p>
             <p><a href="historial.html">HISTORIAL</a></p>
-            <p><a><span onclick="abrirFav()">FAVORITOS <p id="count"></p></span></a></p>
+            <p><a><span onclick="nav()">FAVORITOS </span></a></p>
         </div>
         
         <div class="col_der">
@@ -48,6 +50,7 @@
                 <div class="datos_item"></div>  
             </div>
 
+   
             <div id="modal">
                 <div class="modal-pokemon">
                     <span class="cerrar">&times;</span>
@@ -55,20 +58,20 @@
                 </div>
             </div>
 
-
-       
-         
+          
+    
        
     </div>
 
-    <div id="navegador">                     
-        <a href="javascript:void(0)" class="closebtn" onclick="cerrarFav()"><i class="fa fa-window-close" aria-hidden="true"></i></a>
+
+    <div class="navegador">                     
         <div class="lista_favoritos"></div>
         <button id="eliminar-todos">Eliminar todos</button>
     </div>
+
+ 
+    
 </body>
-<!-- <footer>
-    Pokemon
-</footer> -->
+
 
 </html>
