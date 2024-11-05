@@ -56,7 +56,7 @@ h2 {
 .col_izq {
 	background-color: #00435f;
 	padding: 10px;
-	flex: 0.5;
+	flex: 0%;
 	font-size: 15px;
 	font-family: 'lato', sans-serif;
 }
@@ -64,7 +64,7 @@ h2 {
 .col_der {
 	background-color: #fede84;
 	padding: 20px;
-	flex: 3;
+	flex: 60%;
 	font-size: 15px;
 	
 	
@@ -95,7 +95,7 @@ h2 {
 .col_der_comp {
 	background-color: #1f7042;
 	padding: 20px;
-	flex: 80%;
+	flex: 60%;
 	font-size: 15px;
 }
 
@@ -389,12 +389,27 @@ h2 {
 	font-family: 'lato';
 }
 
-header, footer {
+footer {
     background-color: #333333;
     color: white;
     text-align: center;
     padding: 1.5%;
     font-family: 'lato';
+}
+
+
+.redes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.icono_redes {
+    font-size: 20px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 

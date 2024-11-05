@@ -229,15 +229,9 @@ $(document).ready(function () {
                                         "<p>" + "<strong> Descripción: </strong>" + desc + "</p>" +
                                         "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");
                                 },
-
                             });
 
-                            $('.compartir').click(function () {
-                                window.location.href = 'compartir.html';
-                                document.getElementById("#subject").innerHTML = `
-                                 ${pokemon}
-                                `;
-                            });
+                           
 
 
                         });
