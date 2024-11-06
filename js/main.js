@@ -33,7 +33,31 @@ function nav() {
     }
 }
 
+function addFavoritos(datos){
+    console.log(JSON.parse(datos));
+    
+}
+function createPokemon(pokemon){
 
+pokemon = JSON.parse(pokemon);
+var nombre = pokemon.name;
+var imagen = pokemon.sprites.front_default;
+var experiencia = pokemon.base_experience
+var id = pokemon.id
+var peso = pokemon.weight / 10
+var altura = pokemon.height * 10
+
+$(".info_id").append(
+    "<div class='datos'>" +
+    "<h2> #" + id + "</h2>" +
+    "<div class='pokemon'>" + "<img src='" + imagen + "'>" + "</div>" +
+    "<h1>" + nombre + "</h1>" +
+    "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
+    "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
+    "<button class='favoritos' onClick= addFavoritos('" + JSON.stringify(pokemon) + "') alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
+    "</div>");
+
+}
 
 
 $(document).ready(function () {
@@ -54,12 +78,14 @@ $(document).ready(function () {
         location.reload(true)
     });
 
+    
+
 
 
 
 
     $.ajax({
-        url: 'https://pokeapi.co/api/v2/pokemon?limit=12',
+        url: 'https://pokeapi.co/api/v2/pokemon?limit=12&offset=0"',
         method: 'GET',
         success: function (datos) {
             var listaPokemon = datos.results;
@@ -69,28 +95,30 @@ $(document).ready(function () {
                     url: datos.url,
                     method: 'GET',
                     success: function (datos) {
-                        var id = datos.id;
-                        var nombre = datos.name;
-                        var imagen = datos.sprites.front_default;
-                        var experiencia = datos.base_experience
-                        var id = datos.id
-                        var peso = datos.weight / 10
-                        var altura = datos.height * 10
+                        // var nombre = datos.name;
+                        // var imagen = datos.sprites.front_default;
+                        // var experiencia = datos.base_experience
+                        // var id = datos.id
+                        // var peso = datos.weight / 10
+                        // var altura = datos.height * 10
 
-                        $(".info_id").append(
-                            "<div class='datos'>" +
-                            "<h2> #" + id + "</h2>" +
-                            "<div class='pokemon'>" + "<img src='" + imagen + "'>" + "</div>" +
-                            "<h1>" + nombre + "</h1>" +
-                            "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
-                            "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
-                            "<button class='favoritos' alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
-                            "</div>");
+                        createPokemon(JSON.stringify(datos));
 
-                        $('.favoritos').click(function () {
-                            agregarFavoritos(nombre);
-                        });
+                        // $(".info_id").append(
+                        //     "<div class='datos'>" +
+                        //     "<h2> #" + id + "</h2>" +
+                        //     "<div class='pokemon'>" + "<img src='" + imagen + "'>" + "</div>" +
+                        //     "<h1>" + nombre + "</h1>" +
+                        //     "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
+                        //     "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
+                        //     "<button class='favoritos' onClick= addFavoritos('" + JSON.stringify(datos) + "') alt='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
+                        //     "</div>");
 
+                        // $('.favoritos').click(function () {
+                        //     agregarFavoritos(nombre);
+                        // });
+
+                   
 
 
                         function agregarFavoritos(nombre) {
@@ -146,8 +174,8 @@ $(document).ready(function () {
                                     $('.historial_favoritos').append(
                                         "<div class='datos'>" +
                                         "<button id='eliminar' data-name='${pokemon}'>" + "&times;" + "</button>" +
-                                        "<h2> #" + id + "</h2>" +
-                                        "<div class='pokemon'>" + "<img src='" + imagen + "'>" + "</div>" +
+                                        // "<h2> #" + id + "</h2>" +
+                                        // "<div class='pokemon'>" + "<img src='" + imagen + "'>" + "</div>" +
                                         "<h1>" + nombre + "</h1>" +
                                         "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
                                         "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
@@ -208,33 +236,6 @@ $(document).ready(function () {
 
                       
 
-
-
-                        $('.descripcion').click(function (datos) {
-
-                            $.ajax({
-                                url: 'https://pokeapi.co/api/v2/pokemon-species/' + nombre,
-                                type: "GET",
-                                dataType: "json",
-                                success: function (datos) {
-                                    var desc = datos.flavor_text_entries[26].flavor_text;
-                                    modal.style.display = "block";
-                                    $(".info").html(
-                                        "<h1>" + nombre + "</h1>" +
-                                        "</div>" +
-                                        "<div class='pokemon'>" + "<img src='" + imagen + "'>" +
-                                        "<p><strong>Exp: </strong>" + experiencia + "</p>" + "<strong>Peso: </strong>" + peso
-                                        + "kg</p>" + "<p><strong>Altura: </strong>" + altura
-                                        + "cm</p>" + "<div>" +
-                                        "<p>" + "<strong> Descripción: </strong>" + desc + "</p>" +
-                                        "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>");
-                                },
-                            });
-
-                           
-
-
-                        });
 
 
 
@@ -300,23 +301,27 @@ $(document).ready(function () {
 
                 //Mostrar cada pokemon
                 success: function (datos) {
-                    var nombre = datos.name
-                    var imagen = datos.sprites.front_default
-                    var experiencia = datos.base_experience
-                    var id = datos.id
-                    var peso = datos.weight / 10
-                    var altura = datos.height * 10
 
-                    $(".info_id").html(
-                        "<div class='datos'>" +
-                        "<h2>#" + id + "</h2>" +
-                        "<div class='pokemon'>" + "<img src='" + imagen + "'>" +
-                        "<h1>" + nombre + "</h1>" +
-                        "</div>" +
-                        "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
-                        "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
-                        "<button class='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
-                        "</div>");
+                    createPokemon(JSON.stringify(datos));
+
+
+                    // var nombre = datos.name
+                    // var imagen = datos.sprites.front_default
+                    // var experiencia = datos.base_experience
+                    // var id = datos.id
+                    // var peso = datos.weight / 10
+                    // var altura = datos.height * 10
+
+                    // $(".info_id").html(
+                    //     "<div class='datos'>" +
+                    //     "<h2>#" + id + "</h2>" +
+                    //     "<div class='pokemon'>" + "<img src='" + imagen + "'>" +
+                    //     "<h1>" + nombre + "</h1>" +
+                    //     "</div>" +
+                    //     "<button class='compartir'> " + "<i class='fa fa-share-alt' aria-hidden='true'></i>" + "</button>" +
+                    //     "<button class='descripcion'> " + "<i class='fa fa-binoculars' aria-hidden='true'></i>" + "</button>" +
+                    //     "<button class='favoritos'> " + "<i class='fa fa-heart' aria-hidden='true'></i>" + "</button>" +
+                    //     "</div>");
 
                     
                     $('.favoritos').click(function () {
